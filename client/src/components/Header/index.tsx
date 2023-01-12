@@ -45,12 +45,25 @@ export function Header() {
               />
             </>
           )}
-          <Sc.Logo src={logo} alt="logo" />
-          <Sc.SocialMediaWrapper>
-            <Sc.SocialMedia as={AiOutlineFacebook} />
-            <Sc.SocialMedia as={BsInstagram} />
-            <Sc.SocialMedia as={BsWhatsapp} />
-          </Sc.SocialMediaWrapper>
+          {(width as number) > theme.BREAKPOINTS.tablet ? (
+            <>
+              <Sc.Logo src={logo} alt="logo" />
+              <Sc.SocialMediaWrapper>
+                <Sc.SocialMedia as={AiOutlineFacebook} />
+                <Sc.SocialMedia as={BsInstagram} />
+                <Sc.SocialMedia as={BsWhatsapp} />
+              </Sc.SocialMediaWrapper>
+            </>
+          ) : (
+            <Sc.MobileLogoWrapper>
+              <Sc.Logo src={logo} alt="logo" />
+              <Sc.SocialMediaWrapper>
+                <Sc.SocialMedia as={AiOutlineFacebook} />
+                <Sc.SocialMedia as={BsInstagram} />
+                <Sc.SocialMedia as={BsWhatsapp} />
+              </Sc.SocialMediaWrapper>
+            </Sc.MobileLogoWrapper>
+          )}
         </Sc.ContentWrapper>
       </Sc.Container>
       {(width as number) > theme.BREAKPOINTS.tablet && <NavBar />}

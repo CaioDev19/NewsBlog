@@ -24,10 +24,6 @@ export const SocialMediaWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 1.5rem;
-
-  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
-    flex-direction: column;
-  }
 `
 export const SocialMedia = styled.svg`
   color: ${({ theme }) => theme.COLORS.white};
@@ -40,6 +36,7 @@ export const SocialMedia = styled.svg`
   }
 `
 export const HamburguerMenu = styled(SocialMedia)``
+
 export const DateWrapper = styled.div`
   border-left: 1px solid ${({ theme }) => theme.COLORS.gray_200};
   border-right: 1px solid ${({ theme }) => theme.COLORS.gray_200};
@@ -47,4 +44,11 @@ export const DateWrapper = styled.div`
 
   display: flex;
   gap: 0.5rem;
+`
+
+export const MobileLogoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 `
