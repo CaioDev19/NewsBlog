@@ -7,11 +7,11 @@ import { NavBar } from "./NavBar"
 import { useTheme } from "styled-components"
 import { useWindowDimensions } from "../../hooks/useWindowDimensions"
 import { GiHamburgerMenu } from "react-icons/gi"
-import { useState } from "react"
 import { MobileSideBar } from "../SideBar"
+import { useToggle } from "../../hooks/useToggle"
 
 export function Header() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, toggle] = useToggle()
   const theme = useTheme()
   const { width } = useWindowDimensions()
 
@@ -20,49 +20,43 @@ export function Header() {
       <Sc.Container>
         <Sc.ContentWrapper>
           {(width as number) > theme.BREAKPOINTS.tablet ? (
-            <Sc.DateWrapper>
-              <Text
-                type="span"
-                as="span"
-                color="gray_200"
-                weight="sstr"
-              >
-                Hoje
-              </Text>
-              <Text type="paragraph" color="white" size="sml">
-                é 25 / 05 / 2021
-              </Text>
-            </Sc.DateWrapper>
+            <>
+              <Sc.DateWrapper>
+                <Text
+                  type="span"
+                  as="span"
+                  color="gray_200"
+                  weight="sstr"
+                >
+                  Hoje
+                </Text>
+                <Text type="paragraph" color="white" size="sml">
+                  é 25 / 05 / 2021
+                </Text>
+              </Sc.DateWrapper>
+              <Sc.Logo src={logo} alt="logo" />
+              <Sc.SocialMediaWrapper>
+                <Sc.SocialMedia as={AiOutlineFacebook} />
+                <Sc.SocialMedia as={BsInstagram} />
+                <Sc.SocialMedia as={BsWhatsapp} />
+              </Sc.SocialMediaWrapper>
+            </>
           ) : (
             <>
               <Sc.HamburguerMenu
                 as={GiHamburgerMenu}
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={toggle}
               />
-              <MobileSideBar
-                handleToggle={() => setIsOpen(!isOpen)}
-                isOpen={isOpen}
-              />
+              <MobileSideBar handleToggle={toggle} isOpen={isOpen} />
+              <Sc.MobileLogoWrapper>
+                <Sc.Logo src={logo} alt="logo" />
+                <Sc.SocialMediaWrapper>
+                  <Sc.SocialMedia as={AiOutlineFacebook} />
+                  <Sc.SocialMedia as={BsInstagram} />
+                  <Sc.SocialMedia as={BsWhatsapp} />
+                </Sc.SocialMediaWrapper>
+              </Sc.MobileLogoWrapper>
             </>
-          )}
-          {(width as number) > theme.BREAKPOINTS.tablet ? (
-            <>
-              <Sc.Logo src={logo} alt="logo" />
-              <Sc.SocialMediaWrapper>
-                <Sc.SocialMedia as={AiOutlineFacebook} />
-                <Sc.SocialMedia as={BsInstagram} />
-                <Sc.SocialMedia as={BsWhatsapp} />
-              </Sc.SocialMediaWrapper>
-            </>
-          ) : (
-            <Sc.MobileLogoWrapper>
-              <Sc.Logo src={logo} alt="logo" />
-              <Sc.SocialMediaWrapper>
-                <Sc.SocialMedia as={AiOutlineFacebook} />
-                <Sc.SocialMedia as={BsInstagram} />
-                <Sc.SocialMedia as={BsWhatsapp} />
-              </Sc.SocialMediaWrapper>
-            </Sc.MobileLogoWrapper>
           )}
         </Sc.ContentWrapper>
       </Sc.Container>

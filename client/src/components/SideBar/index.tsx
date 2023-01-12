@@ -3,6 +3,10 @@ import { Text } from "../../global/styles/Typography"
 import logo from "../../assets/images/logo.png"
 import { IoIosCloseCircle } from "react-icons/io"
 import { motion, AnimatePresence } from "framer-motion"
+import { AiOutlineHome } from "react-icons/ai"
+import { GiNewspaper } from "react-icons/gi"
+import { BsInfoCircle } from "react-icons/bs"
+import { TiContacts } from "react-icons/ti"
 
 interface Props {
   handleToggle: () => void
@@ -26,21 +30,37 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
           variants={variants}
         >
           <Sc.CloseBtn as={IoIosCloseCircle} onClick={handleToggle} />
-          <Sc.Logo src={logo} alt="logo" />
-          <Sc.Nav>
-            <Text type="paragraph" as="li">
-              Home
+          <Sc.UpperContent>
+            <Sc.Logo src={logo} alt="logo" />
+            <Sc.Nav>
+              <Text type="paragraph" as="li">
+                <AiOutlineHome /> Home
+              </Text>
+              <Text type="paragraph" as="li">
+                <GiNewspaper /> Notícias
+              </Text>
+              <Text type="paragraph" as="li">
+                <BsInfoCircle /> Sobre Nós
+              </Text>
+              <Text type="paragraph" as="li">
+                <TiContacts /> Contato
+              </Text>
+            </Sc.Nav>
+          </Sc.UpperContent>
+          <Sc.DateWrapper>
+            <Text
+              type="span"
+              as="span"
+              size="rgl"
+              color="black_200"
+              weight="sstr"
+            >
+              Hoje
             </Text>
-            <Text type="paragraph" as="li">
-              Notícias
+            <Text type="paragraph" size="rgl">
+              é 25 / 05 / 2021
             </Text>
-            <Text type="paragraph" as="li">
-              Sobre Nós
-            </Text>
-            <Text type="paragraph" as="li">
-              Contato
-            </Text>
-          </Sc.Nav>
+          </Sc.DateWrapper>
         </Sc.StyledMobileSideBar>
       )}
     </AnimatePresence>

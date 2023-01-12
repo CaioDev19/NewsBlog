@@ -12,6 +12,10 @@ export const ContentWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
+    justify-content: none;
+  }
+
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
     width: 90%;
   }
@@ -35,8 +39,9 @@ export const SocialMedia = styled.svg`
     color: ${({ theme }) => theme.COLORS.gray_200};
   }
 `
-export const HamburguerMenu = styled(SocialMedia)``
-
+export const HamburguerMenu = styled(SocialMedia)`
+  font-size: ${({ theme }) => theme.FONT_SIZE.exl};
+`
 export const DateWrapper = styled.div`
   border-left: 1px solid ${({ theme }) => theme.COLORS.gray_200};
   border-right: 1px solid ${({ theme }) => theme.COLORS.gray_200};
@@ -45,10 +50,10 @@ export const DateWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
 `
-
 export const MobileLogoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  margin: 0 auto;
 `
