@@ -2,10 +2,11 @@ import styled from "styled-components"
 import { ContentContainer } from "../../global/styles/ContentContainer"
 import { Text } from "../../global/styles/Typography"
 
-export const Container = styled.div`
+export const Container = styled.section`
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.gray_100};
   padding: 1.75rem 0;
+  margin-bottom: 50px;
 `
 export const ContentWrapper = styled(ContentContainer)`
   display: flex;
@@ -19,7 +20,6 @@ export const Banner = styled.img`
   max-height: 200px;
   border-radius: 25px;
 `
-
 export const LowerContent = styled.div`
   width: 100%;
   display: flex;

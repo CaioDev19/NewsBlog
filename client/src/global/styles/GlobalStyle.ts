@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
   
   body {
     font-family: 'Rubik', sans-serif;
+    background-color: ${({ theme }) => theme.COLORS.white};
   }
   
   img {
