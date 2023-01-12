@@ -6,7 +6,6 @@ export const Container = styled.section`
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.gray_100};
   padding: 1.75rem 0;
-  margin-bottom: 50px;
 `
 export const ContentWrapper = styled(ContentContainer)`
   display: flex;
