@@ -1,23 +1,18 @@
 import styled from "styled-components"
+import { ContentContainer } from "../../global/styles/ContentContainer"
 
 export const Container = styled.header`
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.black_200};
   padding: 2.5rem 0;
 `
-export const ContentWrapper = styled.div`
-  width: 80%;
-  margin: 0 auto;
+export const ContentWrapper = styled(ContentContainer)`
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
     justify-content: none;
-  }
-
-  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
-    width: 90%;
   }
 `
 export const Logo = styled.img`

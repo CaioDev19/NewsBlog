@@ -11,7 +11,7 @@ export const StyledMobileSideBar = styled.div`
   border-right: 1px solid ${({ theme }) => theme.COLORS.gray};
 
   margin-right: 0;
-  padding: 1.25rem 0 1.25rem 1rem;
+  padding: 1.25rem 1rem;
 
   display: flex;
   flex-direction: column;
@@ -72,10 +72,6 @@ export const Nav = styled.ul`
   }
 `
 export const DateWrapper = styled.div`
-  border-left: 1px solid ${({ theme }) => theme.COLORS.gray_200};
-  border-right: 1px solid ${({ theme }) => theme.COLORS.gray_200};
-  padding: 0 1rem;
-
   display: flex;
   gap: 0.5rem;
 `

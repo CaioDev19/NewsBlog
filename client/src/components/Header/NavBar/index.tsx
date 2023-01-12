@@ -1,10 +1,11 @@
 import * as Sc from "./style"
 import { Text } from "../../../global/styles/Typography"
+import { ContentContainer } from "../../../global/styles/ContentContainer"
 
 export function NavBar() {
   return (
     <Sc.ContainerNav>
-      <Sc.WrapperNav>
+      <ContentContainer>
         <Sc.Nav>
           <Text type="paragraph" as="li">
             Home
@@ -19,7 +20,7 @@ export function NavBar() {
             Contato
           </Text>
         </Sc.Nav>
-      </Sc.WrapperNav>
+      </ContentContainer>
     </Sc.ContainerNav>
   )
 }
