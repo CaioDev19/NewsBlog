@@ -7,8 +7,8 @@ import { NavBar } from "./NavBar"
 import { useTheme } from "styled-components"
 import { useWindowDimensions } from "../../hooks/useWindowDimensions"
 import { GiHamburgerMenu } from "react-icons/gi"
-import { MobileNav } from "./NavBar/Mobile"
 import { useState } from "react"
+import { MobileSideBar } from "../SideBar"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -39,7 +39,10 @@ export function Header() {
                 as={GiHamburgerMenu}
                 onClick={() => setIsOpen(!isOpen)}
               />
-              <MobileNav isOpen={isOpen} />
+              <MobileSideBar
+                handleToggle={() => setIsOpen(!isOpen)}
+                isOpen={isOpen}
+              />
             </>
           )}
           <Sc.Logo src={logo} alt="logo" />
