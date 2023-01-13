@@ -28,3 +28,20 @@ export const Ad = styled.img`
   width: 480px;
   border-radius: 25px;
 `
+
+export const ArrowsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  svg {
+    cursor: pointer;
+    font-size: ${({ theme }) => theme.FONT_SIZE.exl};
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      color: ${({ theme }) => theme.COLORS.orange_red};
+    }
+  }
+`

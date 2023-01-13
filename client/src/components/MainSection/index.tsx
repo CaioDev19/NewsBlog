@@ -1,4 +1,5 @@
 import { News } from "../News"
+import { New } from "../News/New"
 import * as Sc from "./style"
 
 const a = [
@@ -49,10 +50,14 @@ const a = [
   },
 ]
 
-export function MainSection() {
+export function MainSection({ primary }: { primary?: boolean }) {
   return (
-    <Sc.MainContainer>
-      <News news={a} size="lrg" />
+    <Sc.MainContainer as="section">
+      {primary ? (
+        <New news={a[0]} primary />
+      ) : (
+        <News news={a} size="lrg" />
+      )}
       <Sc.AddContainer>
         <Sc.Ad src="https://via.placeholder.com/500/#ffff https://placeholder.com/" />
         <Sc.Ad src="https://via.placeholder.com/500/#ffff https://placeholder.com/" />

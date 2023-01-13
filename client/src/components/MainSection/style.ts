@@ -5,7 +5,7 @@ export const MainContainer = styled(ContentContainer)`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 2.5rem;
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
     flex-direction: column;
