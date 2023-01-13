@@ -57,10 +57,42 @@ export const NewInfo = styled.div`
   width: 55%;
 
   ${Text} {
-    max-width: 55ch;
+    max-width: 50ch;
   }
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
     width: 100%;
+  }
+`
+
+export const PrimaryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  width: 100%;
+`
+
+export const PrimaryImage = styled.img`
+  width: 100%;
+  object-fit: cover;
+  max-height: 700px;
+  border-radius: 25px;
+`
+
+export const PrimaryNewsInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+`
+
+export const ShareContainer = styled(PrimaryNewsInfo)`
+  svg {
+    cursor: pointer;
+    font-size: ${({ theme }) => theme.FONT_SIZE.exl};
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      color: ${({ theme }) => theme.COLORS.orange_red};
+    }
   }
 `

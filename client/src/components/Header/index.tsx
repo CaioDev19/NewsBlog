@@ -9,11 +9,13 @@ import { useWindowDimensions } from "../../hooks/useWindowDimensions"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { MobileSideBar } from "../SideBar"
 import { useToggle } from "../../hooks/useToggle"
+import { useNavigate } from "react-router-dom"
 
 export function Header() {
   const [isOpen, toggle] = useToggle()
   const theme = useTheme()
   const { width } = useWindowDimensions()
+  const navigate = useNavigate()
 
   return (
     <>
@@ -34,7 +36,11 @@ export function Header() {
                   é 25 / 05 / 2021
                 </Text>
               </Sc.DateWrapper>
-              <Sc.Logo src={logo} alt="logo" />
+              <Sc.Logo
+                src={logo}
+                alt="logo"
+                onClick={() => navigate("/")}
+              />
               <Sc.SocialMediaWrapper>
                 <Sc.SocialMedia as={AiOutlineFacebook} />
                 <Sc.SocialMedia as={BsInstagram} />
