@@ -2,11 +2,13 @@ import styled, { css } from "styled-components"
 import { Text } from "../../global/styles/Typography"
 import { FontSize } from "../../global/theme"
 
-export const New = styled.div`
+export const New = styled.div<{ size?: FontSize }>`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: ${({ size }) =>
+    size === "lrg" ? "flex-start" : "center"};
   gap: 1.25rem;
+
   cursor: pointer;
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
@@ -32,13 +34,19 @@ export const NewImage = styled.img<{ size?: FontSize }>`
         return css`
           width: 180px;
           height: 120px;
+
+          @media (max-width: ${({ theme }) =>
+              theme.BREAKPOINTS.tablet}px) {
+            width: 400px;
+            height: 280px;
+          }
         `
     }
   }}
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
     width: 100%;
-    height: 230px;
+    height: 370px;
   }
 `
 export const NewInfo = styled.div`
@@ -49,7 +57,7 @@ export const NewInfo = styled.div`
   width: 55%;
 
   ${Text} {
-    max-width: 60ch;
+    max-width: 55ch;
   }
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {

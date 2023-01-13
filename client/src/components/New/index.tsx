@@ -14,7 +14,7 @@ interface Props {
 
 export function New({ news, size }: Props) {
   return (
-    <Sc.New>
+    <Sc.New size={size}>
       <Sc.NewImage size={size} src={news.image} />
       <Sc.NewInfo>
         <Text

@@ -1,17 +1,11 @@
 import styled from "styled-components"
 import { ContentContainer } from "../../global/styles/ContentContainer"
 
-export const NewsContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.5rem;
-`
 export const MainContainer = styled(ContentContainer)`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  gap: 2rem;
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
     flex-direction: column;

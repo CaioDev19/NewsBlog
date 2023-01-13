@@ -1,10 +1,5 @@
-import { ThemeProvider } from "styled-components"
-import { theme } from "./global/theme"
-import { GlobalStyles } from "./global/styles/GlobalStyle"
-import { Header } from "./components/Header"
-import { HeroSection } from "./components/HeroSection"
-import * as Sc from "./styleApp"
-import { MainSection } from "./components/MainSection"
+import { News } from "../News"
+import * as Sc from "./style"
 
 const a = [
   {
@@ -54,15 +49,15 @@ const a = [
   },
 ]
 
-export function App() {
+export function MainSection() {
   return (
-    <ThemeProvider theme={theme}>
-      <Header />
-      <Sc.Container>
-        <HeroSection />
-        <MainSection />
-      </Sc.Container>
-      <GlobalStyles />
-    </ThemeProvider>
+    <Sc.MainContainer>
+      <News news={a} size="lrg" />
+      <Sc.AddContainer>
+        <Sc.Ad src="https://via.placeholder.com/500/#ffff https://placeholder.com/" />
+        <Sc.Ad src="https://via.placeholder.com/500/#ffff https://placeholder.com/" />
+        <Sc.Ad src="https://via.placeholder.com/500/#ffff https://placeholder.com/" />
+      </Sc.AddContainer>
+    </Sc.MainContainer>
   )
 }
