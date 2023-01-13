@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
-import { Text } from "../../global/styles/Typography"
-import { FontSize } from "../../global/theme"
+import { Text } from "../../../global/styles/Typography"
+import { FontSize } from "../../../global/theme"
 
 export const New = styled.div<{ size?: FontSize }>`
   display: flex;

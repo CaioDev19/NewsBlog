@@ -5,6 +5,7 @@ import { Header } from "./components/Header"
 import { HeroSection } from "./components/HeroSection"
 import * as Sc from "./styleApp"
 import { MainSection } from "./components/MainSection"
+import { Footer } from "./components/Footer"
 
 const a = [
   {
@@ -62,6 +63,7 @@ export function App() {
         <HeroSection />
         <MainSection />
       </Sc.Container>
+      <Footer />
       <GlobalStyles />
     </ThemeProvider>
   )

@@ -1,6 +1,6 @@
 import * as Sc from "./style"
-import { Text } from "../../global/styles/Typography"
-import { FontSize } from "../../global/theme"
+import { Text } from "../../../global/styles/Typography"
+import { FontSize } from "../../../global/theme"
 
 interface Props {
   news: {

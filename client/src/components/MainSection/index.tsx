@@ -51,7 +51,7 @@ const a = [
 
 export function MainSection() {
   return (
-    <Sc.MainContainer>
+    <Sc.MainContainer as="section">
       <News news={a} size="lrg" />
       <Sc.AddContainer>
         <Sc.Ad src="https://via.placeholder.com/500/#ffff https://placeholder.com/" />
