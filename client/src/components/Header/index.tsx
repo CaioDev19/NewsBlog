@@ -57,7 +57,11 @@ export function Header() {
               />
               <MobileSideBar handleToggle={toggle} isOpen={isOpen} />
               <Sc.MobileLogoWrapper>
-                <Sc.Logo src={logo} alt="logo" />
+                <Sc.Logo
+                  src={logo}
+                  alt="logo"
+                  onClick={() => navigate("/")}
+                />
                 <Sc.SocialMediaWrapper>
                   <Sc.SocialMedia as={AiOutlineFacebook} />
                   <Sc.SocialMedia as={BsInstagram} />

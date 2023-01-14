@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { ContentContainer } from "../../global/styles/ContentContainer"
+import { Text } from "../../global/styles/Typography"
 
 export const Container = styled.footer`
   width: 100%;
@@ -44,6 +45,10 @@ export const InfoContainer = styled.div`
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
     width: 100%;
     align-items: center;
+
+    ${Text} {
+      max-width: 60ch;
+    }
   }
 `
 export const ContactInfo = styled(InfoContainer)`

@@ -43,10 +43,12 @@ export const Logo = styled.img`
   margin-bottom: 2rem;
 `
 export const Nav = styled.ul`
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   justify-content: space-between;
+  align-items: center;
   list-style-type: none;
   width: 100%;
 

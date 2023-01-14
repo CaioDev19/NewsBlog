@@ -5,7 +5,7 @@ import { FontSize } from "../../global/theme"
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa"
 import { usePaginatedNews } from "../../hooks/usePaginatedNews"
 import { useRef } from "react"
-import { NewsSkeleton } from "../NewsSkeleton"
+import { NewsSkeleton } from "./NewsSkeleton"
 
 interface Props {
   size?: FontSize
