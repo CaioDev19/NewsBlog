@@ -4,14 +4,10 @@ import { FontSize } from "../../../global/theme"
 import { useNavigate } from "react-router-dom"
 import { AiOutlineFacebook } from "react-icons/ai"
 import { BsInstagram, BsWhatsapp } from "react-icons/bs"
+import { News } from "../../../interfaces/api"
 
 interface Props {
-  news: {
-    image: string
-    title: string
-    date: string
-    description?: string
-  }
+  news: News
   size?: FontSize
   primary?: boolean
 }
@@ -39,7 +35,7 @@ export function New({ news, size, primary }: Props) {
             position="left"
             color="gray_200"
           >
-            Postado em {news.date}
+            Postado em 30/01/2021
           </Text>
           |
           <Text
@@ -53,37 +49,28 @@ export function New({ news, size, primary }: Props) {
             Lifestyle
           </Text>
         </Sc.PrimaryNewsInfo>
-        <Sc.PrimaryImage src={news.image} />
+        <Sc.PrimaryImage src={news.url} />
         <Text type="paragraph" as="p" size="lrg" position="left">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Molestias obcaecati impedit necessitatibus dignissimos
-          corrupti eum! Omnis laborum praesentium, magnam aliquid
-          totam magni quasi, voluptates assumenda perspiciatis alias
-          voluptate quo expedita. Ea tenetur aliquam quas dolorem fuga
-          corrupti modi placeat expedita dignissimos doloribus ullam
-          odio pariatur iure quod excepturi officia quae suscipit
-          beatae cupiditate doloremque quis, ex nam! Possimus, ab
-          numquam! Reprehenderit ut provident, officia non expedita
-          placeat quod perspiciatis laboriosam voluptates! A,
-          veritatis nulla soluta, sit molestias, itaque facilis
-          excepturi illum ducimus placeat commodi. Error itaque nemo
-          dignissimos accusantium tempore! Eveniet dolore placeat hic
-          voluptate minus earum ipsam sit eos quaerat sapiente soluta
-          ipsa mollitia laboriosam a accusantium iure fuga ad totam
-          illum ipsum neque ratione dolorum, sint autem? Eum! Aliquam,
-          error aperiam impedit eveniet ipsam minus quibusdam
-          consectetur vitae corrupti, nobis dicta quidem vero quaerat
-          praesentium? Neque, ducimus porro assumenda voluptates, sunt
-          voluptatibus fuga minima laborum non, soluta eligendi.
-          <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Eligendi cupiditate aliquid similique illum laudantium,
-          sequi commodi voluptate quidem ipsam dolorum sit. Eius ipsa
-          aperiam error eligendi ex placeat quibusdam vero. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Inventore
-          quam, est cupiditate accusantium, pariatur a nobis amet quo
-          fugiat porro ea commodi delectus esse totam laborum, numquam
-          assumenda non modi.
+          Sunt recusandae et, reiciendis minus accusantium voluptates
+          natus libero omnis perspiciatis voluptate, consectetur
+          maxime earum totam officia vel. Dignissimos, architecto.
+          Nam, fugit! Minima autem accusamus totam unde beatae labore
+          quis sit ipsa ex ad quia quod, harum quisquam vero numquam
+          obcaecati ducimus eaque sunt aliquam repudiandae magni?
+          Perspiciatis ea quaerat esse nostrum! Quisquam commodi in
+          tenetur voluptate laboriosam, officiis quis consectetur rem
+          non? Nostrum voluptates illo corrupti, quia voluptate natus
+          vel deleniti reiciendis et illum quis blanditiis inventore
+          animi fugiat, maiores molestias? Soluta, nesciunt quod
+          numquam maiores dolor facilis in illo dolorum inventore
+          magnam exercitationem, recusandae suscipit ab repudiandae
+          quia perferendis ex illum fuga sapiente commodi perspiciatis
+          quis sed doloribus! Ex, animi. Explicabo modi nobis autem,
+          ipsum voluptate illo a distinctio blanditiis doloremque
+          recusandae maxime, aperiam atque provident nostrum
+          voluptatibus esse minus et repellendus quos unde delectus
+          dolore. Sit exercitationem reiciendis quaerat.
         </Text>
         <Sc.ShareContainer>
           <Text
@@ -104,8 +91,8 @@ export function New({ news, size, primary }: Props) {
   }
 
   return (
-    <Sc.New size={size} onClick={() => navigate("/post")}>
-      <Sc.NewImage size={size} src={news.image} />
+    <Sc.New size={size} onClick={() => navigate(`post/${news.id}`)}>
+      <Sc.NewImage size={size} src={news.url} />
       <Sc.NewInfo>
         <Text
           type="title"
@@ -116,9 +103,28 @@ export function New({ news, size, primary }: Props) {
         >
           {news.title}
         </Text>
-        <Text type="paragraph" as="p" color="black" position="left">
-          {news.description}
-        </Text>
+        {size === "lrg" && (
+          <Text
+            type="paragraph"
+            as="p"
+            color="black"
+            position="justify"
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Molestiae ipsam similique, dolorem delectus aspernatur
+            voluptatibus repellat vitae veniam pariatur totam
+            distinctio hic omnis aliquam eius nisi cupiditate amet
+            dolores facilis. Possimus pariatur aut, quod minima magni
+            voluptatum quis quas? Nihil porro temporibus unde libero
+            pariatur velit placeat est recusandae ab, adipisci dolorum
+            facere iste laborum aspernatur, nesciunt eaque deserunt
+            quisquam. Reiciendis minus, expedita consequatur a
+            accusantium harum iure ratione ducimus, deleniti incidunt
+            consectetur voluptas voluptatem animi in, pariatur dolor
+            eveniet reprehenderit. Dolore, eligendi? Libero temporibus
+            minima ratione, amet aspernatur sint.
+          </Text>
+        )}
         <Text
           type="span"
           as="span"
@@ -126,7 +132,7 @@ export function New({ news, size, primary }: Props) {
           weight="str"
           size={size === "lrg" ? "rgl" : "sml"}
         >
-          {news.date}
+          Postado em 30/01/2021
         </Text>
       </Sc.NewInfo>
     </Sc.New>

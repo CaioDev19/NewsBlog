@@ -4,12 +4,9 @@ import { AiOutlineFacebook } from "react-icons/ai"
 import { BsInstagram, BsWhatsapp } from "react-icons/bs"
 import { Text } from "../../global/styles/Typography"
 import { FaArrowUp } from "react-icons/fa"
+import { scrollToTop } from "../../utils/window"
 
 export function Footer() {
-  function scrollToTop() {
-    window.scrollTo(0, 0)
-  }
-
   return (
     <Sc.Container>
       <Sc.MainContainer>

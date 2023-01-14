@@ -1,10 +1,18 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { ContentContainer } from "../../global/styles/ContentContainer"
 
-export const Container = styled.header`
+export const Container = styled.header<{ mobile?: boolean }>`
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.black_200};
   padding: 2.5rem 0;
+
+  ${({ mobile }) =>
+    mobile &&
+    css`
+      position: sticky;
+      top: 0;
+      padding: 1.5rem 0;
+    `}
 `
 export const ContentWrapper = styled(ContentContainer)`
   display: flex;
@@ -12,11 +20,13 @@ export const ContentWrapper = styled(ContentContainer)`
   justify-content: space-between;
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
-    justify-content: none;
+    justify-content: center;
   }
 `
 export const Logo = styled.img`
-  width: 200px;
+  width: 15%;
+  max-width: 225px;
+  min-width: 180px;
   cursor: pointer;
 `
 export const SocialMediaWrapper = styled.div`
@@ -36,6 +46,9 @@ export const SocialMedia = styled.svg`
 `
 export const HamburguerMenu = styled(SocialMedia)`
   font-size: ${({ theme }) => theme.FONT_SIZE.exl};
+  position: fixed;
+  top: 2.75rem;
+  left: 1.5rem;
 `
 export const DateWrapper = styled.div`
   border-left: 1px solid ${({ theme }) => theme.COLORS.gray_200};

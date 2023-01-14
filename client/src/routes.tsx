@@ -8,7 +8,7 @@ export function MainRoutes() {
     <Routes>
       <Route element={<MainNavigation />}>
         <Route path="/" element={<Home />} />
-        <Route path="/post" element={<PostDetail />} />
+        <Route path="/post/:id" element={<PostDetail />} />
       </Route>
     </Routes>
   )

@@ -57,7 +57,7 @@ export const NewInfo = styled.div`
   width: 55%;
 
   ${Text} {
-    max-width: 50ch;
+    max-width: 600px;
   }
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {

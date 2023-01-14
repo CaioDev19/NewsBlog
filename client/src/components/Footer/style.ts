@@ -42,7 +42,7 @@ export const InfoContainer = styled.div`
   width: 30%;
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
-    width: 80%;
+    width: 100%;
     align-items: center;
   }
 `

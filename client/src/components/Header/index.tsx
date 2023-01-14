@@ -19,7 +19,9 @@ export function Header() {
 
   return (
     <>
-      <Sc.Container>
+      <Sc.Container
+        mobile={width! <= theme.BREAKPOINTS.mobile && true}
+      >
         <Sc.ContentWrapper>
           {(width as number) > theme.BREAKPOINTS.tablet ? (
             <>

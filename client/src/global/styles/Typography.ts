@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 import { FontSize, FontWeight, Colors } from "../theme"
 
 type textType = "title" | "paragraph" | "span"
-type textPosition = "left" | "center" | "right"
+type textPosition = "left" | "center" | "right" | "justify"
 
 interface Props {
   type: textType

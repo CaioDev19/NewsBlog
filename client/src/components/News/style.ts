@@ -28,12 +28,16 @@ export const Ad = styled.img`
   width: 480px;
   border-radius: 25px;
 `
-
 export const ArrowsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+`
+export const Arrow = styled.button`
+  all: unset;
+  cursor: pointer;
+  box-sizing: border-box;
 
   svg {
     cursor: pointer;

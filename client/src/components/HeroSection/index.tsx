@@ -1,30 +1,6 @@
 import { News } from "../News"
 import * as Sc from "./style"
 
-const b = [
-  {
-    image:
-      "https://via.placeholder.com/500/#ffff https://placeholder.com/",
-    title:
-      " loren ipsum dolor sit amet consectetur adipisicing elit.",
-    date: "30/10/2021",
-  },
-  {
-    image:
-      "https://via.placeholder.com/500/#ffff https://placeholder.com/",
-    title:
-      " loren ipsum dolor sit amet consectetur adipisicing elit.",
-    date: "30/10/2021",
-  },
-  {
-    image:
-      "https://via.placeholder.com/500/#ffff https://placeholder.com/",
-    title:
-      " loren ipsum dolor sit amet consectetur adipisicing elit.",
-    date: "30/10/2021",
-  },
-]
-
 interface Props {
   primary?: boolean
 }
@@ -46,7 +22,7 @@ export function HeroSection({ primary }: Props) {
               >
                 Últimas notícias
               </Sc.Title>
-              <News news={b} />
+              <News />
             </Sc.RightContent>
           </Sc.LowerContent>
         )}
