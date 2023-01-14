@@ -10,6 +10,7 @@ export const Container = styled.header<{ mobile?: boolean }>`
     mobile &&
     css`
       position: sticky;
+      z-index: 1;
       top: 0;
       padding: 1.5rem 0;
     `}

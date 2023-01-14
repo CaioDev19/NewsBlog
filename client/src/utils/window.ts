@@ -1,6 +1,8 @@
 import { RefObject } from "react"
 
-export function scrollToRef(ref?: RefObject<HTMLDivElement>) {
+export function scrollToRef(
+  ref?: RefObject<HTMLDivElement> | undefined
+) {
   if (!ref?.current) return
   ref.current.scrollIntoView({ behavior: "smooth", block: "start" })
 }

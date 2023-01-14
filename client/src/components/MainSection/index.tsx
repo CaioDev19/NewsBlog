@@ -4,16 +4,21 @@ import { News } from "../News"
 import { New } from "../News/New"
 import { News as INews } from "../../interfaces/api"
 import * as Sc from "./style"
+import { CardSkeleton } from "../CardSkeleton"
 
 export function MainSection({ primary }: { primary?: boolean }) {
   const { id } = useParams()
   const options = primary ? { id: id } : { enabled: false }
-  const { data: news, isSuccess } = usePaginatedNews(options)
+  const { data: news, isLoading } = usePaginatedNews(options)
 
   return (
     <Sc.MainContainer as="section">
       {primary ? (
-        isSuccess && <New news={news.data as INews} primary />
+        isLoading ? (
+          <CardSkeleton />
+        ) : (
+          <New news={news?.data as INews} primary />
+        )
       ) : (
         <News size="lrg" />
       )}

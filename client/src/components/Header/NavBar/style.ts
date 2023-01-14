@@ -4,6 +4,7 @@ import { Text } from "../../../global/styles/Typography"
 export const ContainerNav = styled.nav`
   position: sticky;
   top: 0;
+  z-index: 1;
   background-color: ${({ theme }) => theme.COLORS.white};
   box-shadow: 2px 0px 5px 0px rgba(0, 0, 0, 0.3);
   padding: 1.75rem 0;

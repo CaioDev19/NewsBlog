@@ -5,6 +5,7 @@ import { FontSize } from "../../global/theme"
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa"
 import { usePaginatedNews } from "../../hooks/usePaginatedNews"
 import { useRef } from "react"
+import { NewsSkeleton } from "../NewsSkeleton"
 
 interface Props {
   size?: FontSize
@@ -12,24 +13,28 @@ interface Props {
 
 export function News({ size }: Props) {
   const newsRef = useRef<HTMLDivElement>(null)
+  const limit = size === "lrg" ? 5 : 3
   const {
     data,
-    isSuccess,
+    isLoading,
     currentPage,
     fetchNextPage,
     fetchPreviousPage,
   } = usePaginatedNews({
-    limit: size === "lrg" ? 5 : 3,
+    limit,
     ref: newsRef,
   })
   const news = data?.data as INews[]
 
   return (
     <Sc.NewsContainer ref={newsRef}>
-      {isSuccess &&
+      {isLoading ? (
+        <NewsSkeleton amount={limit} />
+      ) : (
         news.map((newI, i: number) => {
           return <New news={newI} size={size} key={i} />
-        })}
+        })
+      )}
       {size === "lrg" && (
         <Sc.ArrowsContainer>
           <Sc.Arrow onClick={fetchPreviousPage}>

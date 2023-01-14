@@ -40,6 +40,7 @@ export function usePaginatedNews({
   }
 
   function fetchPreviousPage() {
+    if (page === 1) return
     scrollToRef(ref)
     setPage((old) => old - 1)
   }
