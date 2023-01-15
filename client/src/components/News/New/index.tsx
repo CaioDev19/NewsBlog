@@ -1,6 +1,5 @@
 import * as Sc from "./style"
 import { Text } from "../../../global/styles/Typography"
-import { FontSize } from "../../../global/theme"
 import { useNavigate } from "react-router-dom"
 import { AiOutlineFacebook } from "react-icons/ai"
 import { BsInstagram, BsWhatsapp } from "react-icons/bs"
@@ -8,7 +7,7 @@ import { News } from "../../../interfaces/api"
 
 interface Props {
   news: News
-  size?: FontSize
+  size?: "lrg" | "sml"
   primary?: boolean
 }
 

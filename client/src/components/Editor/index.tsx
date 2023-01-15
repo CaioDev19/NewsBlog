@@ -50,7 +50,7 @@ export const Quill: React.FC = () => {
         theme="snow"
         modules={modules}
         formats={formats}
-        placeholder="Write somethings..."
+        placeholder="Escreva algo..."
         onChange={(e) => setBody(e)}
         value={body}
         style={{ height: "95.5vh" }}

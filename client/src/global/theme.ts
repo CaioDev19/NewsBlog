@@ -13,10 +13,13 @@ export const theme = {
     black_300: "#1C1F24",
     black_400: "#0D0E10",
 
+    red: "#e63946",
+
     orange_red: "#C74038",
     orange: "#F9A826",
     orange_light: "#F9C74F",
 
+    blue: "#3399FF",
     light_blue: "#8FD5F4",
   },
   FONT_SIZE: {

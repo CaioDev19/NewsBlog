@@ -1,7 +1,13 @@
 import { Fragment } from "react"
 import { Row, Col, Image, Placeholder } from "react-bootstrap"
 
-export function NewsSkeleton({ amount = 1 }: { amount?: number }) {
+export function NewsSkeleton({
+  amount = 1,
+  size,
+}: {
+  amount?: number
+  size?: "sml" | "lrg"
+}) {
   const loadings = []
 
   for (let i = 0; i < amount; i++) {
@@ -12,7 +18,8 @@ export function NewsSkeleton({ amount = 1 }: { amount?: number }) {
             src="https://via.placeholder.com/600C/?text=Loading..."
             fluid
             style={{
-              maxHeight: "400px",
+              maxHeight: size === "lrg" ? "400px" : "125px",
+              width: "100%",
               objectFit: "cover",
               borderRadius: "25px",
             }}

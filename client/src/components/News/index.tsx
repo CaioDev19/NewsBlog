@@ -1,14 +1,13 @@
 import * as Sc from "./style"
 import { New } from "./New"
 import { News as INews } from "../../interfaces/api"
-import { FontSize } from "../../global/theme"
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa"
 import { usePaginatedNews } from "../../hooks/usePaginatedNews"
 import { useRef } from "react"
 import { NewsSkeleton } from "./NewsSkeleton"
 
 interface Props {
-  size?: FontSize
+  size?: "sml" | "lrg"
 }
 
 export function News({ size }: Props) {
@@ -29,7 +28,7 @@ export function News({ size }: Props) {
   return (
     <Sc.NewsContainer ref={newsRef}>
       {isLoading ? (
-        <NewsSkeleton amount={limit} />
+        <NewsSkeleton amount={limit} size={size} />
       ) : (
         news.map((newI, i: number) => {
           return <New news={newI} size={size} key={i} />

@@ -1,8 +1,7 @@
 import styled, { css } from "styled-components"
 import { Text } from "../../../global/styles/Typography"
-import { FontSize } from "../../../global/theme"
 
-export const New = styled.div<{ size?: FontSize }>`
+export const New = styled.div<{ size?: "lrg" | "sml" }>`
   display: flex;
   align-items: center;
   justify-content: ${({ size }) =>
@@ -15,7 +14,7 @@ export const New = styled.div<{ size?: FontSize }>`
     flex-direction: column;
   }
 `
-export const NewImage = styled.img<{ size?: FontSize }>`
+export const NewImage = styled.img<{ size?: "lrg" | "sml" }>`
   border-radius: 25px;
   object-fit: cover;
   ${({ size }) => {
