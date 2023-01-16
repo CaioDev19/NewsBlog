@@ -7,7 +7,6 @@ import { AiOutlineHome } from "react-icons/ai"
 import { GiNewspaper } from "react-icons/gi"
 import { BsInfoCircle } from "react-icons/bs"
 import { TiContacts } from "react-icons/ti"
-import { useNavigate } from "react-router-dom"
 
 interface Props {
   handleToggle: () => void
@@ -15,7 +14,6 @@ interface Props {
 }
 
 export function MobileSideBar({ handleToggle, isOpen }: Props) {
-  const navigate = useNavigate()
   const variants = {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: "-100%" },
@@ -35,22 +33,27 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
           <Sc.UpperContent>
             <Sc.Logo src={logo} alt="logo" />
             <Sc.Nav>
-              <Text
-                type="paragraph"
-                as="li"
-                onClick={() => navigate("/")}
-              >
-                <AiOutlineHome /> Home
-              </Text>
-              <Text type="paragraph" as="li">
-                <GiNewspaper /> Notícias
-              </Text>
-              <Text type="paragraph" as="li">
-                <BsInfoCircle /> Sobre Nós
-              </Text>
-              <Text type="paragraph" as="li">
-                <TiContacts /> Contato
-              </Text>
+              <li>
+                <Sc.Link to="/">
+                  <AiOutlineHome /> Home
+                </Sc.Link>
+              </li>
+
+              <li>
+                <Sc.Link to="/">
+                  <GiNewspaper /> Notícias
+                </Sc.Link>
+              </li>
+              <li>
+                <Sc.Link to="/">
+                  <BsInfoCircle /> Sobre Nós
+                </Sc.Link>
+              </li>
+              <li>
+                <Sc.Link to="/">
+                  <TiContacts /> Contato
+                </Sc.Link>
+              </li>
             </Sc.Nav>
           </Sc.UpperContent>
           <Sc.DateWrapper>

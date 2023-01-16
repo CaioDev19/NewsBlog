@@ -33,6 +33,7 @@ export function Input({
               type === "file"
                 ? (e) => {
                     onChange(e.target.files)
+
                     if (typeof handleChange !== "undefined") {
                       handleChange()
                     }

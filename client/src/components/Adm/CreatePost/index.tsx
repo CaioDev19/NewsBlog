@@ -3,7 +3,7 @@ import { Spinner } from "react-bootstrap"
 import { useImageAsBackground } from "../../../hooks/useImageAsBackground"
 import { Text } from "../../../global/styles/Typography"
 import { IoCloudUploadOutline } from "react-icons/io5"
-import { TrashCan } from "../../TrashCan"
+import { FaTrash } from "react-icons/fa"
 import { useForm } from "react-hook-form"
 import { Input } from "../../Form/Input"
 import { Select } from "../../Form/Select"
@@ -20,7 +20,7 @@ export function CreatePost() {
     addImage,
     removeImage,
   } = useImageAsBackground()
-  const { handleSubmit, control, watch } = useForm({
+  const { handleSubmit, control, watch, resetField } = useForm({
     resolver: zodResolver(postSchema),
     defaultValues: {
       title: "",
@@ -47,7 +47,6 @@ export function CreatePost() {
   function handleBody(body: string) {
     setBody(body)
   }
-
   return (
     <>
       <Editor setBody={handleBody} />
@@ -104,11 +103,14 @@ export function CreatePost() {
               ) : (
                 <>
                   <Sc.ImageUploaded src={image} />
-                  <TrashCan
+                  <Sc.Trash
                     onClick={(e) => {
+                      resetField("image")
                       removeImage(e)
                     }}
-                  />
+                  >
+                    <FaTrash />
+                  </Sc.Trash>
                 </>
               )}
               <Sc.Input

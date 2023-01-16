@@ -91,3 +91,18 @@ export const Label = styled(Text)`
   align-items: flex-start;
   gap: 0.75rem;
 `
+export const Trash = styled.div`
+  position: absolute;
+  bottom: 0.75em;
+  right: 1rem;
+
+  background-color: ${({ theme }) => theme.COLORS.white};
+  padding: 0.75rem 1rem;
+
+  border-radius: 50%;
+  cursor: pointer;
+
+  svg {
+    font-size: ${({ theme }) => theme.FONT_SIZE.sml};
+  }
+`

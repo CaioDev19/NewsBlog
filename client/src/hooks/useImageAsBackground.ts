@@ -51,9 +51,8 @@ export function useImageAsBackground(): ReturnType {
   }
 
   function removeImage(e: MouseEvent<HTMLDivElement>): void {
-    setIsError(false)
     e.preventDefault()
-
+    setIsError(false)
     setImage(null)
   }
 

@@ -1,31 +1,23 @@
 import * as Sc from "./style"
-import { Text } from "../../../global/styles/Typography"
 import { ContentContainer } from "../../../global/styles/ContentContainer"
-import { useNavigate } from "react-router-dom"
 
 export function NavBar() {
-  const navigate = useNavigate()
-
   return (
     <Sc.ContainerNav>
       <ContentContainer>
         <Sc.Nav>
-          <Text
-            type="paragraph"
-            as="li"
-            onClick={() => navigate("/")}
-          >
-            Home
-          </Text>
-          <Text type="paragraph" as="li">
-            Notícias
-          </Text>
-          <Text type="paragraph" as="li">
-            Sobre Nós
-          </Text>
-          <Text type="paragraph" as="li">
-            Contato
-          </Text>
+          <li>
+            <Sc.Link to="/">Home</Sc.Link>
+          </li>
+          <li>
+            <Sc.Link to="/">Notícias</Sc.Link>
+          </li>
+          <li>
+            <Sc.Link to="/">Sobre Nós</Sc.Link>
+          </li>
+          <li>
+            <Sc.Link to="/">Contato</Sc.Link>
+          </li>
         </Sc.Nav>
       </ContentContainer>
     </Sc.ContainerNav>

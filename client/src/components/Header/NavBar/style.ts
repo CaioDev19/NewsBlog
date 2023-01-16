@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Text } from "../../../global/styles/Typography"
+import { Link as L } from "react-router-dom"
 
 export const ContainerNav = styled.nav`
   position: sticky;
@@ -18,12 +19,20 @@ export const Nav = styled.ul`
   list-style-type: none;
 
   ${Text} {
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
+  }
+`
+export const Link = styled(L)`
+  text-decoration: none;
+  list-style-type: none;
+  cursor: pointer;
+  font-size: ${({ theme }) => theme.FONT_SIZE.rgl};
+  color: ${({ theme }) => theme.COLORS.black};
+  line-height: 1.3rem;
 
-    &:hover {
-      color: ${({ theme }) => theme.COLORS.orange_red};
-    }
+  text-transform: uppercase;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    color: ${({ theme }) => theme.COLORS.orange_red};
   }
 `

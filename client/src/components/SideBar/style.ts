@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Text } from "../../global/styles/Typography"
+import { Link as L } from "react-router-dom"
 
 export const StyledMobileSideBar = styled.div`
   background-color: ${({ theme }) => theme.COLORS.whitesh};
@@ -52,28 +53,42 @@ export const Nav = styled.ul`
   list-style-type: none;
   width: 100%;
 
-  ${Text} {
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-
-    border-top: 2px solid ${({ theme }) => theme.COLORS.gray};
-    border-bottom: 2px solid ${({ theme }) => theme.COLORS.gray};
-
-    padding: 1rem 0;
+  li {
     width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-
-    &:hover {
-      color: ${({ theme }) => theme.COLORS.orange_red};
-    }
   }
 `
 export const DateWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
+`
+export const Link = styled(L)`
+  text-decoration: none;
+  list-style-type: none;
+
+  cursor: pointer;
+
+  font-size: ${({ theme }) => theme.FONT_SIZE.rgl};
+  color: ${({ theme }) => theme.COLORS.black};
+  line-height: 1.3rem;
+
+  text-transform: uppercase;
+  transition: 0.2s ease-in-out;
+
+  border-top: 2px solid ${({ theme }) => theme.COLORS.gray};
+  border-bottom: 2px solid ${({ theme }) => theme.COLORS.gray};
+
+  padding: 1rem 0;
+
+  &:hover {
+    color: ${({ theme }) => theme.COLORS.orange_red};
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+
+  &:hover {
+    color: ${({ theme }) => theme.COLORS.orange_red};
+  }
 `
