@@ -20,22 +20,14 @@ export function Header() {
   return (
     <>
       <Sc.Container
-        mobile={width! <= theme.BREAKPOINTS.mobile && true}
+        tablet={width! <= theme.BREAKPOINTS.tablet && true}
       >
         <Sc.ContentWrapper>
           {(width as number) > theme.BREAKPOINTS.tablet ? (
             <>
               <Sc.DateWrapper>
-                <Text
-                  type="span"
-                  as="span"
-                  color="gray_200"
-                  weight="sstr"
-                >
-                  Hoje
-                </Text>
-                <Text type="paragraph" color="white" size="sml">
-                  é 25 / 05 / 2021
+                <Text type="span" as="span" color="white" size="sml">
+                  25 / 05 / 2021
                 </Text>
               </Sc.DateWrapper>
               <Sc.Logo

@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components"
 import { ContentContainer } from "../../global/styles/ContentContainer"
 
-export const Container = styled.header<{ mobile?: boolean }>`
+export const Container = styled.header<{ tablet?: boolean }>`
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.black_200};
-  padding: 2.5rem 0;
+  padding: 1.5rem 0;
 
-  ${({ mobile }) =>
-    mobile &&
+  ${({ tablet }) =>
+    tablet &&
     css`
       position: sticky;
       z-index: 1;
@@ -57,6 +57,7 @@ export const DateWrapper = styled.div`
   padding: 0 1rem;
 
   display: flex;
+  align-items: center;
   gap: 0.5rem;
 `
 export const MobileLogoWrapper = styled.div`

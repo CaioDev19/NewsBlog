@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { ContentContainer } from "../../global/styles/ContentContainer"
+import { Text } from "../../global/styles/Typography"
 
 export const MainContainer = styled(ContentContainer)`
   display: flex;
@@ -16,16 +17,29 @@ export const MainContainer = styled(ContentContainer)`
 export const AddContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+
   gap: 1.25rem;
+  width: 50%;
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.notbook}px) {
-    border-top: 1px dotted ${({ theme }) => theme.COLORS.black};
     width: 100%;
-    align-items: center;
-    padding-top: 2.5rem;
   }
 `
 export const Ad = styled.img`
   width: 480px;
   border-radius: 25px;
+`
+
+export const SubTittle = styled(Text)`
+  text-transform: uppercase;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(
+      to right,
+      ${({ theme }) => theme.COLORS.orange_red},
+      ${({ theme }) => theme.COLORS.gray_100}
+    )
+    1;
+  align-self: flex-start;
+  width: 100%;
 `

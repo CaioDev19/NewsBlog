@@ -23,6 +23,14 @@ export function MainSection({ primary }: { primary?: boolean }) {
         <News size="lrg" />
       )}
       <Sc.AddContainer>
+        <Sc.SubTittle
+          type="title"
+          as="h2"
+          weight="str"
+          position="left"
+        >
+          mais notícias
+        </Sc.SubTittle>
         <Sc.Ad src="https://via.placeholder.com/500/#ffff https://placeholder.com/" />
         <Sc.Ad src="https://via.placeholder.com/500/#ffff https://placeholder.com/" />
         <Sc.Ad src="https://via.placeholder.com/500/#ffff https://placeholder.com/" />

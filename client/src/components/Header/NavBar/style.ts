@@ -7,10 +7,11 @@ export const ContainerNav = styled.nav`
   z-index: 1;
   background-color: ${({ theme }) => theme.COLORS.white};
   box-shadow: 2px 0px 5px 0px rgba(0, 0, 0, 0.3);
-  padding: 1.75rem 0;
+  padding: 1.45rem 0;
   width: 100%;
 `
 export const Nav = styled.ul`
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;

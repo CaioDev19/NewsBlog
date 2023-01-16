@@ -1,10 +1,12 @@
-import { useState } from "react"
 import ReactQuill from "react-quill"
 import "react-quill/dist/quill.snow.css"
 import * as Sc from "./style"
 
-export const Quill: React.FC = () => {
-  const [body, setBody] = useState("")
+export function Editor({
+  setBody,
+}: {
+  setBody: (body: string) => void
+}) {
   const modules = {
     toolbar: [
       [{ header: "1" }, { header: "2" }],
@@ -51,12 +53,9 @@ export const Quill: React.FC = () => {
         modules={modules}
         formats={formats}
         placeholder="Escreva algo..."
-        onChange={(e) => setBody(e)}
-        value={body}
+        onChange={(body) => setBody(body)}
         style={{ height: "95.5vh" }}
       />
     </Sc.Editor>
   )
 }
-
-export default Quill
