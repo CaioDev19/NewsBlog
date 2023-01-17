@@ -28,6 +28,8 @@ export const AddContainer = styled.div`
 `
 export const Ad = styled.img`
   width: 480px;
+  height: 380px;
+  object-fit: cover;
   border-radius: 25px;
 `
 

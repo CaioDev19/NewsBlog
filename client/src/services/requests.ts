@@ -13,5 +13,7 @@ export function getNews({
 export function getNew({
   queryKey,
 }: QueryFunctionContext): Promise<AxiosResponse<News>> {
-  return api.get(`/photos/${queryKey[1]}`)
+  return api.get(
+    `/everything?q=computer&pageSize=1&page=${queryKey[1]}`
+  )
 }

@@ -13,7 +13,7 @@ interface Props {
 export function usePaginatedNews({
   initialPage = 1,
   limit = 5,
-  enabled,
+  enabled = true,
   ref,
   id,
 }: Props) {

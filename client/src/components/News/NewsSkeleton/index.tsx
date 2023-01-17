@@ -12,13 +12,17 @@ export function NewsSkeleton({
 
   for (let i = 0; i < amount; i++) {
     loadings.push(
-      <Placeholder as={Row} animation="glow">
-        <Col xs={4}>
+      <Placeholder
+        as={Row}
+        animation="glow"
+        style={{ width: "100%" }}
+      >
+        <Col xs={4} style={{ width: "45%" }}>
           <Image
             src="https://via.placeholder.com/600C/?text=Loading..."
             fluid
             style={{
-              maxHeight: size === "lrg" ? "400px" : "125px",
+              maxHeight: size === "lrg" ? "350px" : "125px",
               width: "100%",
               objectFit: "cover",
               borderRadius: "25px",
@@ -33,6 +37,7 @@ export function NewsSkeleton({
             justifyContent: "center",
             flexDirection: "column",
             gap: "1rem",
+            width: "50%",
           }}
         >
           <Placeholder xs={10} /> <Placeholder xs={10} />{" "}

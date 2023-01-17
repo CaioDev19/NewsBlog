@@ -1,3 +1,4 @@
+import { usePaginatedNews } from "../../hooks/usePaginatedNews"
 import { News } from "../News"
 import * as Sc from "./style"
 
@@ -6,13 +7,17 @@ interface Props {
 }
 
 export function HeroSection({ primary }: Props) {
+  const { data } = usePaginatedNews({})
+
   return (
     <Sc.Container>
       <Sc.ContentWrapper>
         <Sc.Banner src="https://via.placeholder.com/1000/#ffff https://placeholder.com/" />
         {primary && (
           <Sc.LowerContent>
-            <Sc.LeftContent src="https://via.placeholder.com/500/#ffff https://placeholder.com/" />
+            <Sc.LeftContent
+              src={data?.data.articles[4]?.urlToImage}
+            />
             <Sc.RightContent>
               <Sc.Title
                 type="title"

@@ -21,7 +21,7 @@ export const NewImage = styled.img<{ size?: "lrg" | "sml" }>`
     switch (size) {
       case "sml":
         return css`
-          width: 180px;
+          width: 240px;
           height: 120px;
         `
       case "lrg":
@@ -31,7 +31,7 @@ export const NewImage = styled.img<{ size?: "lrg" | "sml" }>`
         `
       default:
         return css`
-          width: 180px;
+          width: 240px;
           height: 120px;
 
           @media (max-width: ${({ theme }) =>

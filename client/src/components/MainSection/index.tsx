@@ -30,9 +30,27 @@ export function MainSection({ primary }: { primary?: boolean }) {
         >
           mais notícias
         </Sc.SubTittle>
-        <Sc.Ad src="https://via.placeholder.com/500/#ffff https://placeholder.com/" />
-        <Sc.Ad src="https://via.placeholder.com/500/#ffff https://placeholder.com/" />
-        <Sc.Ad src="https://via.placeholder.com/500/#ffff https://placeholder.com/" />
+        <Sc.Ad
+          src={
+            primary
+              ? news?.data.articles[0].urlToImage
+              : news?.data.articles[3].urlToImage
+          }
+        />
+        <Sc.Ad
+          src={
+            primary
+              ? news?.data.articles[0].urlToImage
+              : news?.data.articles[2].urlToImage
+          }
+        />
+        <Sc.Ad
+          src={
+            primary
+              ? news?.data.articles[0].urlToImage
+              : news?.data.articles[1].urlToImage
+          }
+        />
       </Sc.AddContainer>
     </Sc.MainContainer>
   )
