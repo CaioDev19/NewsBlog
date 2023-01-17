@@ -9,11 +9,11 @@ export function MainRoutes() {
   return (
     <Routes>
       <Route element={<MainNavigation />}>
-        <Route path="/" element={<Home />} />
         <Route element={<ScrollToTop />}>
+          <Route path="/" element={<Home />} />
           <Route path="/post/:id" element={<PostDetail />} />
+          <Route path="/adm" element={<Adm />} />
         </Route>
-        <Route path="/adm" element={<Adm />} />
       </Route>
     </Routes>
   )

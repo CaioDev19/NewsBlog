@@ -3,7 +3,7 @@ import { New } from "./New"
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa"
 import { usePaginatedNews } from "../../hooks/usePaginatedNews"
 import { useRef } from "react"
-import { NewsSkeleton } from "./NewsSkeleton"
+import { NewsSkeleton } from "../Skeletons/NewsSkeleton"
 
 interface Props {
   size?: "sml" | "lrg"

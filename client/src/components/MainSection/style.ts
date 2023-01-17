@@ -2,6 +2,14 @@ import styled from "styled-components"
 import { ContentContainer } from "../../global/styles/ContentContainer"
 import { Text } from "../../global/styles/Typography"
 
+export const AddContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 1.25rem;
+  width: 50%;
+`
 export const MainContainer = styled(ContentContainer)`
   display: flex;
   align-items: flex-start;
@@ -12,18 +20,10 @@ export const MainContainer = styled(ContentContainer)`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-`
-export const AddContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  gap: 1.25rem;
-  width: 50%;
-
-  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.notbook}px) {
-    width: 100%;
+    ${AddContainer} {
+      width: 100%;
+    }
   }
 `
 export const Ad = styled.img`

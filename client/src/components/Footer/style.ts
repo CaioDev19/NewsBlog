@@ -14,16 +14,6 @@ export const Container = styled.footer`
   background-color: ${({ theme }) => theme.COLORS.black_200};
   padding: 2.5rem 0;
 `
-export const MainContainer = styled(ContentContainer)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-
-  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
-    flex-direction: column;
-  }
-`
 export const Logo = styled.img`
   width: 200px;
   cursor: pointer;
@@ -49,17 +39,6 @@ export const InfoContainer = styled.div`
   align-items: center;
   gap: 1.75rem;
   width: 30%;
-
-  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
-    width: 100%;
-    align-items: center;
-    border-bottom: 1px solid ${({ theme }) => theme.COLORS.white};
-    padding-bottom: 1.5rem;
-
-    ${Text} {
-      max-width: 60ch;
-    }
-  }
 `
 export const ContactInfo = styled(InfoContainer)`
   width: 50%;
@@ -106,5 +85,26 @@ export const ContainerBackTop = styled.div`
 
   ${Text} {
     margin: 0;
+  }
+`
+export const MainContainer = styled(ContentContainer)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
+    flex-direction: column;
+
+    ${InfoContainer} {
+      width: 100%;
+      align-items: center;
+      border-bottom: 1px solid ${({ theme }) => theme.COLORS.white};
+      padding-bottom: 1.5rem;
+
+      ${Text} {
+        max-width: 60ch;
+      }
+    }
   }
 `

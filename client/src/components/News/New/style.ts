@@ -1,19 +1,6 @@
 import styled, { css } from "styled-components"
 import { Text } from "../../../global/styles/Typography"
 
-export const New = styled.div<{ size?: "lrg" | "sml" }>`
-  display: flex;
-  align-items: center;
-  justify-content: ${({ size }) =>
-    size === "lrg" ? "flex-start" : "center"};
-  gap: 1.25rem;
-
-  cursor: pointer;
-
-  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
-    flex-direction: column;
-  }
-`
 export const NewImage = styled.img<{ size?: "lrg" | "sml" }>`
   border-radius: 25px;
   object-fit: cover;
@@ -35,18 +22,13 @@ export const NewImage = styled.img<{ size?: "lrg" | "sml" }>`
           height: 120px;
 
           @media (max-width: ${({ theme }) =>
-              theme.BREAKPOINTS.tablet}px) {
+              theme.BREAKPOINTS.notbook}px) {
             width: 400px;
             height: 280px;
           }
         `
     }
   }}
-
-  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
-    width: 100%;
-    height: 370px;
-  }
 `
 export const NewInfo = styled.div`
   display: flex;
@@ -58,12 +40,29 @@ export const NewInfo = styled.div`
   ${Text} {
     max-width: 600px;
   }
+`
+export const New = styled.div<{ size?: "lrg" | "sml" }>`
+  display: flex;
+  align-items: center;
+  justify-content: ${({ size }) =>
+    size === "lrg" ? "flex-start" : "center"};
+  gap: 1.25rem;
+
+  cursor: pointer;
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
-    width: 100%;
+    flex-direction: column;
+
+    ${NewImage} {
+      width: 100%;
+      height: 370px;
+    }
+
+    ${NewInfo} {
+      width: 100%;
+    }
   }
 `
-
 export const PrimaryContainer = styled.div`
   display: flex;
   flex-direction: column;

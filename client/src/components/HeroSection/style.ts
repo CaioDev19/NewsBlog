@@ -19,27 +19,13 @@ export const Banner = styled.img`
   max-height: 200px;
   border-radius: 25px;
 `
-export const LowerContent = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.75rem;
 
-  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
-    flex-direction: column;
-  }
-`
 export const LeftContent = styled.img`
   width: 60%;
   border-radius: 25px;
   object-fit: cover;
   max-height: 450px;
   flex-grow: 1;
-
-  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
-    width: 100%;
-  }
 `
 export const RightContent = styled.div`
   display: flex;
@@ -47,9 +33,24 @@ export const RightContent = styled.div`
   flex-grow: 1;
   gap: 1.25rem;
   width: 40%;
+`
+export const LowerContent = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.75rem;
 
-  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
-    width: 100%;
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.notbook}px) {
+    flex-direction: column;
+
+    ${LeftContent} {
+      width: 100%;
+    }
+
+    ${RightContent} {
+      width: 100%;
+    }
   }
 `
 export const Title = styled(Text)`

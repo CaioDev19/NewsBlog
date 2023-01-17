@@ -3,7 +3,7 @@ import { usePaginatedNews } from "../../hooks/usePaginatedNews"
 import { News } from "../News"
 import { New } from "../News/New"
 import * as Sc from "./style"
-import { CardSkeleton } from "../CardSkeleton"
+import { CardSkeleton } from "../Skeletons/CardSkeleton"
 
 export function MainSection({ primary }: { primary?: boolean }) {
   const { id } = useParams()
