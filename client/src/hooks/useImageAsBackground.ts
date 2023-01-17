@@ -5,7 +5,7 @@ interface ReturnType {
   image: string | null
   isLoading: boolean
   isError: boolean
-  addImage: (imageFile: File[]) => void
+  addImage: (imageFile: FileList | null) => void
   removeImage: (e: MouseEvent<HTMLDivElement>) => void
 }
 
@@ -14,7 +14,7 @@ export function useImageAsBackground(): ReturnType {
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
-  function addImage(imageFile: File[]): void {
+  function addImage(imageFile: FileList | null): void {
     const validImageTypes = [
       "image/jpeg",
       "image/png",

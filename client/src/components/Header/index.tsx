@@ -5,7 +5,7 @@ import { BsInstagram, BsWhatsapp } from "react-icons/bs"
 import { Text } from "../../global/styles/Typography"
 import { NavBar } from "./NavBar"
 import { useTheme } from "styled-components"
-import { useWindowDimensions } from "../../hooks/useWindowDimensions"
+import { useWindow } from "../../hooks/useWindow"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { MobileSideBar } from "../SideBar"
 import { useToggle } from "../../hooks/useToggle"
@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom"
 export function Header() {
   const [isOpen, toggle] = useToggle()
   const theme = useTheme()
-  const { width } = useWindowDimensions()
+  const { width } = useWindow()
   const navigate = useNavigate()
 
   return (

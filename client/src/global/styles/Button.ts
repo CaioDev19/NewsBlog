@@ -20,6 +20,12 @@ export const Button = styled.button<Props>`
     background ? theme.COLORS[background] : theme.COLORS.white};
   color: ${({ theme, color }) =>
     color ? theme.COLORS[color] : theme.COLORS.black};
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
   border-radius: ${({ radios }) => {
     switch (radios) {
       case "round":

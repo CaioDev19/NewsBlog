@@ -87,6 +87,8 @@ export const Form = styled.form`
 export const SInput = styled(Input)`
   border: 0;
   border-bottom: 1px solid ${({ theme }) => theme.COLORS.white};
+  background-color: transparent;
+  color: ${({ theme }) => theme.COLORS.white};
 
   &::placeholder {
     color: ${({ theme }) => theme.COLORS.white};

@@ -1,9 +1,9 @@
 import * as Sc from "./style"
 import { Text } from "../../../global/styles/Typography"
 import { useNavigate } from "react-router-dom"
-import { AiOutlineFacebook } from "react-icons/ai"
-import { BsInstagram, BsWhatsapp } from "react-icons/bs"
 import { News } from "../../../interfaces/api"
+import { ShareButton } from "../../ShareButton"
+import { useWindow } from "../../../hooks/useWindow"
 
 interface Props {
   news: News
@@ -13,6 +13,7 @@ interface Props {
 
 export function New({ news, size, primary }: Props) {
   const navigate = useNavigate()
+  const { url } = useWindow()
 
   if (primary) {
     return (
@@ -81,9 +82,9 @@ export function New({ news, size, primary }: Props) {
           >
             COMPARTILHE:
           </Text>
-          <AiOutlineFacebook />
-          <BsInstagram />
-          <BsWhatsapp />
+          <ShareButton social="facebook" url={url!} />
+          <ShareButton social="twitter" url={url!} />
+          <ShareButton social="whatsapp" url={url!} />
         </Sc.ShareContainer>
       </Sc.PrimaryContainer>
     )

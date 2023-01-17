@@ -10,7 +10,7 @@ import { Select } from "../../Form/Select"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { postSchema } from "../../../utils/validators/postSchema"
 import { Editor } from "../../../components/Editor"
-import { useState } from "react"
+import { ChangeEvent, useState } from "react"
 
 export function CreatePost() {
   const {
@@ -20,22 +20,22 @@ export function CreatePost() {
     addImage,
     removeImage,
   } = useImageAsBackground()
-  const { handleSubmit, control, watch, resetField } = useForm({
-    resolver: zodResolver(postSchema),
-    defaultValues: {
-      title: "",
-      sinopse: "",
-      category: "",
-      image: {},
-    },
-  })
+  const { handleSubmit, control, watch, resetField, setValue } =
+    useForm({
+      resolver: zodResolver(postSchema),
+      defaultValues: {
+        title: "",
+        sinopse: "",
+        category: "",
+        image: null as FileList | null,
+      },
+    })
   const [body, setBody] = useState("")
 
   function handleSucessSubmit(data: any) {
     if (body === "") {
       return
     }
-
     console.log(data)
     console.log(body)
   }
@@ -117,8 +117,12 @@ export function CreatePost() {
                 type="file"
                 name="image"
                 control={control}
-                handleChange={() => {
-                  const image = watch("image") as File[]
+                handleChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  if (!e.target.files) {
+                    return
+                  }
+                  setValue("image", e.target.files)
+                  const image = watch("image") as FileList
                   addImage(image)
                 }}
               />

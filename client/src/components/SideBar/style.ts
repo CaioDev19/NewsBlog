@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { Text } from "../../global/styles/Typography"
 import { Link as L } from "react-router-dom"
 
 export const StyledMobileSideBar = styled.div`
@@ -78,10 +77,6 @@ export const Link = styled(L)`
   border-bottom: 2px solid ${({ theme }) => theme.COLORS.gray};
 
   padding: 1rem 0;
-
-  &:hover {
-    color: ${({ theme }) => theme.COLORS.orange_red};
-  }
 
   display: flex;
   align-items: center;

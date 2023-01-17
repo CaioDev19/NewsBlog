@@ -59,11 +59,6 @@ export const LowerContent = styled.div`
 `
 export const Button = styled(B)`
   width: 100%;
-  transition: 0.2s ease-in-out;
-
-  &:hover {
-    opacity: 0.8;
-  }
 `
 export const WrapperErrorButton = styled.div`
   display: flex;

@@ -1,12 +1,13 @@
 import * as Sc from "./style"
 import { Controller } from "react-hook-form"
 import { Control } from "react-hook-form/dist/types"
+import { ChangeEvent } from "react"
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string
   control: Control<any, any>
   className?: string
-  handleChange?: () => void
+  handleChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 export function Input({
@@ -32,15 +33,13 @@ export function Input({
             onChange={
               type === "file"
                 ? (e) => {
-                    onChange(e.target.files)
-
                     if (typeof handleChange !== "undefined") {
-                      handleChange()
+                      handleChange(e)
                     }
                   }
                 : onChange
             }
-            value={type === "file" ? value.filename : value}
+            value={type === "file" ? undefined : value}
             ref={ref}
             {...rest}
           />

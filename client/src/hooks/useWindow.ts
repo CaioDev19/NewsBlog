@@ -3,26 +3,28 @@ import { useEffect, useState } from "react"
 interface WindowDimensions {
   width: number | undefined
   height: number | undefined
+  url: string | undefined
 }
 
-export function useWindowDimensions(): WindowDimensions {
-  const [windowDimensions, setWindowDimensions] =
-    useState<WindowDimensions>({
-      width: undefined,
-      height: undefined,
-    })
+export function useWindow(): WindowDimensions {
+  const [windowValues, setWindow] = useState<WindowDimensions>({
+    width: undefined,
+    height: undefined,
+    url: undefined,
+  })
 
   useEffect(() => {
     function handleResize() {
-      setWindowDimensions({
+      setWindow({
         width: window.innerWidth,
         height: window.innerHeight,
+        url: window.location.href,
       })
     }
 
     if (
-      typeof windowDimensions.width === "undefined" &&
-      typeof windowDimensions.height === "undefined"
+      typeof windowValues.width === "undefined" &&
+      typeof windowValues.height === "undefined"
     ) {
       handleResize()
     }
@@ -30,7 +32,7 @@ export function useWindowDimensions(): WindowDimensions {
     window.addEventListener("resize", handleResize)
 
     return () => window.removeEventListener("resize", handleResize)
-  }, [windowDimensions.height, windowDimensions.width])
+  }, [windowValues.height, windowValues.width])
 
-  return windowDimensions
+  return windowValues
 }
