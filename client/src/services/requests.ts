@@ -5,8 +5,10 @@ import { QueryFunctionContext } from "@tanstack/react-query"
 
 export function getNews({
   queryKey,
-}: QueryFunctionContext): Promise<AxiosResponse<News[]>> {
-  return api.get(`/photos?_limit=${queryKey[2]}&_page=${queryKey[1]}`)
+}: QueryFunctionContext): Promise<AxiosResponse<News>> {
+  return api.get(
+    `/everything?q=computer&pageSize=${queryKey[2]}&page=${queryKey[1]}`
+  )
 }
 export function getNew({
   queryKey,

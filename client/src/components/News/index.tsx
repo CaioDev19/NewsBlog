@@ -1,6 +1,5 @@
 import * as Sc from "./style"
 import { New } from "./New"
-import { News as INews } from "../../interfaces/api"
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa"
 import { usePaginatedNews } from "../../hooks/usePaginatedNews"
 import { useRef } from "react"
@@ -14,7 +13,7 @@ export function News({ size }: Props) {
   const newsRef = useRef<HTMLDivElement>(null)
   const limit = size === "lrg" ? 5 : 3
   const {
-    data,
+    data: news,
     isLoading,
     currentPage,
     fetchNextPage,
@@ -23,14 +22,13 @@ export function News({ size }: Props) {
     limit,
     ref: newsRef,
   })
-  const news = data?.data as INews[]
 
   return (
     <Sc.NewsContainer ref={newsRef}>
       {isLoading ? (
         <NewsSkeleton amount={limit} size={size} />
       ) : (
-        news.map((newI, i: number) => {
+        news?.data.articles.map((newI, i: number) => {
           return <New news={newI} size={size} key={i} />
         })
       )}

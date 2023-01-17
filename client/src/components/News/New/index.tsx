@@ -1,12 +1,12 @@
 import * as Sc from "./style"
 import { Text } from "../../../global/styles/Typography"
 import { useNavigate } from "react-router-dom"
-import { News } from "../../../interfaces/api"
+import { Article } from "../../../interfaces/api"
 import { ShareButton } from "../../ShareButton"
 import { useWindow } from "../../../hooks/useWindow"
 
 interface Props {
-  news: News
+  news: Article
   size?: "lrg" | "sml"
   primary?: boolean
 }
@@ -35,7 +35,8 @@ export function New({ news, size, primary }: Props) {
             position="left"
             color="gray_200"
           >
-            Postado em 30/01/2021
+            Postado em{" "}
+            {new Date(news.publishedAt).toLocaleDateString()}
           </Text>
           |
           <Text
@@ -49,7 +50,7 @@ export function New({ news, size, primary }: Props) {
             Lifestyle
           </Text>
         </Sc.PrimaryNewsInfo>
-        <Sc.PrimaryImage src={news.url} />
+        <Sc.PrimaryImage src={news.urlToImage} />
         <Text type="paragraph" as="p" size="lrg" position="left">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Sunt recusandae et, reiciendis minus accusantium voluptates
@@ -91,8 +92,11 @@ export function New({ news, size, primary }: Props) {
   }
 
   return (
-    <Sc.New size={size} onClick={() => navigate(`post/${news.id}`)}>
-      <Sc.NewImage size={size} src={news.url} />
+    <Sc.New
+      size={size}
+      onClick={() => navigate(`post/${news.source.id}`)}
+    >
+      <Sc.NewImage size={size} src={news.urlToImage} />
       <Sc.NewInfo>
         <Text
           type="title"
@@ -110,19 +114,7 @@ export function New({ news, size, primary }: Props) {
             color="black"
             position="justify"
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Molestiae ipsam similique, dolorem delectus aspernatur
-            voluptatibus repellat vitae veniam pariatur totam
-            distinctio hic omnis aliquam eius nisi cupiditate amet
-            dolores facilis. Possimus pariatur aut, quod minima magni
-            voluptatum quis quas? Nihil porro temporibus unde libero
-            pariatur velit placeat est recusandae ab, adipisci dolorum
-            facere iste laborum aspernatur, nesciunt eaque deserunt
-            quisquam. Reiciendis minus, expedita consequatur a
-            accusantium harum iure ratione ducimus, deleniti incidunt
-            consectetur voluptas voluptatem animi in, pariatur dolor
-            eveniet reprehenderit. Dolore, eligendi? Libero temporibus
-            minima ratione, amet aspernatur sint.
+            {news.description}
           </Text>
         )}
         <Text
@@ -132,7 +124,7 @@ export function New({ news, size, primary }: Props) {
           weight="str"
           size={size === "lrg" ? "rgl" : "sml"}
         >
-          Postado em 30/01/2021
+          Postado em {new Date(news.publishedAt).toLocaleDateString()}
         </Text>
       </Sc.NewInfo>
     </Sc.New>

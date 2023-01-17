@@ -1,10 +1,7 @@
 import { scrollToRef } from "../utils/window"
 import { useQuery } from "@tanstack/react-query"
 import { RefObject, useState } from "react"
-import { News } from "../interfaces/api"
 import { getNews, getNew } from "../services/requests"
-import { QueryFunction } from "@tanstack/react-query"
-import { AxiosResponse } from "axios"
 
 interface Props {
   id?: string
@@ -25,14 +22,10 @@ export function usePaginatedNews({
   const queryKey = id ? ["news", id] : ["news", page, limit]
   const queryFunction = id ? getNew : getNews
 
-  const query = useQuery(
-    queryKey,
-    queryFunction as QueryFunction<AxiosResponse<News[] | News>>,
-    {
-      enabled,
-      keepPreviousData: true,
-    }
-  )
+  const query = useQuery(queryKey, queryFunction, {
+    enabled,
+    keepPreviousData: true,
+  })
 
   function fetchNextPage() {
     scrollToRef(ref)

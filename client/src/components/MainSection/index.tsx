@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom"
 import { usePaginatedNews } from "../../hooks/usePaginatedNews"
 import { News } from "../News"
 import { New } from "../News/New"
-import { News as INews } from "../../interfaces/api"
 import * as Sc from "./style"
 import { CardSkeleton } from "../CardSkeleton"
 
@@ -17,7 +16,7 @@ export function MainSection({ primary }: { primary?: boolean }) {
         isLoading ? (
           <CardSkeleton />
         ) : (
-          <New news={news?.data as INews} primary />
+          <New news={news?.data.articles?.[0]!} primary />
         )
       ) : (
         <News size="lrg" />
