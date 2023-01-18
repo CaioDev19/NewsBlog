@@ -15,6 +15,12 @@ export const NewImage = styled.img<{ size?: "lrg" | "sml" }>`
         return css`
           width: 400px;
           height: 280px;
+
+          @media (max-width: ${({ theme }) =>
+              theme.BREAKPOINTS.notbook}px) {
+            width: 400px;
+            height: 280px;
+          }
         `
       default:
         return css`
@@ -46,6 +52,7 @@ export const New = styled.div<{ size?: "lrg" | "sml" }>`
   align-items: center;
   justify-content: ${({ size }) =>
     size === "lrg" ? "flex-start" : "center"};
+  width: ${({ size }) => (size !== "lrg" ? "100%" : "")};
   gap: 1.25rem;
 
   cursor: pointer;

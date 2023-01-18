@@ -5,6 +5,6 @@ export const api = axios.create({
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",
-    Authorization: `30d7bc34ce1a45fa8010b77ba063290b`,
+    Authorization: `1216c8993f944e4582a1d738bd249292`,
   },
 })

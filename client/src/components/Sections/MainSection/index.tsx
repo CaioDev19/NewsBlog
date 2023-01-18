@@ -35,7 +35,7 @@ export function MainSection({ primary }: { primary?: boolean }) {
           weight="str"
           position="left"
         >
-          mais notícias
+          Patrocinadores
         </Sc.SubTittle>
         <Sc.Ad src={paginatedNews?.data.articles[0]?.urlToImage} />
         <Sc.Ad src={paginatedNews?.data.articles[1]?.urlToImage} />

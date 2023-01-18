@@ -7,6 +7,7 @@ import { AiOutlineHome } from "react-icons/ai"
 import { GiNewspaper } from "react-icons/gi"
 import { BsInfoCircle } from "react-icons/bs"
 import { TiContacts } from "react-icons/ti"
+import { useToggle } from "../../hooks/useToggle"
 
 interface Props {
   handleToggle: () => void
@@ -14,6 +15,7 @@ interface Props {
 }
 
 export function MobileSideBar({ handleToggle, isOpen }: Props) {
+  const [isMenuOpen, toggle] = useToggle()
   const variants = {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: "-100%" },
@@ -38,12 +40,78 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
                   <AiOutlineHome /> Home
                 </Sc.Link>
               </li>
-
-              <li>
-                <Sc.Link to="/">
+              <Sc.LiRelative>
+                <Sc.Link as="span" onClick={toggle}>
                   <GiNewspaper /> Notícias
                 </Sc.Link>
-              </li>
+                <AnimatePresence>
+                  {isMenuOpen && (
+                    <Sc.NewsMenu
+                      as={motion.ul}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                    >
+                      <li>
+                        <Sc.Link
+                          onClick={toggle}
+                          to="post/category/business"
+                        >
+                          Business
+                        </Sc.Link>
+                      </li>
+                      <li>
+                        <Sc.Link
+                          onClick={toggle}
+                          to="post/category/entertainment"
+                        >
+                          Entertainment
+                        </Sc.Link>
+                      </li>
+                      <li>
+                        <Sc.Link
+                          onClick={toggle}
+                          to="post/category/general"
+                        >
+                          General
+                        </Sc.Link>
+                      </li>
+                      <li>
+                        <Sc.Link
+                          onClick={toggle}
+                          to="post/category/health"
+                        >
+                          Health
+                        </Sc.Link>
+                      </li>
+                      <li>
+                        <Sc.Link
+                          onClick={toggle}
+                          to="post/category/science"
+                        >
+                          Science
+                        </Sc.Link>
+                      </li>
+                      <li>
+                        <Sc.Link
+                          onClick={toggle}
+                          to="post/category/sports"
+                        >
+                          Sports
+                        </Sc.Link>
+                      </li>
+                      <li>
+                        <Sc.Link
+                          onClick={toggle}
+                          to="post/category/technology"
+                        >
+                          Technology
+                        </Sc.Link>
+                      </li>
+                    </Sc.NewsMenu>
+                  )}
+                </AnimatePresence>
+              </Sc.LiRelative>
               <li>
                 <Sc.Link to="/">
                   <BsInfoCircle /> Sobre Nós
