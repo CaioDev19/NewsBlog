@@ -1,4 +1,4 @@
-import { usePaginatedNews } from "../../../hooks/usePaginatedNews"
+import { usePaginatedNews } from "../../../hooks/react-query/query/usePaginatedNews"
 import { News } from "../../News"
 import * as Sc from "./style"
 

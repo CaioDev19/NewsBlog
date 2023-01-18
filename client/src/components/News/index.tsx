@@ -1,15 +1,16 @@
 import * as Sc from "./style"
 import { New } from "./New"
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa"
-import { usePaginatedNews } from "../../hooks/usePaginatedNews"
+import { usePaginatedNews } from "../../hooks/react-query/query/usePaginatedNews"
 import { useRef } from "react"
 import { NewsSkeleton } from "../Skeletons/NewsSkeleton"
 
 interface Props {
   size?: "sml" | "lrg"
+  category?: string
 }
 
-export function News({ size }: Props) {
+export function News({ size, category }: Props) {
   const newsRef = useRef<HTMLDivElement>(null)
   const limit = size === "lrg" ? 5 : 3
   const {
@@ -21,6 +22,7 @@ export function News({ size }: Props) {
   } = usePaginatedNews({
     limit,
     ref: newsRef,
+    category: category,
   })
 
   return (

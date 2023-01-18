@@ -18,7 +18,7 @@ export const postSchema = z.object({
     },
     { message: "Arquivo não suportado" }
   ),
-  sinopse: z.string().min(1).max(180),
+  sinopse: z.string().min(1).max(200),
 })
 
 export type Post = z.infer<typeof postSchema>

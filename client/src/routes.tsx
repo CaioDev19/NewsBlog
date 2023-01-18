@@ -3,6 +3,7 @@ import { MainNavigation } from "./components/MainNavigation"
 import { Adm } from "./pages/Adm"
 import { Home } from "./pages/Home"
 import { PostDetail } from "./pages/PostDetail"
+import { PostsByCategory } from "./pages/PostsByCategory"
 import { ScrollToTop } from "./services/ScrollToTop"
 
 export function MainRoutes() {
@@ -12,6 +13,10 @@ export function MainRoutes() {
         <Route element={<ScrollToTop />}>
           <Route path="/" element={<Home />} />
           <Route path="/post/:id" element={<PostDetail />} />
+          <Route
+            path="/post/category/:category"
+            element={<PostsByCategory />}
+          />
           <Route path="/adm" element={<Adm />} />
         </Route>
       </Route>

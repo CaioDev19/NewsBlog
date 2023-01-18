@@ -1,14 +1,21 @@
 import { useParams } from "react-router-dom"
-import { usePaginatedNews } from "../../../hooks/usePaginatedNews"
+import { useNew } from "../../../hooks/react-query/query/useNew"
 import { News } from "../../News"
 import { New } from "../../News/New"
 import * as Sc from "./style"
 import { CardSkeleton } from "../../Skeletons/CardSkeleton"
+import { usePaginatedNews } from "../../../hooks/react-query/query/usePaginatedNews"
 
 export function MainSection({ primary }: { primary?: boolean }) {
   const { id } = useParams()
-  const options = primary ? { id: id } : { enabled: false }
-  const { data: news, isLoading } = usePaginatedNews(options)
+  const { data: news, isLoading } = useNew({
+    id: id || "1",
+    enabled: primary || false,
+  })
+  const { data: paginatedNews } = usePaginatedNews({
+    limit: 3,
+    initialPage: 10,
+  })
 
   return (
     <Sc.MainContainer as="section">
@@ -30,27 +37,9 @@ export function MainSection({ primary }: { primary?: boolean }) {
         >
           mais notícias
         </Sc.SubTittle>
-        <Sc.Ad
-          src={
-            primary
-              ? news?.data.articles[0].urlToImage
-              : news?.data.articles[3].urlToImage
-          }
-        />
-        <Sc.Ad
-          src={
-            primary
-              ? news?.data.articles[0].urlToImage
-              : news?.data.articles[2].urlToImage
-          }
-        />
-        <Sc.Ad
-          src={
-            primary
-              ? news?.data.articles[0].urlToImage
-              : news?.data.articles[1].urlToImage
-          }
-        />
+        <Sc.Ad src={paginatedNews?.data.articles[0]?.urlToImage} />
+        <Sc.Ad src={paginatedNews?.data.articles[1]?.urlToImage} />
+        <Sc.Ad src={paginatedNews?.data.articles[2]?.urlToImage} />
       </Sc.AddContainer>
     </Sc.MainContainer>
   )

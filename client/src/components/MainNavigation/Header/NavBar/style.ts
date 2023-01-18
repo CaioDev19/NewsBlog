@@ -29,10 +29,34 @@ export const Link = styled(L)`
   color: ${({ theme }) => theme.COLORS.black};
   line-height: 1.3rem;
 
-  text-transform: uppercase;
   transition: 0.2s ease-in-out;
 
   &:hover {
     color: ${({ theme }) => theme.COLORS.orange_red};
   }
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`
+export const LiRelative = styled.li`
+  position: relative;
+`
+export const NewsMenu = styled.ul`
+  list-style-type: none;
+  position: absolute;
+  top: 2rem;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+  background-color: ${({ theme }) => theme.COLORS.white};
+  padding: 1.25rem 2rem;
+  border-radius: 15px;
 `

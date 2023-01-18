@@ -6,6 +6,7 @@ export const NewsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 1.8rem;
 `
 export const MainContainer = styled(ContentContainer)`

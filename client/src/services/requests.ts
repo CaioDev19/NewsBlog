@@ -17,3 +17,10 @@ export function getNew({
     `/everything?q=computer&language=pt&pageSize=1&page=${queryKey[1]}`
   )
 }
+export function getNewByCategory({
+  queryKey,
+}: QueryFunctionContext): Promise<AxiosResponse<News>> {
+  return api.get(
+    `/top-headlines?country=br&category=${queryKey[3]}&pageSize=${queryKey[2]}&page=${queryKey[1]}`
+  )
+}
