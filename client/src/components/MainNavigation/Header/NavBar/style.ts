@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Text } from "../../../global/styles/Typography"
+import { Text } from "../../../../global/styles/Typography"
 import { Link as L } from "react-router-dom"
 
 export const ContainerNav = styled.nav`

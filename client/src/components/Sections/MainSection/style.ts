@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { ContentContainer } from "../../global/styles/ContentContainer"
-import { Text } from "../../global/styles/Typography"
+import { ContentContainer } from "../../../global/styles/ContentContainer"
+import { Text } from "../../../global/styles/Typography"
 
 export const AddContainer = styled.div`
   display: flex;

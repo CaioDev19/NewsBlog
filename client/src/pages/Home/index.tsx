@@ -1,5 +1,5 @@
-import { HeroSection } from "../../components/HeroSection"
-import { MainSection } from "../../components/MainSection"
+import { HeroSection } from "../../components/Sections/HeroSection"
+import { MainSection } from "../../components/Sections/MainSection"
 
 export function Home() {
   return (

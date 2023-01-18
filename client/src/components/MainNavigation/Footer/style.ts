@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { ContentContainer } from "../../global/styles/ContentContainer"
-import { Text } from "../../global/styles/Typography"
-import { Input } from "../Form/Input"
+import { ContentContainer } from "../../../global/styles/ContentContainer"
+import { Text } from "../../../global/styles/Typography"
+import { Input } from "../../Form/Input"
 
 export const Container = styled.footer`
   display: flex;

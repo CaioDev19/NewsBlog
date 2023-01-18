@@ -1,5 +1,5 @@
-import { usePaginatedNews } from "../../hooks/usePaginatedNews"
-import { News } from "../News"
+import { usePaginatedNews } from "../../../hooks/usePaginatedNews"
+import { News } from "../../News"
 import * as Sc from "./style"
 
 interface Props {

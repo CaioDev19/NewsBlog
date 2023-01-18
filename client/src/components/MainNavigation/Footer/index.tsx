@@ -1,13 +1,13 @@
 import * as Sc from "./style"
-import logo from "../../assets/images/logowhite.png"
+import logo from "../../../assets/images/logowhite.png"
 import { AiOutlineFacebook } from "react-icons/ai"
 import { BsInstagram, BsWhatsapp } from "react-icons/bs"
-import { Text } from "../../global/styles/Typography"
+import { Text } from "../../../global/styles/Typography"
 import { useForm } from "react-hook-form"
-import { Button } from "../../global/styles/Button"
+import { Button } from "../../../global/styles/Button"
 import { AiOutlineArrowUp } from "react-icons/ai"
-import { scrollToTop } from "../../utils/window"
-import { newsLetterSchema } from "../../utils/validators/newsLetterSchema"
+import { scrollToTop } from "../../../utils/window"
+import { newsLetterSchema } from "../../../utils/validators/newsLetterSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 export function Footer() {

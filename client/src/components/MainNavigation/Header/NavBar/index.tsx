@@ -1,5 +1,5 @@
 import * as Sc from "./style"
-import { ContentContainer } from "../../../global/styles/ContentContainer"
+import { ContentContainer } from "../../../../global/styles/ContentContainer"
 
 export function NavBar() {
   return (

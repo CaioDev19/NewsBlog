@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { ContentContainer } from "../../global/styles/ContentContainer"
+import { ContentContainer } from "../../../global/styles/ContentContainer"
 
 export const Container = styled.header<{ tablet?: boolean }>`
   width: 100%;

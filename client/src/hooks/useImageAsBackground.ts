@@ -5,7 +5,10 @@ interface ReturnType {
   image: string | null
   isLoading: boolean
   isError: boolean
-  addImage: (imageFile: FileList | null) => void
+  addImage: (
+    imageFile: FileList | null,
+    reset: (x: any) => any
+  ) => void
   removeImage: (e: MouseEvent<HTMLDivElement>) => void
 }
 
@@ -14,7 +17,10 @@ export function useImageAsBackground(): ReturnType {
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
-  function addImage(imageFile: FileList | null): void {
+  function addImage(
+    imageFile: FileList | null,
+    reset: (x: any) => any
+  ): void {
     const validImageTypes = [
       "image/jpeg",
       "image/png",
@@ -34,6 +40,7 @@ export function useImageAsBackground(): ReturnType {
 
     if (!validImageTypes.includes(imageFile[0].type)) {
       setIsError(true)
+      reset("image")
       return
     }
 

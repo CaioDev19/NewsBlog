@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { Text } from "../../../global/styles/Typography"
 import { Button as B } from "../../../global/styles/Button"
-import { Input as SInput } from "../../../components/Form/Input"
 
 export const Container = styled.div`
   display: flex;
@@ -32,7 +31,7 @@ export const InnerWrapper = styled.label<{ noPadding: boolean }>`
 
   position: relative;
 `
-export const Input = styled(SInput)`
+export const Input = styled.input`
   all: unset;
   width: 0;
   height: 0;

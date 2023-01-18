@@ -10,7 +10,7 @@ import { Select } from "../../Form/Select"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { postSchema } from "../../../utils/validators/postSchema"
 import { Editor } from "../../../components/Editor"
-import { ChangeEvent, useState } from "react"
+import { useState } from "react"
 
 export function CreatePost() {
   const {
@@ -20,17 +20,23 @@ export function CreatePost() {
     addImage,
     removeImage,
   } = useImageAsBackground()
-  const { handleSubmit, control, watch, resetField, setValue } =
-    useForm({
-      resolver: zodResolver(postSchema),
-      defaultValues: {
-        title: "",
-        sinopse: "",
-        category: "",
-        image: null as FileList | null,
-      },
-    })
+  const {
+    handleSubmit,
+    control,
+    resetField,
+    register,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(postSchema),
+    defaultValues: {
+      title: "",
+      sinopse: "",
+      category: "",
+      image: null as FileList | null,
+    },
+  })
   const [body, setBody] = useState("")
+  const imageRegister = register("image")
 
   function handleSucessSubmit(data: any) {
     if (body === "") {
@@ -47,6 +53,7 @@ export function CreatePost() {
   function handleBody(body: string) {
     setBody(body)
   }
+
   return (
     <>
       <Editor setBody={handleBody} />
@@ -66,14 +73,14 @@ export function CreatePost() {
                   variant="danger"
                 />
               )}
-              {isError && (
+              {(isError || errors.image?.type === "custom") && (
                 <Text
                   type="span"
                   as="span"
                   size="rgl"
                   color="orange_red"
                 >
-                  File type not supported
+                  Arquivo não suportado!
                 </Text>
               )}
               {!image ? (
@@ -115,15 +122,10 @@ export function CreatePost() {
               )}
               <Sc.Input
                 type="file"
-                name="image"
-                control={control}
-                handleChange={(e: ChangeEvent<HTMLInputElement>) => {
-                  if (!e.target.files) {
-                    return
-                  }
-                  setValue("image", e.target.files)
-                  const image = watch("image") as FileList
-                  addImage(image)
+                {...imageRegister}
+                onChange={(e) => {
+                  imageRegister.onChange(e)
+                  addImage(e.target.files, resetField)
                 }}
               />
             </Sc.InnerWrapper>

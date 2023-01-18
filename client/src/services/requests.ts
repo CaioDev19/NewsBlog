@@ -7,13 +7,13 @@ export function getNews({
   queryKey,
 }: QueryFunctionContext): Promise<AxiosResponse<News>> {
   return api.get(
-    `/everything?q=computer&pageSize=${queryKey[2]}&page=${queryKey[1]}`
+    `/everything?q=computer&language=pt&pageSize=${queryKey[2]}&page=${queryKey[1]}`
   )
 }
 export function getNew({
   queryKey,
 }: QueryFunctionContext): Promise<AxiosResponse<News>> {
   return api.get(
-    `/everything?q=computer&pageSize=1&page=${queryKey[1]}`
+    `/everything?q=computer&language=pt&pageSize=1&page=${queryKey[1]}`
   )
 }

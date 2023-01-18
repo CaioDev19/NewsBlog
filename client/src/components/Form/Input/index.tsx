@@ -30,16 +30,8 @@ export function Input({
             type={type}
             placeholder={placeholder}
             name={name}
-            onChange={
-              type === "file"
-                ? (e) => {
-                    if (typeof handleChange !== "undefined") {
-                      handleChange(e)
-                    }
-                  }
-                : onChange
-            }
-            value={type === "file" ? undefined : value}
+            onChange={onChange}
+            value={value}
             ref={ref}
             {...rest}
           />
