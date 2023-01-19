@@ -8,7 +8,7 @@ admin.initializeApp({
   storageBucket: process.env.FIREBASE_BUCKET_URL,
 });
 
-const bucket = admin.storage().bucket();
+const bucket = getStorage().bucket();
 
 module.exports = {
   admin,

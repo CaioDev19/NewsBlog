@@ -21,7 +21,9 @@ module.exports = {
 
       req.admin = decodedToken;
       return next();
-    } catch {
+    } catch (error) {
+      console.log(error);
+
       return res.status(401).json({
         message:
           'To access this feature, a valid authentication token must be submitted.',
