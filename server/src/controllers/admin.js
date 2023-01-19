@@ -1,7 +1,6 @@
 const { sign } = require('jsonwebtoken');
 const knex = require('../config/database');
-const { convertToBase64Url } = require('../utils/convert');
-const fs = require('fs/promises');
+const { uploadImageToStorage } = require('../utils/firebase');
 
 module.exports = {
   async adminLogin(req, res) {
@@ -20,32 +19,37 @@ module.exports = {
   },
   async createPost(req, res) {
     const { title, content, summary, category_id, date } = req.body;
-    const { filename: image, path } = req.file;
-    const buffer = await fs.readFile(path);
+    const { file } = req;
     const { name } = req.category;
 
     try {
+      const imageUrl = await uploadImageToStorage(file);
+
       const post = await knex('post')
         .insert({
           title,
           content,
           summary,
           category_id,
-          image,
+          image_name: file.originalname,
+          image_url: imageUrl,
           date,
         })
         .returning('*');
 
       const {
-        image: _,
+        image_name,
+        image_url,
         category_id: category,
-        ...postWithoutImage
+        ...postWithoutImageAndCategory
       } = post[0];
-      const imageUrl = convertToBase64Url(buffer);
 
       res.status(201).json({
-        ...postWithoutImage,
-        image: imageUrl,
+        ...postWithoutImageAndCategory,
+        image: {
+          name: image_name,
+          url: image_url,
+        },
         category: {
           id: category,
           name,

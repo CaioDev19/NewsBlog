@@ -11,7 +11,8 @@ CREATE TABLE category(
 
 CREATE TABLE post(
   id SERIAL PRIMARY KEY,
-  image TEXT NOT NULL,
+  image_name TEXT NOT NULL,
+  image_url TEXT NOT NULL,
   title VARCHAR(100) NOT NULL,
   summary VARCHAR(200) NOT NULL,
   content TEXT NOT NULL,
