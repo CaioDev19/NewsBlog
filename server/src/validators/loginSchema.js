@@ -1,6 +1,6 @@
 const { z } = require('zod');
 
-const loginSchema = z.object({
+const LoginSchema = z.object({
   body: z.object({
     email: z
       .string({
@@ -15,4 +15,4 @@ const loginSchema = z.object({
   }),
 });
 
-module.exports = { loginSchema };
+module.exports = { LoginSchema };
