@@ -1,10 +1,11 @@
-import { Route, Routes } from "react-router-dom"
-import { MainNavigation } from "./components/MainNavigation"
-import { Adm } from "./pages/Adm"
-import { Home } from "./pages/Home"
-import { PostDetail } from "./pages/PostDetail"
-import { PostsByCategory } from "./pages/PostsByCategory"
-import { ScrollToTop } from "./services/ScrollToTop"
+import { Route, Routes } from 'react-router-dom';
+import { MainNavigation } from './components/MainNavigation';
+import { Adm } from './pages/Adm';
+import { Home } from './pages/Home';
+import { Login } from './pages/Login';
+import { PostDetail } from './pages/PostDetail';
+import { PostsByCategory } from './pages/PostsByCategory';
+import { ScrollToTop } from './services/ScrollToTop';
 
 export function MainRoutes() {
   return (
@@ -18,8 +19,9 @@ export function MainRoutes() {
             element={<PostsByCategory />}
           />
           <Route path="/adm" element={<Adm />} />
+          <Route path="/adm/login" element={<Login />} />
         </Route>
       </Route>
     </Routes>
-  )
+  );
 }
