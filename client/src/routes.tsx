@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 import { MainNavigation } from "./components/MainNavigation"
 import { CreatePost } from "./pages/Admin/CreatePost"
 import { Home } from "./pages/Home"
@@ -7,6 +7,7 @@ import { PostDetail } from "./pages/PostDetail"
 import { PostsByCategory } from "./pages/PostsByCategory"
 import { PrivateRoutes } from "./utils/PrivateRoutes"
 import { ScrollToTop } from "./utils/ScrollToTop"
+import { ResetPassword } from "./pages/Admin/Login/ResetPassword"
 
 export function MainRoutes() {
   return (
@@ -22,13 +23,17 @@ export function MainRoutes() {
             />
           </Route>
           <Route path="/admin">
+            <Route index element={<Navigate to="/" />} />
             <Route element={<PrivateRoutes />}>
               <Route path="createPost" element={<CreatePost />} />
             </Route>
           </Route>
         </Route>
       </Route>
-      <Route path="/admin/login" element={<Login />} />
+      <Route path="/admin">
+        <Route path="login" element={<Login />} />
+        <Route path="resetPassword" element={<ResetPassword />} />
+      </Route>
     </Routes>
   )
 }

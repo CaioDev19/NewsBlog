@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { Input } from "../../../components/Form/Input"
 import { Button } from "../../../global/styles/Button"
+import { Text } from "../../../global/styles/Typography"
 
 export const MainContainer = styled.div`
   min-height: 100vh;
@@ -42,7 +43,6 @@ export const Logo = styled.img`
   min-width: 200px;
   margin: 0 auto;
 `
-
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -65,5 +65,12 @@ export const SButton = styled(Button)`
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
     padding: 1.2rem 0.5rem;
     font-size: ${({ theme }) => theme.FONT_SIZE.rgl};
+  }
+`
+export const Link = styled(Text)`
+  text-decoration: underline;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    opacity: 0.6;
   }
 `
