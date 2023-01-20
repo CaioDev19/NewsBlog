@@ -1,16 +1,16 @@
-const knex = require('../config/database');
-const { uploadImageToStorage } = require('../utils/firebase');
+const knex = require("../config/database")
+const { uploadImageToStorage } = require("../utils/firebase")
 
 module.exports = {
   async createPost(req, res) {
-    const { title, content, summary, category_id, date } = req.body;
-    const { file } = req;
-    const { name } = req.category;
+    const { title, content, summary, category_id } = req.body
+    const { file } = req
+    const { name } = req.category
 
     try {
-      const imageUrl = await uploadImageToStorage(file);
+      const imageUrl = await uploadImageToStorage(file)
 
-      const post = await knex('post')
+      const post = await knex("post")
         .insert({
           title,
           content,
@@ -18,16 +18,16 @@ module.exports = {
           category_id,
           image_name: file.originalname,
           image_url: imageUrl,
-          date,
+          data: new Date(),
         })
-        .returning('*');
+        .returning("*")
 
       const {
         image_name,
         image_url,
         category_id: category,
         ...postWithoutImageAndCategory
-      } = post[0];
+      } = post[0]
 
       res.status(201).json({
         ...postWithoutImageAndCategory,
@@ -39,9 +39,9 @@ module.exports = {
           id: category,
           name,
         },
-      });
+      })
     } catch {
-      res.status(500).json({ message: 'Erro' });
+      res.status(500).json({ message: "Erro" })
     }
   },
-};
+}

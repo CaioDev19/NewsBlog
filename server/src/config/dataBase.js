@@ -1,7 +1,7 @@
-const knex = require('knex');
+const knex = require("knex")
 
 module.exports = knex({
-  client: 'pg',
+  client: "pg",
   connection: {
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
@@ -9,4 +9,4 @@ module.exports = knex({
     password: String(process.env.DB_PASSWORD),
     database: process.env.DB_NAME,
   },
-});
+})

@@ -1,26 +1,27 @@
-const { isInTheDataBase } = require('../utils/dataBase');
+const { isInTheDataBase } = require("../utils/dataBase")
+const knex = require("../config/dataBase")
 
 module.exports = {
   async checkIfCategoryExists(req, res, next) {
-    const { category_id } = req.body;
+    const { category_id } = req.body
 
     try {
       const { data, response } = await isInTheDataBase(
         { id: category_id },
-        'category'
-      );
+        "category"
+      )
 
       if (!response) {
-        return res.status(404).json({ message: 'Invalid category.' });
+        return res.status(404).json({ message: "Invalid category." })
       }
 
-      req.category = data;
-      return next();
+      req.category = data
+      return next()
     } catch (error) {
-      console.log(error);
+      console.log(error)
       return res
         .status(500)
-        .json({ message: 'Internal server error' });
+        .json({ message: "Internal server error" })
     }
   },
-};
+}

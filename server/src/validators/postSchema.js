@@ -41,15 +41,6 @@ const PostSchema = z.object({
           required_error: "Category ID is required",
         })
       ),
-    date: z
-      .string({
-        required_error: "Date is required",
-      })
-      .refine((date) => {
-        const dateRegex =
-          /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/
-        return dateRegex.test(date)
-      }, "Invalid date format"),
   }),
   file: z
     .any({

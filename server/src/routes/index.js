@@ -1,7 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const adminRouter = require('./admin');
+const adminRouter = require("./admin")
+const postRouter = require("./post")
+const categoryRouter = require("./category")
 
-router.use('/admin', adminRouter);
+const express = require("express")
+const router = express.Router()
 
-module.exports = router;
+router.use("/admin", adminRouter)
+router.use("/post", postRouter)
+router.use("/category", categoryRouter)
+
+module.exports = router

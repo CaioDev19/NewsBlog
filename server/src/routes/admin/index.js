@@ -1,11 +1,11 @@
-const express = require('express');
-const { checkToken } = require('../../middlewares/auth');
+const express = require("express")
+const { checkToken } = require("../../middlewares/auth")
 
-const router = express.Router();
-const postRouter = require('./post');
+const router = express.Router()
+const postRouter = require("./post")
 
-router.use(checkToken);
+router.use(checkToken)
 
-router.use('/post', postRouter);
+router.use("/post", postRouter)
 
-module.exports = router;
+module.exports = router
