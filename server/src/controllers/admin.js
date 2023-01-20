@@ -8,6 +8,7 @@ module.exports = {
     const { name } = req.category
 
     try {
+      file.originalname = `${file.originalname}_${Date.now()}`
       const imageUrl = await uploadImageToStorage(file)
 
       const post = await knex("post")
@@ -18,7 +19,7 @@ module.exports = {
           category_id,
           image_name: file.originalname,
           image_url: imageUrl,
-          data: new Date(),
+          date: new Date(),
         })
         .returning("*")
 
@@ -40,7 +41,8 @@ module.exports = {
           name,
         },
       })
-    } catch {
+    } catch (error) {
+      console.log(error)
       res.status(500).json({ message: "Erro" })
     }
   },
