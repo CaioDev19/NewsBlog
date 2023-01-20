@@ -1,9 +1,9 @@
-const { generateErrorMessage } = require('zod-error');
+const { generateErrorMessage } = require("zod-error")
 
 const options = {
   maxErrors: 1,
   delimiter: {
-    component: ' ',
+    component: " ",
   },
   path: {
     enabled: false,
@@ -13,9 +13,9 @@ const options = {
   },
   message: {
     enabled: true,
-    label: '',
+    label: "",
   },
-};
+}
 
 module.exports = {
   validate(schema) {
@@ -26,13 +26,13 @@ module.exports = {
           query: req.query,
           params: req.params,
           file: req.file,
-        });
-        return next();
+        })
+        return next()
       } catch (error) {
         return res.status(400).json({
           message: generateErrorMessage(error.issues, options),
-        });
+        })
       }
-    };
+    }
   },
-};
+}
