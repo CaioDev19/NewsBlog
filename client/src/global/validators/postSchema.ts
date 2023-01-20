@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-export const postSchema = z.object({
+export const PostSchema = z.object({
   title: z.string().min(1).max(100),
   category: z.string().min(1),
   image: z.instanceof(FileList).refine(
@@ -21,4 +21,4 @@ export const postSchema = z.object({
   sinopse: z.string().min(1).max(200),
 })
 
-export type Post = z.infer<typeof postSchema>
+export type Post = z.infer<typeof PostSchema>

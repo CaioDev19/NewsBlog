@@ -8,6 +8,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+import { AuthProvider } from "./context/Auth"
 
 const queryClient = new QueryClient()
 
@@ -16,7 +17,9 @@ export function App() {
     <Router>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
-          <MainRoutes />
+          <AuthProvider>
+            <MainRoutes />
+          </AuthProvider>
           <GlobalStyles />
         </ThemeProvider>
         <ReactQueryDevtools />

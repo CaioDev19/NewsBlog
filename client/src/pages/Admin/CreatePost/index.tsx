@@ -5,10 +5,10 @@ import { Text } from "../../../global/styles/Typography"
 import { IoCloudUploadOutline } from "react-icons/io5"
 import { FaTrash } from "react-icons/fa"
 import { useForm } from "react-hook-form"
-import { Input } from "../../Form/Input"
-import { Select } from "../../Form/Select"
+import { Input } from "../../../components/Form/Input"
+import { Select } from "../../../components/Form/Select"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { postSchema } from "../../../utils/validators/postSchema"
+import { PostSchema } from "../../../global/validators/postSchema"
 import { Editor } from "../../../components/Editor"
 import { useState } from "react"
 
@@ -27,7 +27,7 @@ export function CreatePost() {
     register,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(postSchema),
+    resolver: zodResolver(PostSchema),
     defaultValues: {
       title: "",
       sinopse: "",
@@ -55,7 +55,7 @@ export function CreatePost() {
   }
 
   return (
-    <>
+    <Sc.MainContainer>
       <Editor setBody={handleBody} />
       <Sc.Container>
         <Sc.Form
@@ -168,6 +168,6 @@ export function CreatePost() {
           </Sc.LowerContent>
         </Sc.Form>
       </Sc.Container>
-    </>
+    </Sc.MainContainer>
   )
 }

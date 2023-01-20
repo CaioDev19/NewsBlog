@@ -2,9 +2,11 @@ import { RiAdminFill } from "react-icons/ri"
 import { useToggle } from "../../../hooks/useToggle"
 import { motion, AnimatePresence } from "framer-motion"
 import * as Sc from "./style"
+import { useAuth } from "../../../hooks/useAuth"
 
 export function MenuAdm() {
   const [open, toggle] = useToggle()
+  const { logOut } = useAuth()
   const variants = {
     open: { opacity: 1, y: "0%" },
     closed: { opacity: 0, y: "100%" },
@@ -21,8 +23,11 @@ export function MenuAdm() {
             exit="closed"
             variants={variants}
           >
-            <Sc.Link to="/adm">Nóticia</Sc.Link>
-            <Sc.Link to="/adm">Anúncio</Sc.Link>
+            <Sc.Link to="/admin/createPost">Nóticia</Sc.Link>
+            <Sc.Link to="/admin">Anúncio</Sc.Link>
+            <Sc.Link as="span" onClick={logOut}>
+              LogOut
+            </Sc.Link>
           </Sc.MenuContainer>
         )}
       </AnimatePresence>

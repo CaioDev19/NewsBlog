@@ -7,12 +7,12 @@ import { useForm } from "react-hook-form"
 import { Button } from "../../../global/styles/Button"
 import { AiOutlineArrowUp } from "react-icons/ai"
 import { scrollToTop } from "../../../utils/window"
-import { newsLetterSchema } from "../../../utils/validators/newsLetterSchema"
+import { NewsLetterSchema } from "../../../global/validators/newsLetterSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 export function Footer() {
   const { handleSubmit, control } = useForm({
-    resolver: zodResolver(newsLetterSchema),
+    resolver: zodResolver(NewsLetterSchema),
     defaultValues: {
       nome: "",
       email: "",

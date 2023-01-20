@@ -2,9 +2,12 @@ import * as Sc from "./style"
 import { Outlet } from "react-router-dom"
 import { Header } from "./Header"
 import { Footer } from "./Footer"
-import { MenuAdm } from "../Adm/MenuAdm"
+import { MenuAdm } from "../Admin/MenuAdmin"
+import { useAuth } from "../../hooks/useAuth"
 
 export function MainNavigation() {
+  const { token } = useAuth()
+
   return (
     <>
       <Header />
@@ -12,7 +15,7 @@ export function MainNavigation() {
         <Outlet />
       </Sc.Container>
       <Footer />
-      <MenuAdm />
+      {token && <MenuAdm />}
     </>
   )
 }

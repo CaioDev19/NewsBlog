@@ -10,7 +10,7 @@ export const StyledInput = styled.input`
   height: 4rem;
   width: 100%;
   color: ${({ theme }) => theme.COLORS.black};
-
+  position: relative;
   transition: 0.2s ease-in-out;
 
   &:focus {
@@ -21,4 +21,13 @@ export const StyledInput = styled.input`
   &::placeholder {
     color: ${({ theme }) => theme.COLORS.black_200};
   }
+`
+export const EyeIcon = styled.svg`
+  position: absolute;
+  top: 6.5rem;
+  font-size: ${({ theme }) => theme.FONT_SIZE.exl};
+  min-width: 25px;
+  right: 0.6rem;
+  width: 6%;
+  cursor: pointer;
 `
