@@ -45,6 +45,10 @@ export function ResetPassword() {
             color="white"
             radios="round"
             type="submit"
+            onClick={() => {
+              setIsError(false)
+              setIsSuccess(false)
+            }}
           >
             {isLoading ? (
               <Spinner

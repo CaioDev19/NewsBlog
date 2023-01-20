@@ -1,6 +1,6 @@
-import { api } from "./api"
+import { api, realApi } from "./api"
 import { AxiosResponse } from "axios"
-import { News } from "../interfaces/api"
+import { News, PostResponse } from "../interfaces/api"
 import { QueryFunctionContext } from "@tanstack/react-query"
 
 export function getNews({
@@ -23,4 +23,14 @@ export function getNewByCategory({
   return api.get(
     `/top-headlines?country=br&category=${queryKey[3]}&pageSize=${queryKey[2]}&page=${queryKey[1]}`
   )
+}
+
+export function createPost(
+  data: FormData
+): Promise<AxiosResponse<PostResponse>> {
+  return realApi.post("/admin/post", data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  })
 }

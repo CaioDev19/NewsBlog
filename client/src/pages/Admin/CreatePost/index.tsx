@@ -11,6 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { PostSchema } from "../../../global/validators/postSchema"
 import { Editor } from "../../../components/Editor"
 import { useState } from "react"
+import { useCreatePost } from "../../../hooks/react-query/mutation/useCreatePost"
 
 export function CreatePost() {
   const {
@@ -30,11 +31,12 @@ export function CreatePost() {
     resolver: zodResolver(PostSchema),
     defaultValues: {
       title: "",
-      sinopse: "",
+      summary: "",
       category: "",
       image: null as FileList | null,
     },
   })
+  const { mutate, isLoading } = useCreatePost()
   const [body, setBody] = useState("")
   const imageRegister = register("image")
 
@@ -42,8 +44,16 @@ export function CreatePost() {
     if (body === "") {
       return
     }
-    console.log(data)
-    console.log(body)
+    const formData = new FormData()
+
+    formData.append("image", data.image[0])
+    formData.append("title", data.title)
+    formData.append("summary", data.summary)
+    formData.append("category_id", "2")
+    formData.append("content", body)
+    formData.append("date", "19/01/2023")
+
+    mutate(formData)
   }
 
   function handleErrorSubmit(error: any) {
@@ -138,7 +148,7 @@ export function CreatePost() {
               control={control}
             />
             <Input
-              name="sinopse"
+              name="summary"
               type="text"
               placeholder="Sinopse"
               control={control}
@@ -162,7 +172,16 @@ export function CreatePost() {
                 color="white"
                 type="submit"
               >
-                Salvar
+                {isLoading ? (
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    variant="light"
+                    size="sm"
+                  />
+                ) : (
+                  "Salvar"
+                )}
               </Sc.Button>
             </Sc.WrapperErrorButton>
           </Sc.LowerContent>
