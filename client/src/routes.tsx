@@ -15,24 +15,24 @@ export function MainRoutes() {
       <Route element={<MainNavigation />}>
         <Route element={<ScrollToTop />}>
           <Route path="/" element={<Home />} />
-          <Route path="/post">
+          <Route path="/notícia">
             <Route path=":id" element={<PostDetail />} />
             <Route
-              path="category/:categoryId"
+              path="categoria/:categoryId"
               element={<PostsByCategory />}
             />
           </Route>
           <Route path="/admin">
             <Route index element={<Navigate to="/" />} />
             <Route element={<PrivateRoutes />}>
-              <Route path="createPost" element={<CreatePost />} />
+              <Route path="criarNótica" element={<CreatePost />} />
             </Route>
           </Route>
         </Route>
       </Route>
       <Route path="/admin">
         <Route path="login" element={<Login />} />
-        <Route path="resetPassword" element={<ResetPassword />} />
+        <Route path="redefinirSenha" element={<ResetPassword />} />
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

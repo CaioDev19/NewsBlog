@@ -69,7 +69,7 @@ export function New({ news, size, primary }: Props) {
   }
 
   return (
-    <Sc.New size={size} to={`/post/${news.id}`}>
+    <Sc.New size={size} to={`/notícia/${news.id}`}>
       <Sc.NewImage
         size={size}
         src={news.image.url}

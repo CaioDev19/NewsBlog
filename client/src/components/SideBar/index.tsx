@@ -8,6 +8,8 @@ import { GiNewspaper } from "react-icons/gi"
 import { BsInfoCircle } from "react-icons/bs"
 import { TiContacts } from "react-icons/ti"
 import { useToggle } from "../../hooks/useToggle"
+import { useCategories } from "../../hooks/react-query/query/useCategories"
+import { useNavigate } from "react-router-dom"
 
 interface Props {
   handleToggle: () => void
@@ -16,6 +18,8 @@ interface Props {
 
 export function MobileSideBar({ handleToggle, isOpen }: Props) {
   const [isMenuOpen, toggle] = useToggle()
+  const navigate = useNavigate()
+  const { isSuccess, data } = useCategories()
   const variants = {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: "-100%" },
@@ -35,11 +39,9 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
           <Sc.UpperContent>
             <Sc.Logo src={logo} alt="logo" />
             <Sc.Nav>
-              <li>
-                <Sc.Link to="/">
-                  <AiOutlineHome /> Home
-                </Sc.Link>
-              </li>
+              <Sc.Link onClick={() => navigate("/")}>
+                <AiOutlineHome /> Home
+              </Sc.Link>
               <Sc.LiRelative>
                 <Sc.Link as="span" onClick={toggle}>
                   <GiNewspaper /> Notícias
@@ -52,76 +54,30 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                     >
-                      <li>
-                        <Sc.Link
-                          onClick={toggle}
-                          to="post/category/business"
-                        >
-                          Business
-                        </Sc.Link>
-                      </li>
-                      <li>
-                        <Sc.Link
-                          onClick={toggle}
-                          to="post/category/entertainment"
-                        >
-                          Entertainment
-                        </Sc.Link>
-                      </li>
-                      <li>
-                        <Sc.Link
-                          onClick={toggle}
-                          to="post/category/general"
-                        >
-                          General
-                        </Sc.Link>
-                      </li>
-                      <li>
-                        <Sc.Link
-                          onClick={toggle}
-                          to="post/category/health"
-                        >
-                          Health
-                        </Sc.Link>
-                      </li>
-                      <li>
-                        <Sc.Link
-                          onClick={toggle}
-                          to="post/category/science"
-                        >
-                          Science
-                        </Sc.Link>
-                      </li>
-                      <li>
-                        <Sc.Link
-                          onClick={toggle}
-                          to="post/category/sports"
-                        >
-                          Sports
-                        </Sc.Link>
-                      </li>
-                      <li>
-                        <Sc.Link
-                          onClick={toggle}
-                          to="post/category/technology"
-                        >
-                          Technology
-                        </Sc.Link>
-                      </li>
+                      {isSuccess &&
+                        data?.data.map((category) => (
+                          <Sc.Link
+                            key={category.id}
+                            onClick={() => {
+                              toggle()
+                              navigate(
+                                `/notícia/categoria/${category.id}`
+                              )
+                            }}
+                          >
+                            {category.name}
+                          </Sc.Link>
+                        ))}
                     </Sc.NewsMenu>
                   )}
                 </AnimatePresence>
               </Sc.LiRelative>
-              <li>
-                <Sc.Link to="/">
-                  <BsInfoCircle /> Sobre Nós
-                </Sc.Link>
-              </li>
-              <li>
-                <Sc.Link to="/">
-                  <TiContacts /> Contato
-                </Sc.Link>
-              </li>
+              <Sc.Link>
+                <BsInfoCircle /> Sobre Nós
+              </Sc.Link>
+              <Sc.Link>
+                <TiContacts /> Contato
+              </Sc.Link>
             </Sc.Nav>
           </Sc.UpperContent>
           <Sc.DateWrapper>

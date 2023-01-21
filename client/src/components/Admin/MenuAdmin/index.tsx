@@ -23,7 +23,7 @@ export function MenuAdm() {
             exit="closed"
             variants={variants}
           >
-            <Sc.Link to="/admin/createPost">Nóticia</Sc.Link>
+            <Sc.Link to="/admin/criarNotícia">Nóticia</Sc.Link>
             <Sc.Link to="/admin">Anúncio</Sc.Link>
             <Sc.Link as="span" onClick={logOut}>
               LogOut

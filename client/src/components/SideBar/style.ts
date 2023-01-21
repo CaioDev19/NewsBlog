@@ -60,7 +60,7 @@ export const DateWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
 `
-export const Link = styled(L)`
+export const Link = styled.li`
   text-decoration: none;
   list-style-type: none;
 

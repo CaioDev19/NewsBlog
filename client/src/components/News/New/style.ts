@@ -44,6 +44,12 @@ export const NewInfo = styled.div`
     max-width: 600px;
   }
 `
+export const Flex = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+`
 export const New = styled(NavLink)<{ size?: "lrg" | "sml" }>`
   all: unset;
   display: flex;
@@ -70,13 +76,6 @@ export const New = styled(NavLink)<{ size?: "lrg" | "sml" }>`
     }
   }
 `
-export const Flex = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.75rem;
-`
-
 export const PrimaryContainer = styled.div`
   display: flex;
   flex-direction: column;

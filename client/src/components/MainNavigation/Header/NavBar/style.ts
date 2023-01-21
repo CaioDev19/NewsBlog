@@ -20,7 +20,7 @@ export const Nav = styled.ul`
   ${Text} {
   }
 `
-export const Link = styled.span`
+export const Link = styled.li`
   text-decoration: none;
   list-style-type: none;
   cursor: pointer;

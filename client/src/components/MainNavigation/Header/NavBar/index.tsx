@@ -15,9 +15,7 @@ export function NavBar() {
     <Sc.ContainerNav>
       <ContentContainer>
         <Sc.Nav>
-          <li>
-            <Sc.Link onClick={() => navigate("/")}>HOME</Sc.Link>
-          </li>
+          <Sc.Link onClick={() => navigate("/")}>HOME</Sc.Link>
           <Sc.LiRelative>
             <Sc.Link as="span" onClick={toggle}>
               NOTÍCIAS <SlArrowDown />
@@ -32,16 +30,17 @@ export function NavBar() {
                 >
                   {isSuccess &&
                     data?.data.map((category) => (
-                      <li key={category.id}>
-                        <Sc.Link
-                          onClick={() => {
-                            toggle()
-                            navigate(`/post/category/${category.id}`)
-                          }}
-                        >
-                          {category.name}
-                        </Sc.Link>
-                      </li>
+                      <Sc.Link
+                        key={category.id}
+                        onClick={() => {
+                          toggle()
+                          navigate(
+                            `/notícia/categoria/${category.id}`
+                          )
+                        }}
+                      >
+                        {category.name}
+                      </Sc.Link>
                     ))}
                 </Sc.NewsMenu>
               )}
