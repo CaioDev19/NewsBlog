@@ -30,10 +30,9 @@ CREATE TABLE advertising(
 
 INSERT INTO category(name)
 VALUES 
-('Business'),
-('Entertainment')
-('General'),
-('Health'),
-('Science')
-('Sports'),
-('Technology');
+('Local'),
+('Bahia')
+('Brasil'),
+('Esporte'),
+('Internacional')
+('Famosos');
