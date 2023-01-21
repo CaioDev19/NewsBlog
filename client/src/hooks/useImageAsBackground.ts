@@ -9,7 +9,7 @@ interface ReturnType {
     imageFile: FileList | null,
     reset: (x: any) => any
   ) => void
-  removeImage: (e: MouseEvent<HTMLDivElement>) => void
+  removeImage: (e?: MouseEvent<HTMLDivElement>) => void
 }
 
 export function useImageAsBackground(): ReturnType {
@@ -57,8 +57,8 @@ export function useImageAsBackground(): ReturnType {
     }
   }
 
-  function removeImage(e: MouseEvent<HTMLDivElement>): void {
-    e.preventDefault()
+  function removeImage(e?: MouseEvent<HTMLDivElement>): void {
+    if (e) e.preventDefault()
     setIsError(false)
     setImage(null)
   }

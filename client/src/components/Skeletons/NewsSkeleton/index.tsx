@@ -19,7 +19,7 @@ export function NewsSkeleton({
       >
         <Col xs={4} style={{ width: "45%" }}>
           <Image
-            src="https://via.placeholder.com/600C/?text=Loading..."
+            src="https://via.placeholder.com/600C/?text=Carregando..."
             fluid
             style={{
               maxHeight: size === "lrg" ? "350px" : "125px",

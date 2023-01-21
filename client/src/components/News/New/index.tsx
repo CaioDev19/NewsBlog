@@ -80,7 +80,6 @@ export function New({ news, size, primary }: Props) {
           <Text type="span" as="span" size="lrg" position="center">
             {news.title}
           </Text>
-          |
           <Text
             type="span"
             as="span"

@@ -9,11 +9,18 @@ import {
   LoginSchema,
 } from "../../../global/validators/loginSchema"
 import logo from "../../../assets/images/logo.png"
+import { Text } from "../../../global/styles/Typography"
 
 export function Login() {
-  const { token, login, isLoading } = useAuth()
+  const { token, login, isLoading, isError } = useAuth()
   const navigate = useNavigate()
-  const { handleSubmit, control } = useForm({
+  const {
+    handleSubmit,
+    control,
+    resetField,
+    reset,
+    formState: { errors },
+  } = useForm({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
       email: "",
@@ -23,6 +30,20 @@ export function Login() {
 
   async function handleLogin(data: ILogin) {
     await login(data.email, data.password)
+    reset()
+  }
+
+  function handleSubmitError(error: any) {
+    if (error.email) {
+      resetField("email", {
+        keepError: true,
+      })
+    }
+    if (error.password) {
+      resetField("password", {
+        keepError: true,
+      })
+    }
   }
 
   if (token) {
@@ -33,23 +54,26 @@ export function Login() {
     <Sc.MainContainer>
       <Sc.CardContainer>
         <Sc.Logo src={logo} alt="Logo" />
+        {!isLoading && isError && (
+          <Text type="title" as="h2" size="lrg" color="red">
+            Email ou senha inválidos
+          </Text>
+        )}
         <Sc.Form
-          onSubmit={handleSubmit(handleLogin, (error) =>
-            console.log(error)
-          )}
+          onSubmit={handleSubmit(handleLogin, handleSubmitError)}
         >
           <Sc.InputContainer>
             <Sc.SInput
               type="text"
               name="email"
               control={control}
-              placeholder="E-mail"
+              placeholder={errors?.email?.message || "Email"}
             />
             <Sc.SInput
               type="password"
               name="password"
               control={control}
-              placeholder="Senha"
+              placeholder={errors?.password?.message || "Senha"}
             />
           </Sc.InputContainer>
           <Sc.Link

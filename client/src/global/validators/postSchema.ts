@@ -1,7 +1,12 @@
 import { z } from "zod"
 
 export const PostSchema = z.object({
-  title: z.string().min(1).max(100),
+  title: z
+    .string({
+      required_error: "O título é obrigatório",
+    })
+    .min(1, "O título é obrigatório")
+    .max(100, "O título deve ter no máximo 100 caracteres"),
   category: z.string().min(1),
   image: z.instanceof(FileList).refine(
     (val) => {
@@ -18,7 +23,12 @@ export const PostSchema = z.object({
     },
     { message: "Arquivo não suportado" }
   ),
-  summary: z.string().min(1).max(200),
+  summary: z
+    .string({
+      required_error: "O resumo é obrigatório",
+    })
+    .min(1, "O resumo é obrigatório")
+    .max(200, "O resumo deve ter no máximo 200 caracteres"),
 })
 
 export type PostForm = z.infer<typeof PostSchema>

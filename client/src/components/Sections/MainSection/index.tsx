@@ -5,10 +5,15 @@ import { New } from "../../News/New"
 import * as Sc from "./style"
 import { CardSkeleton } from "../../Skeletons/CardSkeleton"
 import { usePaginatedNews } from "../../../hooks/react-query/query/usePaginatedNews"
+import { Error } from "../../Error"
 
 export function MainSection({ primary }: { primary?: boolean }) {
   const { id } = useParams()
-  const { data: news, isLoading } = useNew({
+  const {
+    data: news,
+    isLoading,
+    isError,
+  } = useNew({
     id: id || "1",
     enabled: primary || false,
   })
@@ -16,6 +21,10 @@ export function MainSection({ primary }: { primary?: boolean }) {
     limit: 3,
     initialPage: 1,
   })
+
+  if (primary && isError) {
+    return <Error message="Não foi possível carregar a notícia" />
+  }
 
   return (
     <Sc.MainContainer as="section">

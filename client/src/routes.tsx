@@ -34,6 +34,7 @@ export function MainRoutes() {
         <Route path="login" element={<Login />} />
         <Route path="resetPassword" element={<ResetPassword />} />
       </Route>
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   )
 }

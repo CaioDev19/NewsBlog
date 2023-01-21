@@ -14,6 +14,7 @@ interface Props {
 }
 
 export const Text = styled.p<Props>`
+  margin: 0;
   cursor: ${({ pointer }) => pointer && "pointer"};
   text-align: ${({ position }) => (position ? position : "center")};
   color: ${({ theme, color }) => {

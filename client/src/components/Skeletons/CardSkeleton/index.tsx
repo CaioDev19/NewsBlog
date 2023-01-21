@@ -3,7 +3,7 @@ import Placeholder from "react-bootstrap/Placeholder"
 
 export function CardSkeleton() {
   return (
-    <Card style={{ width: "100%" }}>
+    <Card style={{ width: "100%", flexWrap: "wrap" }}>
       <Placeholder as={Card.Title} animation="glow">
         <Placeholder xs={6} />
         <Placeholder xs={6} />
@@ -11,7 +11,7 @@ export function CardSkeleton() {
       </Placeholder>
       <Card.Img
         variant="top"
-        src="https://via.placeholder.com/600C/?text=Loading..."
+        src="https://via.placeholder.com/600C/?text=Carregando..."
         style={{ maxHeight: "600px", objectFit: "cover" }}
       />
       <Card.Body>

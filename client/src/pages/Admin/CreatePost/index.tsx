@@ -28,6 +28,7 @@ export function CreatePost() {
     control,
     resetField,
     register,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(PostSchema),
@@ -38,7 +39,7 @@ export function CreatePost() {
       image: null as FileList | null,
     },
   })
-  const { mutate, isLoading } = useCreatePost()
+  const { mutate, isLoading, isError: isPostError } = useCreatePost()
   const { isLoading: isCategoriesLoading, data: categories } =
     useCategories()
   const [body, setBody] = useState("")
@@ -62,10 +63,26 @@ export function CreatePost() {
     formData.append("date", "19/01/2023")
 
     mutate(formData)
+    reset()
+    removeImage()
   }
 
   function handleErrorSubmit(error: any) {
-    console.log(error)
+    if (error.title) {
+      resetField("title", {
+        keepError: true,
+      })
+    }
+    if (error.summary) {
+      resetField("summary", {
+        keepError: true,
+      })
+    }
+    if (error.category) {
+      resetField("category", {
+        keepError: true,
+      })
+    }
   }
 
   function handleBody(body: string) {
@@ -152,13 +169,13 @@ export function CreatePost() {
             <Input
               name="title"
               type="text"
-              placeholder="Titulo"
+              placeholder={errors?.title?.message || "Título"}
               control={control}
             />
             <Input
               name="summary"
               type="text"
-              placeholder="Sinopse"
+              placeholder={errors?.summary?.message || "Resumo"}
               control={control}
             />
             <Select
@@ -167,6 +184,16 @@ export function CreatePost() {
               options={!isCategoriesLoading ? categories?.data! : []}
             />
             <Sc.WrapperErrorButton>
+              {isPostError && (
+                <Text
+                  type="span"
+                  as="span"
+                  size="lrg"
+                  color="orange_red"
+                >
+                  Erro ao criar post!
+                </Text>
+              )}
               <Sc.Button
                 size="sml"
                 background="blue"

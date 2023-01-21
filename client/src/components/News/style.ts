@@ -8,6 +8,7 @@ export const NewsContainer = styled(ContentContainer)`
   justify-content: center;
   align-items: center;
   gap: 1.8rem;
+  margin: 0 auto;
 `
 export const AddContainer = styled.div`
   display: flex;

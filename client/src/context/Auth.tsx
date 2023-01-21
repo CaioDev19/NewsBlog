@@ -49,7 +49,6 @@ export function AuthProvider({ children }: PropsWithChildren) {
         remove()
         return
       }
-
       const tokenId = await user.getIdToken(false)
       api.defaults.headers.common[
         "Authorization"
@@ -65,6 +64,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
       try {
         setIsLoading(true)
         await signInWithEmailAndPassword(auth, email, password)
+        setIsError(false)
       } catch {
         setIsError(true)
       } finally {
@@ -77,6 +77,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
     try {
       setIsLoading(true)
       await signOut(auth)
+      setIsError(false)
     } catch {
       setIsError(true)
     } finally {

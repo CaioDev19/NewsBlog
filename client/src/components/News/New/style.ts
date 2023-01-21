@@ -50,7 +50,8 @@ export const New = styled(NavLink)<{ size?: "lrg" | "sml" }>`
   align-items: center;
   justify-content: ${({ size }) =>
     size === "lrg" ? "flex-start" : "center"};
-  width: ${({ size }) => (size !== "lrg" ? "100%" : "")};
+  width: 100%;
+  max-width: 1000px;
   gap: 1.25rem;
 
   cursor: pointer;
@@ -69,10 +70,10 @@ export const New = styled(NavLink)<{ size?: "lrg" | "sml" }>`
     }
   }
 `
-
 export const Flex = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 0.75rem;
 `
 

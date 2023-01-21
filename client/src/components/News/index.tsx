@@ -4,6 +4,7 @@ import { FaArrowRight, FaArrowLeft } from "react-icons/fa"
 import { usePaginatedNews } from "../../hooks/react-query/query/usePaginatedNews"
 import { useRef } from "react"
 import { NewsSkeleton } from "../Skeletons/NewsSkeleton"
+import { Error } from "../Error"
 
 interface Props {
   size?: "sml" | "lrg"
@@ -16,6 +17,7 @@ export function News({ size, category }: Props) {
   const {
     data: news,
     isLoading,
+    isError,
     currentPage,
     isSuccess,
     fetchNextPage,
@@ -25,6 +27,14 @@ export function News({ size, category }: Props) {
     ref: newsRef,
     categoryId: category,
   })
+
+  if (isError) {
+    return <Error message="Não foi possível carregar as notícias" />
+  }
+
+  if (news?.data.posts.length === 0) {
+    return <Error message=" Nenhuma notícia encontrada" />
+  }
 
   return (
     <Sc.NewsContainer ref={newsRef}>

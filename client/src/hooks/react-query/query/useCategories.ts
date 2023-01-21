@@ -5,6 +5,7 @@ export function useCategories() {
   return useQuery(["category"], listCategories, {
     refetchOnMount: false,
     refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
     staleTime: Infinity,
   })
 }

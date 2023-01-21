@@ -73,8 +73,10 @@ export const Button = styled(B)`
 `
 export const WrapperErrorButton = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  gap: 1.3rem;
 `
 export const Form = styled.form`
   width: 100%;
