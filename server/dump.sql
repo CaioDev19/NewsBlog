@@ -1,8 +1,3 @@
-CREATE TABLE admin(
-  id SERIAL PRIMARY KEY,
-  password TEXT NOT NULL,
-  email VARCHAR(255) NOT NULL,
-);
 
 CREATE TABLE category(
   id SERIAL PRIMARY KEY,
