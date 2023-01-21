@@ -1,9 +1,12 @@
 import styled, { css } from "styled-components"
+import { NavLink } from "react-router-dom"
 import { Text } from "../../../global/styles/Typography"
 
 export const NewImage = styled.img<{ size?: "lrg" | "sml" }>`
   border-radius: 25px;
   object-fit: cover;
+  flex-shrink: 0;
+
   ${({ size }) => {
     switch (size) {
       case "sml":
@@ -15,12 +18,6 @@ export const NewImage = styled.img<{ size?: "lrg" | "sml" }>`
         return css`
           width: 400px;
           height: 280px;
-
-          @media (max-width: ${({ theme }) =>
-              theme.BREAKPOINTS.notbook}px) {
-            width: 400px;
-            height: 280px;
-          }
         `
       default:
         return css`
@@ -47,7 +44,8 @@ export const NewInfo = styled.div`
     max-width: 600px;
   }
 `
-export const New = styled.div<{ size?: "lrg" | "sml" }>`
+export const New = styled(NavLink)<{ size?: "lrg" | "sml" }>`
+  all: unset;
   display: flex;
   align-items: center;
   justify-content: ${({ size }) =>
@@ -63,6 +61,7 @@ export const New = styled.div<{ size?: "lrg" | "sml" }>`
     ${NewImage} {
       width: 100%;
       height: 370px;
+      flex-shrink: 1;
     }
 
     ${NewInfo} {
@@ -70,6 +69,13 @@ export const New = styled.div<{ size?: "lrg" | "sml" }>`
     }
   }
 `
+
+export const Flex = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+`
+
 export const PrimaryContainer = styled.div`
   display: flex;
   flex-direction: column;

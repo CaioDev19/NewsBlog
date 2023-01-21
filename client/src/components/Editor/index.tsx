@@ -4,12 +4,15 @@ import * as Sc from "./style"
 
 export function Editor({
   setBody,
+  theme = "snow",
+  body,
 }: {
-  setBody: (body: string) => void
+  setBody?: (body: string) => void
+  theme?: "snow" | "bubble" | "core"
+  body?: string
 }) {
   const modules = {
     toolbar: [
-      [{ header: "1" }, { header: "2" }],
       [{ size: [] }, { color: [] }, { background: [] }],
       ["bold", "italic", "underline", "strike", "blockquote"],
       [{ align: [] }],
@@ -46,14 +49,35 @@ export function Editor({
     "background",
   ]
 
+  if (body) {
+    return (
+      <Sc.QuillContentContainer>
+        <ReactQuill
+          value={body}
+          readOnly={true}
+          theme={theme}
+          modules={{
+            toolbar: {
+              size: [14, 16, 18, 20],
+            },
+          }}
+        />
+      </Sc.QuillContentContainer>
+    )
+  }
+
   return (
     <Sc.Editor>
       <ReactQuill
-        theme="snow"
+        theme={theme}
         modules={modules}
         formats={formats}
         placeholder="Escreva algo..."
-        onChange={(body) => setBody(body)}
+        onChange={(body) => {
+          if (typeof setBody !== "undefined") {
+            setBody(body)
+          }
+        }}
         style={{ height: "95.5vh" }}
       />
     </Sc.Editor>

@@ -3,94 +3,55 @@ import { ContentContainer } from "../../../../global/styles/ContentContainer"
 import { SlArrowDown } from "react-icons/sl"
 import { useToggle } from "../../../../hooks/useToggle"
 import { motion, AnimatePresence } from "framer-motion"
+import { useCategories } from "../../../../hooks/react-query/query/useCategories"
+import { useNavigate } from "react-router-dom"
 
 export function NavBar() {
-  const [isOver, toggle] = useToggle()
+  const { isSuccess, data } = useCategories()
+  const [isOpen, toggle] = useToggle()
+  const navigate = useNavigate()
 
   return (
     <Sc.ContainerNav>
       <ContentContainer>
         <Sc.Nav>
           <li>
-            <Sc.Link to="/">HOME</Sc.Link>
+            <Sc.Link onClick={() => navigate("/")}>HOME</Sc.Link>
           </li>
           <Sc.LiRelative>
             <Sc.Link as="span" onClick={toggle}>
               NOTÍCIAS <SlArrowDown />
             </Sc.Link>
             <AnimatePresence>
-              {isOver && (
+              {isOpen && (
                 <Sc.NewsMenu
                   as={motion.ul}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                 >
-                  <li>
-                    <Sc.Link
-                      onClick={toggle}
-                      to="post/category/business"
-                    >
-                      Business
-                    </Sc.Link>
-                  </li>
-                  <li>
-                    <Sc.Link
-                      onClick={toggle}
-                      to="post/category/entertainment"
-                    >
-                      Entertainment
-                    </Sc.Link>
-                  </li>
-                  <li>
-                    <Sc.Link
-                      onClick={toggle}
-                      to="post/category/general"
-                    >
-                      General
-                    </Sc.Link>
-                  </li>
-                  <li>
-                    <Sc.Link
-                      onClick={toggle}
-                      to="post/category/health"
-                    >
-                      Health
-                    </Sc.Link>
-                  </li>
-                  <li>
-                    <Sc.Link
-                      onClick={toggle}
-                      to="post/category/science"
-                    >
-                      Science
-                    </Sc.Link>
-                  </li>
-                  <li>
-                    <Sc.Link
-                      onClick={toggle}
-                      to="post/category/sports"
-                    >
-                      Sports
-                    </Sc.Link>
-                  </li>
-                  <li>
-                    <Sc.Link
-                      onClick={toggle}
-                      to="post/category/technology"
-                    >
-                      Technology
-                    </Sc.Link>
-                  </li>
+                  {isSuccess &&
+                    data?.data.map((category) => (
+                      <li key={category.id}>
+                        <Sc.Link
+                          onClick={() => {
+                            toggle()
+                            navigate(`/post/category/${category.id}`)
+                          }}
+                        >
+                          {category.name}
+                        </Sc.Link>
+                      </li>
+                    ))}
                 </Sc.NewsMenu>
               )}
             </AnimatePresence>
           </Sc.LiRelative>
           <li>
-            <Sc.Link to="/">SOBRE NÓS</Sc.Link>
+            <Sc.Link>SOBRE NÓS</Sc.Link>
           </li>
           <li>
-            <Sc.Link to="/">CONTATO</Sc.Link>
+            <Sc.Link>CONTATO</Sc.Link>
           </li>
         </Sc.Nav>
       </ContentContainer>

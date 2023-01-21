@@ -6,3 +6,42 @@ export const Editor = styled.div`
   gap: 500px;
   width: 100%;
 `
+
+export const QuillContentContainer = styled.div`
+  p {
+    font-size: ${({ theme }) => theme.FONT_SIZE.lrg} !important;
+  }
+  span {
+    font-size: ${({ theme }) => theme.FONT_SIZE.lrg} !important;
+  }
+  h1 {
+    font-size: ${({ theme }) => theme.FONT_SIZE.exl} !important;
+  }
+  h2 {
+    font-size: ${({ theme }) => theme.FONT_SIZE.lrg} !important;
+  }
+  h3 {
+    font-size: ${({ theme }) => theme.FONT_SIZE.lrg} !important;
+  }
+  h4 {
+    font-size: ${({ theme }) => theme.FONT_SIZE.lrg} !important;
+  }
+  h5 {
+    font-size: ${({ theme }) => theme.FONT_SIZE.lrg} !important;
+  }
+  h6 {
+    font-size: ${({ theme }) => theme.FONT_SIZE.lrg} !important;
+  }
+  ul {
+    font-size: ${({ theme }) => theme.FONT_SIZE.lrg} !important;
+  }
+  ol {
+    font-size: ${({ theme }) => theme.FONT_SIZE.lrg} !important;
+  }
+  li {
+    font-size: ${({ theme }) => theme.FONT_SIZE.lrg} !important;
+  }
+  a {
+    font-size: ${({ theme }) => theme.FONT_SIZE.lrg} !important;
+  }
+`

@@ -18,7 +18,7 @@ export function MainRoutes() {
           <Route path="/post">
             <Route path=":id" element={<PostDetail />} />
             <Route
-              path="category/:category"
+              path="category/:categoryId"
               element={<PostsByCategory />}
             />
           </Route>

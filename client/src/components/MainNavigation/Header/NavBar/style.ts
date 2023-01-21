@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { Text } from "../../../../global/styles/Typography"
-import { Link as L } from "react-router-dom"
 
 export const ContainerNav = styled.nav`
   position: sticky;
@@ -21,7 +20,7 @@ export const Nav = styled.ul`
   ${Text} {
   }
 `
-export const Link = styled(L)`
+export const Link = styled.span`
   text-decoration: none;
   list-style-type: none;
   cursor: pointer;

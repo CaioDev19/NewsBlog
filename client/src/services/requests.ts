@@ -1,34 +1,32 @@
-import { api, realApi } from "./api"
+import { api } from "./api"
 import { AxiosResponse } from "axios"
-import { News, PostResponse } from "../interfaces/api"
+import { Article, Category, News } from "../interfaces/api"
 import { QueryFunctionContext } from "@tanstack/react-query"
 
 export function getNews({
   queryKey,
 }: QueryFunctionContext): Promise<AxiosResponse<News>> {
-  return api.get(
-    `/everything?q=computer&language=pt&pageSize=${queryKey[2]}&page=${queryKey[1]}`
-  )
+  return api.get(`/post/?page=${queryKey[1]}&limit=${queryKey[2]}`)
 }
 export function getNew({
   queryKey,
-}: QueryFunctionContext): Promise<AxiosResponse<News>> {
-  return api.get(
-    `/everything?q=computer&language=pt&pageSize=1&page=${queryKey[1]}`
-  )
+}: QueryFunctionContext): Promise<AxiosResponse<Article>> {
+  return api.get(`/post/${queryKey[1]}`)
 }
 export function getNewByCategory({
   queryKey,
 }: QueryFunctionContext): Promise<AxiosResponse<News>> {
   return api.get(
-    `/top-headlines?country=br&category=${queryKey[3]}&pageSize=${queryKey[2]}&page=${queryKey[1]}`
+    `/post/?categoryId=${queryKey[3]}&limit=${queryKey[2]}&page=${queryKey[1]}`
   )
 }
-
-export function createPost(
+export function listCategories(): Promise<AxiosResponse<Category[]>> {
+  return api.get("/category")
+}
+export function createNew(
   data: FormData
-): Promise<AxiosResponse<PostResponse>> {
-  return realApi.post("/admin/post", data, {
+): Promise<AxiosResponse<Article>> {
+  return api.post("/admin/post", data, {
     headers: {
       "Content-Type": "multipart/form-data",
     },

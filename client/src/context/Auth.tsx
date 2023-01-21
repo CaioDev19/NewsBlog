@@ -14,7 +14,7 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth"
 import { auth } from "../config/firebase"
-import { realApi } from "../services/api"
+import { api } from "../services/api"
 
 interface AuthContextData {
   token: string | null
@@ -51,7 +51,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
       }
 
       const tokenId = await user.getIdToken(false)
-      realApi.defaults.headers.common[
+      api.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${tokenId}`
       setToken(tokenId)

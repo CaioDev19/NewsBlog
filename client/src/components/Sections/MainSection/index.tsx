@@ -14,7 +14,7 @@ export function MainSection({ primary }: { primary?: boolean }) {
   })
   const { data: paginatedNews } = usePaginatedNews({
     limit: 3,
-    initialPage: 10,
+    initialPage: 1,
   })
 
   return (
@@ -23,7 +23,7 @@ export function MainSection({ primary }: { primary?: boolean }) {
         isLoading ? (
           <CardSkeleton />
         ) : (
-          <New news={news?.data.articles?.[0]!} primary />
+          <New news={news?.data!} primary />
         )
       ) : (
         <News size="lrg" />
@@ -37,9 +37,9 @@ export function MainSection({ primary }: { primary?: boolean }) {
         >
           Patrocinadores
         </Sc.SubTittle>
-        <Sc.Ad src={paginatedNews?.data.articles[0]?.urlToImage} />
-        <Sc.Ad src={paginatedNews?.data.articles[1]?.urlToImage} />
-        <Sc.Ad src={paginatedNews?.data.articles[2]?.urlToImage} />
+        <Sc.Ad src={paginatedNews?.data.posts[0]?.image.url} />
+        <Sc.Ad src={paginatedNews?.data.posts[1]?.image.url} />
+        <Sc.Ad src={paginatedNews?.data.posts[2]?.image.url} />
       </Sc.AddContainer>
     </Sc.MainContainer>
   )

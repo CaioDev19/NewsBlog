@@ -4,13 +4,13 @@ import * as Sc from "./style"
 import { HeroSection } from "../../components/Sections/HeroSection"
 
 export function PostsByCategory() {
-  const { category } = useParams()
+  const { categoryId } = useParams()
 
   return (
     <>
       <HeroSection />
       <Sc.Container>
-        <News category={category} size="lrg" />
+        <News category={categoryId} size="lrg" />
       </Sc.Container>
     </>
   )

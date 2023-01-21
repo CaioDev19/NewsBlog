@@ -1,9 +1,9 @@
 import * as Sc from "./style"
 import { Text } from "../../../global/styles/Typography"
-import { useNavigate } from "react-router-dom"
 import { Article } from "../../../interfaces/api"
 import { ShareButton } from "../../ShareButton"
 import { useWindow } from "../../../hooks/useWindow"
+import { Editor } from "../../Editor"
 
 interface Props {
   news: Article
@@ -12,7 +12,6 @@ interface Props {
 }
 
 export function New({ news, size, primary }: Props) {
-  const navigate = useNavigate()
   const { url } = useWindow()
 
   if (primary) {
@@ -35,8 +34,7 @@ export function New({ news, size, primary }: Props) {
             position="left"
             color="gray_200"
           >
-            Postado em{" "}
-            {new Date(news.publishedAt).toLocaleDateString()}
+            Postado em {new Date(news.date).toLocaleDateString()}
           </Text>
           |
           <Text
@@ -47,32 +45,11 @@ export function New({ news, size, primary }: Props) {
             color="light_blue"
             pointer
           >
-            Lifestyle
+            {news.category.name}
           </Text>
         </Sc.PrimaryNewsInfo>
-        <Sc.PrimaryImage src={news.urlToImage} />
-        <Text type="paragraph" as="p" size="lrg" position="left">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Sunt recusandae et, reiciendis minus accusantium voluptates
-          natus libero omnis perspiciatis voluptate, consectetur
-          maxime earum totam officia vel. Dignissimos, architecto.
-          Nam, fugit! Minima autem accusamus totam unde beatae labore
-          quis sit ipsa ex ad quia quod, harum quisquam vero numquam
-          obcaecati ducimus eaque sunt aliquam repudiandae magni?
-          Perspiciatis ea quaerat esse nostrum! Quisquam commodi in
-          tenetur voluptate laboriosam, officiis quis consectetur rem
-          non? Nostrum voluptates illo corrupti, quia voluptate natus
-          vel deleniti reiciendis et illum quis blanditiis inventore
-          animi fugiat, maiores molestias? Soluta, nesciunt quod
-          numquam maiores dolor facilis in illo dolorum inventore
-          magnam exercitationem, recusandae suscipit ab repudiandae
-          quia perferendis ex illum fuga sapiente commodi perspiciatis
-          quis sed doloribus! Ex, animi. Explicabo modi nobis autem,
-          ipsum voluptate illo a distinctio blanditiis doloremque
-          recusandae maxime, aperiam atque provident nostrum
-          voluptatibus esse minus et repellendus quos unde delectus
-          dolore. Sit exercitationem reiciendis quaerat.
-        </Text>
+        <Sc.PrimaryImage src={news.image.url} />
+        <Editor theme="bubble" body={news.content} />
         <Sc.ShareContainer>
           <Text
             type="span"
@@ -92,21 +69,29 @@ export function New({ news, size, primary }: Props) {
   }
 
   return (
-    <Sc.New
-      size={size}
-      onClick={() => navigate(`post/${news.source.id}`)}
-    >
-      <Sc.NewImage size={size} src={news.urlToImage} />
+    <Sc.New size={size} to={`/post/${news.id}`}>
+      <Sc.NewImage
+        size={size}
+        src={news.image.url}
+        alt={news.image.name}
+      />
       <Sc.NewInfo>
-        <Text
-          type="title"
-          as="h3"
-          size={size === "lrg" ? size : "rgl"}
-          weight="str"
-          position="left"
-        >
-          {news.title}
-        </Text>
+        <Sc.Flex>
+          <Text type="span" as="span" size="lrg" position="center">
+            {news.title}
+          </Text>
+          |
+          <Text
+            type="span"
+            as="span"
+            size="rgl"
+            position="center"
+            color="light_blue"
+            pointer
+          >
+            {news.category.name}
+          </Text>
+        </Sc.Flex>
         {size === "lrg" && (
           <Text
             type="paragraph"
@@ -114,7 +99,7 @@ export function New({ news, size, primary }: Props) {
             color="black"
             position="justify"
           >
-            {news.description}
+            {news.summary}
           </Text>
         )}
         <Text
@@ -124,7 +109,7 @@ export function New({ news, size, primary }: Props) {
           weight="str"
           size={size === "lrg" ? "rgl" : "sml"}
         >
-          Postado em {new Date(news.publishedAt).toLocaleDateString()}
+          Postado em {new Date(news.date).toLocaleDateString()}
         </Text>
       </Sc.NewInfo>
     </Sc.New>

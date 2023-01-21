@@ -8,22 +8,22 @@ interface Props {
   limit?: number
   enabled?: boolean
   ref?: RefObject<HTMLDivElement>
-  category?: string
+  categoryId?: string
 }
 export function usePaginatedNews({
   initialPage = 1,
   limit = 5,
   enabled = true,
   ref,
-  category,
+  categoryId,
 }: Props) {
   const [page, setPage] = useState(initialPage)
 
-  const queryKey = category
-    ? ["news", page, limit, category]
+  const queryKey = categoryId
+    ? ["news", page, limit, categoryId]
     : ["news", page, limit]
 
-  const queryFn = category ? getNewByCategory : getNews
+  const queryFn = categoryId ? getNewByCategory : getNews
 
   const query = useQuery(queryKey, queryFn, {
     enabled,
@@ -41,10 +41,10 @@ export function usePaginatedNews({
   }
 
   useEffect(() => {
-    if (category) {
+    if (categoryId) {
       setPage(1)
     }
-  }, [category])
+  }, [categoryId])
 
   return {
     ...query,

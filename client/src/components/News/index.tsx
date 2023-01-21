@@ -17,12 +17,13 @@ export function News({ size, category }: Props) {
     data: news,
     isLoading,
     currentPage,
+    isSuccess,
     fetchNextPage,
     fetchPreviousPage,
   } = usePaginatedNews({
     limit,
     ref: newsRef,
-    category: category,
+    categoryId: category,
   })
 
   return (
@@ -30,7 +31,7 @@ export function News({ size, category }: Props) {
       {isLoading ? (
         <NewsSkeleton amount={limit} size={size} />
       ) : (
-        news?.data.articles.map((newI, i: number) => {
+        news?.data.posts.map((newI, i: number) => {
           return <New news={newI} size={size} key={i} />
         })
       )}
@@ -40,7 +41,10 @@ export function News({ size, category }: Props) {
             {currentPage > 1 && <FaArrowLeft />}
           </Sc.Arrow>
           <Sc.Arrow onClick={fetchNextPage}>
-            {currentPage < 5 && <FaArrowRight />}
+            {currentPage !==
+              (isSuccess ? news?.data.totalPages : 1) && (
+              <FaArrowRight />
+            )}
           </Sc.Arrow>
         </Sc.ArrowsContainer>
       )}

@@ -12,6 +12,8 @@ import { PostSchema } from "../../../global/validators/postSchema"
 import { Editor } from "../../../components/Editor"
 import { useState } from "react"
 import { useCreatePost } from "../../../hooks/react-query/mutation/useCreatePost"
+import { useCategories } from "../../../hooks/react-query/query/useCategories"
+import { Category } from "../../../interfaces/api"
 
 export function CreatePost() {
   const {
@@ -37,10 +39,16 @@ export function CreatePost() {
     },
   })
   const { mutate, isLoading } = useCreatePost()
+  const { isLoading: isCategoriesLoading, data: categories } =
+    useCategories()
   const [body, setBody] = useState("")
   const imageRegister = register("image")
 
   function handleSucessSubmit(data: any) {
+    const { id: categoryId } = categories?.data.find((category) => {
+      return category.name === data.category
+    }) as Category
+
     if (body === "") {
       return
     }
@@ -49,7 +57,7 @@ export function CreatePost() {
     formData.append("image", data.image[0])
     formData.append("title", data.title)
     formData.append("summary", data.summary)
-    formData.append("category_id", "2")
+    formData.append("category_id", categoryId)
     formData.append("content", body)
     formData.append("date", "19/01/2023")
 
@@ -156,14 +164,7 @@ export function CreatePost() {
             <Select
               name="category"
               control={control}
-              options={[
-                { id: 1, name: "Categoria 1" },
-                { id: 2, name: "Categoria 2" },
-                { id: 3, name: "Categoria 3" },
-                { id: 4, name: "Categoria 4" },
-                { id: 5, name: "Categoria 5" },
-                { id: 6, name: "Categoria 6" },
-              ]}
+              options={!isCategoriesLoading ? categories?.data! : []}
             />
             <Sc.WrapperErrorButton>
               <Sc.Button

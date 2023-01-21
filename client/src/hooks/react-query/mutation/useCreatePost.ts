@@ -1,10 +1,10 @@
 import { useMutation } from "@tanstack/react-query"
 import { useNavigate } from "react-router-dom"
-import { createPost } from "../../../services/requests"
+import { createNew } from "../../../services/requests"
 
 export function useCreatePost() {
   const navigate = useNavigate()
-  return useMutation(createPost, {
+  return useMutation(createNew, {
     onSuccess: () => {
       navigate("/")
     },

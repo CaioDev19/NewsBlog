@@ -1,9 +1,10 @@
 import * as Sc from "./style"
 import { Controller } from "react-hook-form"
 import { Control } from "react-hook-form/dist/types"
+import { Category } from "../../../interfaces/api"
 
 interface Props extends React.InputHTMLAttributes<HTMLSelectElement> {
-  options: { id: number; name: string }[]
+  options: Category[] | []
   name: string
   control: Control<any, any>
 }

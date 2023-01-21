@@ -15,9 +15,7 @@ export function HeroSection({ primary }: Props) {
         <Sc.Banner src="https://via.placeholder.com/1000/#ffff https://placeholder.com/" />
         {primary && (
           <Sc.LowerContent>
-            <Sc.LeftContent
-              src={data?.data.articles[4]?.urlToImage}
-            />
+            <Sc.LeftContent src={data?.data.posts?.[0].image.url} />
             <Sc.RightContent>
               <Sc.Title
                 type="title"
