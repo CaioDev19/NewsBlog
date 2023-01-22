@@ -1,4 +1,4 @@
-const knex = require("../config/database")
+const knex = require("../config/dataBase")
 const {
   uploadImageToStorage,
   deleteFileFromStorage,
