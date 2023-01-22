@@ -1,12 +1,5 @@
-const knex = require("knex")
+const knexfile = require("../../knexfile")
+const env = process.env.KNEX_FILE || "development"
+const knex = require("knex")(knexfile[env])
 
-module.exports = knex({
-  client: "pg",
-  connection: {
-    host: process.env.DB_HOST,
-    port: Number(process.env.DB_PORT),
-    user: process.env.DB_USER,
-    password: String(process.env.DB_PASSWORD),
-    database: process.env.DB_NAME,
-  },
-})
+module.exports = knex
