@@ -9,6 +9,8 @@ import { BsFillTrashFill } from "react-icons/bs"
 import { FaPencilAlt } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
 import { useTheme } from "styled-components"
+import { useDeletePost } from "../../../hooks/react-query/mutation/useDeletePost"
+import { Spinner } from "react-bootstrap"
 
 interface Props {
   news: Article
@@ -21,6 +23,12 @@ export function New({ news, size, primary }: Props) {
   const { token } = useAuth()
   const theme = useTheme()
   const navigate = useNavigate()
+  const { mutate, isError, isLoading } = useDeletePost()
+
+  function handleDelete(e: any) {
+    e.stopPropagation()
+    mutate(news.id)
+  }
 
   if (primary) {
     return (
@@ -122,22 +130,38 @@ export function New({ news, size, primary }: Props) {
           Postado em {new Date(news.date).toLocaleDateString()}
         </Text>
         {token && (
-          <Sc.AdminButtons>
-            <BsFillTrashFill
-              size={20}
-              onClick={(e) => {
-                console.log("delete")
-                e.stopPropagation()
-              }}
-            />
-            <FaPencilAlt
-              size={20}
-              onClick={(e) => {
-                console.log("edit")
-                e.stopPropagation()
-              }}
-            />
-          </Sc.AdminButtons>
+          <>
+            <Sc.AdminButtons>
+              {isLoading ? (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  variant="secondary"
+                  size="sm"
+                />
+              ) : (
+                <BsFillTrashFill size={20} onClick={handleDelete} />
+              )}
+              <FaPencilAlt
+                size={20}
+                onClick={(e) => {
+                  console.log("edit")
+                  e.stopPropagation()
+                }}
+              />
+            </Sc.AdminButtons>
+            {isError && (
+              <Text
+                type="span"
+                as="span"
+                color="red"
+                weight="str"
+                size="sml"
+              >
+                Erro ao deletar postagem
+              </Text>
+            )}
+          </>
         )}
       </Sc.NewInfo>
     </Sc.New>

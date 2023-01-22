@@ -1,21 +1,18 @@
 import { useMutation } from "@tanstack/react-query"
-import { useNavigate } from "react-router-dom"
-import { createNew } from "../../../services/requests"
+import { deleteNew } from "../../../services/requests"
 import { useQueryClient } from "@tanstack/react-query"
+import { AxiosError } from "axios"
 import { useSignOutOnError } from "../../useSignOutOnError"
 import { useEffect } from "react"
-import { AxiosError } from "axios"
 
-export function useCreatePost() {
-  const navigate = useNavigate()
-  const [setShouldSignOut] = useSignOutOnError()
+export function useDeletePost() {
   const queryClient = useQueryClient()
-  const mutation = useMutation(createNew, {
+  const [setShouldSignOut] = useSignOutOnError()
+  const mutation = useMutation(deleteNew, {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["news"],
       })
-      navigate("/")
     },
     onError: (_error: AxiosError) => {},
   })

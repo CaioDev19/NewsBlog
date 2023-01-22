@@ -46,7 +46,7 @@ export function Login() {
     }
   }
 
-  if (token) {
+  if (!isLoading && token) {
     return <Navigate to="/" />
   }
 

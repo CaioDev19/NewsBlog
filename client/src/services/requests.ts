@@ -32,3 +32,8 @@ export function createNew(
     },
   })
 }
+export function deleteNew(
+  id: string | number
+): Promise<AxiosResponse> {
+  return api.delete(`admin/post/${id}`)
+}

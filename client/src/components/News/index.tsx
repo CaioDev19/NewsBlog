@@ -41,8 +41,8 @@ export function News({ size, category }: Props) {
       {isLoading ? (
         <NewsSkeleton amount={limit} size={size} />
       ) : (
-        news?.data.posts.map((newI, i: number) => {
-          return <New news={newI} size={size} key={i} />
+        news?.data.posts.map((newI) => {
+          return <New news={newI} size={size} key={newI.id} />
         })
       )}
       {size === "lrg" && (
