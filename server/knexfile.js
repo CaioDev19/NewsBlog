@@ -9,11 +9,11 @@ module.exports = {
   development: {
     client: "pg",
     connection: {
-      host: process.env.DB_HOST,
-      port: process.env.DB_PORT,
-      user: process.env.DB_USER,
-      password: String(process.env.DB_PASSWORD),
-      database: process.env.DB_NAME,
+      host: process.env.PGHOST,
+      port: process.env.PGPORT,
+      user: process.env.PGUSER,
+      password: String(process.env.PGPASSWORD),
+      database: process.env.PGDATABASE,
     },
     migrations: {
       directory: `${__dirname}/src/config/migrations`,
@@ -25,11 +25,11 @@ module.exports = {
   production: {
     client: "pg",
     connection: {
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT),
-      user: process.env.DB_USER,
-      password: String(process.env.DB_PASSWORD),
-      database: process.env.DB_NAME,
+      host: process.env.PGHOST,
+      port: Number(process.env.PGPORT),
+      user: process.env.PGUSER,
+      password: String(process.env.PGPASSWORD),
+      database: process.env.PGDATABASE,
     },
     migrations: {
       directory: `${__dirname}/src/config/migrations`,
