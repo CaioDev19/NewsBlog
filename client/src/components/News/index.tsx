@@ -25,7 +25,7 @@ export function News({ size, category }: Props) {
   } = usePaginatedNews({
     limit,
     ref: newsRef,
-    categoryId: category,
+    categoryId: category || undefined,
   })
 
   if (isError) {

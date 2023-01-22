@@ -4,6 +4,11 @@ import { Article } from "../../../interfaces/api"
 import { ShareButton } from "../../ShareButton"
 import { useWindow } from "../../../hooks/useWindow"
 import { Editor } from "../../Editor"
+import { useAuth } from "../../../hooks/useAuth"
+import { BsFillTrashFill } from "react-icons/bs"
+import { FaPencilAlt } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
+import { useTheme } from "styled-components"
 
 interface Props {
   news: Article
@@ -12,7 +17,10 @@ interface Props {
 }
 
 export function New({ news, size, primary }: Props) {
-  const { url } = useWindow()
+  const { url, width } = useWindow()
+  const { token } = useAuth()
+  const theme = useTheme()
+  const navigate = useNavigate()
 
   if (primary) {
     return (
@@ -20,7 +28,7 @@ export function New({ news, size, primary }: Props) {
         <Text
           type="title"
           as="h2"
-          size="exl"
+          size={width! > theme.BREAKPOINTS.mobile ? "exl" : "lrg"}
           weight="str"
           position="left"
         >
@@ -30,7 +38,7 @@ export function New({ news, size, primary }: Props) {
           <Text
             type="span"
             as="span"
-            size="lrg"
+            size={width! > theme.BREAKPOINTS.mobile ? "lrg" : "rgl"}
             position="left"
             color="gray_200"
           >
@@ -40,7 +48,7 @@ export function New({ news, size, primary }: Props) {
           <Text
             type="span"
             as="span"
-            size="lrg"
+            size={width! > theme.BREAKPOINTS.mobile ? "lrg" : "rgl"}
             position="left"
             color="light_blue"
             pointer
@@ -69,7 +77,10 @@ export function New({ news, size, primary }: Props) {
   }
 
   return (
-    <Sc.New size={size} to={`/notícia/${news.id}`}>
+    <Sc.New
+      size={size}
+      onClick={() => navigate(`/notícia/${news.id}`)}
+    >
       <Sc.NewImage
         size={size}
         src={news.image.url}
@@ -110,6 +121,24 @@ export function New({ news, size, primary }: Props) {
         >
           Postado em {new Date(news.date).toLocaleDateString()}
         </Text>
+        {token && (
+          <Sc.AdminButtons>
+            <BsFillTrashFill
+              size={20}
+              onClick={(e) => {
+                console.log("delete")
+                e.stopPropagation()
+              }}
+            />
+            <FaPencilAlt
+              size={20}
+              onClick={(e) => {
+                console.log("edit")
+                e.stopPropagation()
+              }}
+            />
+          </Sc.AdminButtons>
+        )}
       </Sc.NewInfo>
     </Sc.New>
   )

@@ -46,12 +46,8 @@ export function NavBar() {
               )}
             </AnimatePresence>
           </Sc.LiRelative>
-          <li>
-            <Sc.Link>SOBRE NÓS</Sc.Link>
-          </li>
-          <li>
-            <Sc.Link>CONTATO</Sc.Link>
-          </li>
+          <Sc.Link>SOBRE NÓS</Sc.Link>
+          <Sc.Link>CONTATO</Sc.Link>
         </Sc.Nav>
       </ContentContainer>
     </Sc.ContainerNav>

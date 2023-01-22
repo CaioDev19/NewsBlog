@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components"
-import { NavLink } from "react-router-dom"
 import { Text } from "../../../global/styles/Typography"
 
 export const NewImage = styled.img<{ size?: "lrg" | "sml" }>`
@@ -13,6 +12,12 @@ export const NewImage = styled.img<{ size?: "lrg" | "sml" }>`
         return css`
           width: 240px;
           height: 120px;
+
+          @media (max-width: ${({ theme }) =>
+              theme.BREAKPOINTS.notbook}px) {
+            width: 400px;
+            height: 280px;
+          }
         `
       case "lrg":
         return css`
@@ -50,7 +55,7 @@ export const Flex = styled.div`
   align-items: flex-start;
   gap: 0.75rem;
 `
-export const New = styled(NavLink)<{ size?: "lrg" | "sml" }>`
+export const New = styled.div<{ size?: "lrg" | "sml" }>`
   all: unset;
   display: flex;
   align-items: center;
@@ -89,19 +94,29 @@ export const PrimaryImage = styled.img`
   max-height: 700px;
   border-radius: 25px;
 `
-
 export const PrimaryNewsInfo = styled.div`
   display: flex;
   align-items: center;
   gap: 1.25rem;
 `
-
 export const ShareContainer = styled(PrimaryNewsInfo)`
   svg {
     cursor: pointer;
     font-size: ${({ theme }) => theme.FONT_SIZE.exl};
     transition: 0.2s ease-in-out;
 
+    &:hover {
+      color: ${({ theme }) => theme.COLORS.orange_red};
+    }
+  }
+`
+export const AdminButtons = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+
+  svg {
+    transition: 0.2s ease-in-out;
     &:hover {
       color: ${({ theme }) => theme.COLORS.orange_red};
     }

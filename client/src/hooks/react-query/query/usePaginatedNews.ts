@@ -1,6 +1,6 @@
 import { scrollToRef } from "../../../utils/window"
 import { useQuery } from "@tanstack/react-query"
-import { RefObject, useEffect, useState } from "react"
+import { RefObject, useCallback, useEffect, useState } from "react"
 import { getNews, getNewByCategory } from "../../../services/requests"
 
 interface Props {
@@ -17,7 +17,7 @@ export function usePaginatedNews({
   ref,
   categoryId,
 }: Props) {
-  const [page, setPage] = useState(initialPage)
+  const [page, setPage] = useState(() => initialPage)
 
   const queryKey = categoryId
     ? ["news", page, limit, categoryId]
@@ -30,15 +30,15 @@ export function usePaginatedNews({
     keepPreviousData: true,
   })
 
-  function fetchNextPage() {
+  const fetchNextPage = useCallback(() => {
     scrollToRef(ref)
     setPage((old) => old + 1)
-  }
+  }, [ref])
 
-  function fetchPreviousPage() {
+  const fetchPreviousPage = useCallback(() => {
     scrollToRef(ref)
     setPage((old) => old - 1)
-  }
+  }, [ref])
 
   useEffect(() => {
     if (categoryId) {

@@ -46,13 +46,14 @@ export function CreatePost() {
   const imageRegister = register("image")
 
   function handleSucessSubmit(data: any) {
+    if (body === "") {
+      return
+    }
+
     const { id: categoryId } = categories?.data.find((category) => {
       return category.name === data.category
     }) as Category
 
-    if (body === "") {
-      return
-    }
     const formData = new FormData()
 
     formData.append("image", data.image[0])
@@ -60,7 +61,6 @@ export function CreatePost() {
     formData.append("summary", data.summary)
     formData.append("category_id", categoryId)
     formData.append("content", body)
-    formData.append("date", "19/01/2023")
 
     mutate(formData)
     reset()
