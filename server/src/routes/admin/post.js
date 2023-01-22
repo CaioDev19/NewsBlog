@@ -24,6 +24,7 @@ router
   .route("/:id")
   .delete(checkIfPostExists, deletePost)
   .put(
+    upload.single("image"),
     validate(PostSchema),
     checkIfPostExists,
     checkIfCategoryExists,
