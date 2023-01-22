@@ -30,6 +30,11 @@ export function New({ news, size, primary }: Props) {
     mutate(news.id)
   }
 
+  function handleUpdate(e: any) {
+    e.stopPropagation()
+    navigate(`/admin/editar/${news.id}`)
+  }
+
   if (primary) {
     return (
       <Sc.PrimaryContainer>
@@ -65,7 +70,7 @@ export function New({ news, size, primary }: Props) {
           </Text>
         </Sc.PrimaryNewsInfo>
         <Sc.PrimaryImage src={news.image.url} />
-        <Editor theme="bubble" body={news.content} />
+        <Editor theme="bubble" body={news.content} type="show" />
         <Sc.ShareContainer>
           <Text
             type="span"
@@ -142,13 +147,7 @@ export function New({ news, size, primary }: Props) {
               ) : (
                 <BsFillTrashFill size={20} onClick={handleDelete} />
               )}
-              <FaPencilAlt
-                size={20}
-                onClick={(e) => {
-                  console.log("edit")
-                  e.stopPropagation()
-                }}
-              />
+              <FaPencilAlt size={20} onClick={handleUpdate} />
             </Sc.AdminButtons>
             {isError && (
               <Text

@@ -37,3 +37,16 @@ export function deleteNew(
 ): Promise<AxiosResponse> {
   return api.delete(`admin/post/${id}`)
 }
+export function updateNew({
+  id,
+  data,
+}: {
+  id: string | number
+  data: FormData
+}): Promise<AxiosResponse<Article>> {
+  return api.put(`admin/post/${id}`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  })
+}

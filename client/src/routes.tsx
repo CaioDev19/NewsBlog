@@ -25,7 +25,14 @@ export function MainRoutes() {
           <Route path="/admin">
             <Route index element={<Navigate to="/" />} />
             <Route element={<PrivateRoutes />}>
-              <Route path="criarNotícia" element={<CreatePost />} />
+              <Route
+                path="criarNotícia"
+                element={<CreatePost type="create" />}
+              />
+              <Route
+                path="editar/:id"
+                element={<CreatePost type="edit" />}
+              />
             </Route>
           </Route>
         </Route>

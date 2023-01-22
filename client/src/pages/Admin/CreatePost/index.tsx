@@ -10,12 +10,19 @@ import { Select } from "../../../components/Form/Select"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { PostSchema } from "../../../global/validators/postSchema"
 import { Editor } from "../../../components/Editor"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useCreatePost } from "../../../hooks/react-query/mutation/useCreatePost"
 import { useCategories } from "../../../hooks/react-query/query/useCategories"
 import { Category } from "../../../interfaces/api"
+import { useParams } from "react-router-dom"
+import { useNew } from "../../../hooks/react-query/query/useNew"
+import { useUpdatePost } from "../../../hooks/react-query/mutation/useUpdatePost"
 
-export function CreatePost() {
+interface Props {
+  type: "create" | "edit"
+}
+
+export function CreatePost({ type }: Props) {
   const {
     image,
     isLoading: isImageLoading,
@@ -28,7 +35,7 @@ export function CreatePost() {
     control,
     resetField,
     register,
-    reset,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(PostSchema),
@@ -39,10 +46,24 @@ export function CreatePost() {
       image: null as FileList | null,
     },
   })
-  const { mutate, isLoading, isError: isPostError } = useCreatePost()
+  const {
+    mutate: mutateCreate,
+    isLoading: isCreateLoading,
+    isError: isPostError,
+  } = useCreatePost()
+  const {
+    mutate: mutateEdit,
+    isLoading: isEditLoading,
+    isError: isUpdateError,
+  } = useUpdatePost()
   const { isLoading: isCategoriesLoading, data: categories } =
     useCategories()
   const [body, setBody] = useState("")
+  const { id } = useParams()
+  const { data, isSuccess } = useNew({
+    id: id as string,
+    enabled: type === "edit" ? true : false,
+  })
   const imageRegister = register("image")
 
   function handleSucessSubmit(data: any) {
@@ -62,9 +83,12 @@ export function CreatePost() {
     formData.append("category_id", categoryId)
     formData.append("content", body)
 
-    mutate(formData)
-    reset()
-    removeImage()
+    if (type === "create") {
+      mutateCreate(formData)
+      return
+    }
+
+    mutateEdit({ id: id as string, data: formData })
   }
 
   function handleErrorSubmit(error: any) {
@@ -89,9 +113,21 @@ export function CreatePost() {
     setBody(body)
   }
 
+  useEffect(() => {
+    if (type === "edit" && isSuccess) {
+      setValue("title", data?.data.title)
+      setValue("summary", data?.data.summary)
+      setValue("category", data?.data.category.name)
+      setBody(data?.data.content)
+    }
+  }, [isSuccess, data?.data, type, setValue])
+
   return (
     <Sc.MainContainer>
-      <Editor setBody={handleBody} />
+      <Editor
+        setBody={handleBody}
+        body={type === "edit" ? body : ""}
+      />
       <Sc.Container>
         <Sc.Form
           onSubmit={handleSubmit(
@@ -184,14 +220,16 @@ export function CreatePost() {
               options={!isCategoriesLoading ? categories?.data! : []}
             />
             <Sc.WrapperErrorButton>
-              {isPostError && (
+              {(isPostError || isUpdateError) && (
                 <Text
                   type="span"
                   as="span"
                   size="lrg"
                   color="orange_red"
                 >
-                  Erro ao criar post!
+                  {isPostError
+                    ? "Erro ao criar post!"
+                    : "Erro ao editar post!"}
                 </Text>
               )}
               <Sc.Button
@@ -200,7 +238,7 @@ export function CreatePost() {
                 color="white"
                 type="submit"
               >
-                {isLoading ? (
+                {isCreateLoading || isEditLoading ? (
                   <Spinner
                     as="span"
                     animation="border"

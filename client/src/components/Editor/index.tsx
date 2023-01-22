@@ -2,15 +2,19 @@ import ReactQuill from "react-quill"
 import "react-quill/dist/quill.snow.css"
 import * as Sc from "./style"
 
+interface Props {
+  setBody?: (body: string) => void
+  theme?: "snow" | "bubble" | "core"
+  body?: string
+  type?: "create" | "show"
+}
+
 export function Editor({
   setBody,
   theme = "snow",
   body,
-}: {
-  setBody?: (body: string) => void
-  theme?: "snow" | "bubble" | "core"
-  body?: string
-}) {
+  type = "create",
+}: Props) {
   const modules = {
     toolbar: [
       [{ size: [] }, { color: [] }, { background: [] }],
@@ -49,7 +53,7 @@ export function Editor({
     "background",
   ]
 
-  if (body) {
+  if (body && type === "show") {
     return (
       <Sc.QuillContentContainer>
         <ReactQuill
@@ -71,6 +75,7 @@ export function Editor({
       <ReactQuill
         theme={theme}
         modules={modules}
+        value={body}
         formats={formats}
         placeholder="Escreva algo..."
         onChange={(body) => {
