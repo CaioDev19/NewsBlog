@@ -34,4 +34,8 @@ module.exports = {
       blobStream.end(file.buffer)
     })
   },
+  async deleteFileFromStorage(fileName) {
+    const file = bucket.file(fileName)
+    await file.delete()
+  },
 }

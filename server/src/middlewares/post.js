@@ -47,6 +47,7 @@ module.exports = {
         return res.status(404).json({ message: "Not Found." })
       }
 
+      req.post = data
       return next()
     } catch {
       return res

@@ -25,7 +25,7 @@ module.exports = {
           "category.name as category_name"
         )
         .where(condition)
-        .orderBy("post.date", "asc")
+        .orderBy("post.date", "desc")
         .limit(limit)
         .offset((page - 1) * limit)
 
@@ -76,6 +76,7 @@ module.exports = {
           "category.name as category_name"
         )
         .where("post.id", id)
+        .orderBy("post.date", "desc")
         .first()
 
       if (!post) {

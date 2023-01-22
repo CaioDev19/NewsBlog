@@ -1,5 +1,8 @@
 const knex = require("../config/database")
-const { uploadImageToStorage } = require("../utils/firebase")
+const {
+  uploadImageToStorage,
+  deleteFileFromStorage,
+} = require("../utils/firebase")
 
 module.exports = {
   async createPost(req, res) {
@@ -44,6 +47,75 @@ module.exports = {
     } catch (error) {
       console.log(error)
       res.status(500).json({ message: "Erro" })
+    }
+  },
+  async deletePost(req, res) {
+    const { id } = req.params
+
+    try {
+      await deleteFileFromStorage(req.post.image_name)
+
+      const deletedPost = await knex("post")
+        .where({ id })
+        .del()
+        .returning("*")
+
+      if (!deletedPost) {
+        return res
+          .status(500)
+          .json({ message: "Internal server error" })
+      }
+
+      res.status(204).json()
+    } catch {
+      res.status(500).json({ message: "Internal server error" })
+    }
+  },
+  async updatePost(req, res) {
+    const { id } = req.params
+    const { title, content, summary, category_id } = req.body
+    const { file } = req
+    const { name } = req.category
+
+    try {
+      await deleteFileFromStorage(req.post.image_name)
+
+      file.originalname = `${file.originalname}_${Date.now()}`
+      const imageUrl = await uploadImageToStorage(file)
+
+      const updatedPost = await knex("post")
+        .where({ id })
+        .update({
+          title,
+          content,
+          summary,
+          category_id,
+          image_name: file.originalname,
+          image_url: imageUrl,
+          date: new Date(),
+        })
+        .returning("*")
+
+      const {
+        image_name,
+        image_url,
+        category_id: category,
+        ...postWithoutImageAndCategory
+      } = updatedPost[0]
+
+      return res.status(200).json({
+        ...postWithoutImageAndCategory,
+        image: {
+          name: image_name,
+          url: image_url,
+        },
+        category: {
+          id: category,
+          name,
+        },
+      })
+    } catch {
+      res.status(500).json({ message: "Internal server error" })
     }
   },
 }
