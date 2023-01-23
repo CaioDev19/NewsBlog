@@ -4,7 +4,9 @@ module.exports = {
   async listPosts(req, res) {
     const page = Number(req.query.page) || 1
     const limit = Number(req.query.limit) || 10
-    const categoryId = Number(req.query.categoryId)
+    const categoryId = req.query.categoryId
+      ? Number(req.query.categoryId) || null
+      : null
     const { totalPages } = req
 
     try {
