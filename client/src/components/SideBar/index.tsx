@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import { AiOutlineHome } from "react-icons/ai"
 import { GiNewspaper } from "react-icons/gi"
 import { BsInfoCircle } from "react-icons/bs"
-import { TiContacts } from "react-icons/ti"
 import { useToggle } from "../../hooks/useToggle"
 import { useCategories } from "../../hooks/react-query/query/useCategories"
 import { useNavigate } from "react-router-dom"
@@ -74,9 +73,6 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
               </Sc.LiRelative>
               <Sc.Link>
                 <BsInfoCircle /> Sobre Nós
-              </Sc.Link>
-              <Sc.Link>
-                <TiContacts /> Contato
               </Sc.Link>
             </Sc.Nav>
           </Sc.UpperContent>
