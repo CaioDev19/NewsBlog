@@ -6,7 +6,7 @@ export function NewsSkeleton({
   size,
 }: {
   amount?: number
-  size?: "sml" | "lrg"
+  size?: "sml" | "lrg" | "mdn"
 }) {
   const loadings = []
 
@@ -15,14 +15,25 @@ export function NewsSkeleton({
       <Placeholder
         as={Row}
         animation="glow"
-        style={{ width: "100%" }}
+        style={{
+          width: "100%",
+          maxWidth: size === "mdn" ? "100%" : "1000px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: size === "mdn" ? "column" : "row",
+        }}
       >
-        <Col xs={4} style={{ width: "45%" }}>
+        <Col
+          xs={4}
+          style={{ width: size === "mdn" ? "100%" : "45%" }}
+        >
           <Image
             src="https://via.placeholder.com/600C/?text=Carregando..."
             fluid
             style={{
-              maxHeight: size === "lrg" ? "350px" : "125px",
+              maxHeight:
+                size === "lrg" || size === "mdn" ? "350px" : "125px",
               width: "100%",
               objectFit: "cover",
               borderRadius: "25px",
@@ -37,7 +48,7 @@ export function NewsSkeleton({
             justifyContent: "center",
             flexDirection: "column",
             gap: "1rem",
-            width: "50%",
+            width: size === "mdn" ? "100%" : "55%",
           }}
         >
           <Placeholder xs={10} /> <Placeholder xs={10} />{" "}

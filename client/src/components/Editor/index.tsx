@@ -1,11 +1,15 @@
 import ReactQuill from "react-quill"
 import "react-quill/dist/quill.snow.css"
 import * as Sc from "./style"
+import { Quill } from "react-quill"
+import ImageResize from "quill-image-resize-module-react"
+
+Quill.register("modules/imageResize", ImageResize)
 
 interface Props {
   setBody?: (body: string) => void
   theme?: "snow" | "bubble" | "core"
-  body?: string
+  body: string
   type?: "create" | "show"
 }
 
@@ -26,8 +30,12 @@ export function Editor({
         { indent: "-1" },
         { indent: "+1" },
       ],
-      ["link"],
+      ["link", "image"],
     ],
+    imageResize: {
+      parchment: Quill.import("parchment"),
+      modules: ["Resize", "DisplaySize"],
+    },
     clipboard: {
       matchVisual: false,
     },
@@ -51,6 +59,7 @@ export function Editor({
     "align",
     "color",
     "background",
+    "image",
   ]
 
   if (body && type === "show") {

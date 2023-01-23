@@ -8,7 +8,7 @@ interface Props {
   limit?: number
   enabled?: boolean
   ref?: RefObject<HTMLDivElement>
-  categoryId?: string
+  categoryId?: string | number
 }
 export function usePaginatedNews({
   initialPage = 1,

@@ -11,10 +11,11 @@ import { useNavigate } from "react-router-dom"
 import { useTheme } from "styled-components"
 import { useDeletePost } from "../../../hooks/react-query/mutation/useDeletePost"
 import { Spinner } from "react-bootstrap"
+import { Size } from "../../../interfaces/component"
 
 interface Props {
   news: Article
-  size?: "lrg" | "sml"
+  size?: Size
   primary?: boolean
 }
 
@@ -130,7 +131,7 @@ export function New({ news, size, primary }: Props) {
           as="span"
           color="gray_200"
           weight="str"
-          size={size === "lrg" ? "rgl" : "sml"}
+          size={size === "lrg" || size === "mdn" ? "rgl" : "sml"}
         >
           Postado em {new Date(news.date).toLocaleDateString()}
         </Text>

@@ -6,6 +6,7 @@ import * as Sc from "./style"
 import { CardSkeleton } from "../../Skeletons/CardSkeleton"
 import { usePaginatedNews } from "../../../hooks/react-query/query/usePaginatedNews"
 import { Error } from "../../Error"
+import { useRef } from "react"
 
 export function MainSection({ primary }: { primary?: boolean }) {
   const { id } = useParams()
@@ -17,12 +18,15 @@ export function MainSection({ primary }: { primary?: boolean }) {
     id: id || "1",
     enabled: primary || false,
   })
-  const { data: paginatedNews } = usePaginatedNews({
-    limit: 3,
-    initialPage: 1,
-  })
+  const randomCategory = useRef(Math.floor(Math.random() * 6))
+  const { data: randomNews, isError: isRandomError } =
+    usePaginatedNews({
+      limit: 3,
+      initialPage: 1,
+      categoryId: randomCategory.current,
+    })
 
-  if (primary && isError) {
+  if ((primary && isError) || isRandomError) {
     return <Error message="Não foi possível carregar a notícia" />
   }
 
@@ -37,19 +41,25 @@ export function MainSection({ primary }: { primary?: boolean }) {
       ) : (
         <News size="lrg" />
       )}
-      <Sc.AddContainer>
+      <Sc.AdContainer>
         <Sc.SubTittle
           type="title"
           as="h2"
           weight="str"
           position="left"
         >
-          Patrocinadores
+          {primary ? "Mais notícias" : "Patrocinadores"}
         </Sc.SubTittle>
-        <Sc.Ad src={paginatedNews?.data.posts[0]?.image.url} />
-        <Sc.Ad src={paginatedNews?.data.posts[1]?.image.url} />
-        <Sc.Ad src={paginatedNews?.data.posts[2]?.image.url} />
-      </Sc.AddContainer>
+        {primary ? (
+          <News category={randomCategory.current} size="mdn" />
+        ) : (
+          <>
+            <Sc.Ad src={randomNews?.data.posts[0]?.image.url} />
+            <Sc.Ad src={randomNews?.data.posts[1]?.image.url} />
+            <Sc.Ad src={randomNews?.data.posts[2]?.image.url} />
+          </>
+        )}
+      </Sc.AdContainer>
     </Sc.MainContainer>
   )
 }

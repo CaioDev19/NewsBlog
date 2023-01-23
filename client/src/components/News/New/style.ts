@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components"
 import { Text } from "../../../global/styles/Typography"
+import { Size } from "../../../interfaces/component"
 
-export const NewImage = styled.img<{ size?: "lrg" | "sml" }>`
+export const NewImage = styled.img<{ size?: Size }>`
   border-radius: 25px;
   object-fit: cover;
   flex-shrink: 0;
@@ -18,6 +19,11 @@ export const NewImage = styled.img<{ size?: "lrg" | "sml" }>`
             width: 400px;
             height: 280px;
           }
+        `
+      case "mdn":
+        return css`
+          width: 100%;
+          height: 380px;
         `
       case "lrg":
         return css`
@@ -55,9 +61,11 @@ export const Flex = styled.div`
   align-items: flex-start;
   gap: 0.75rem;
 `
-export const New = styled.div<{ size?: "lrg" | "sml" }>`
+export const New = styled.div<{ size?: Size }>`
   all: unset;
   display: flex;
+  flex-direction: ${({ size }) =>
+    size === "mdn" ? "column" : "row"};
   align-items: center;
   justify-content: ${({ size }) =>
     size === "lrg" ? "flex-start" : "center"};
@@ -66,6 +74,19 @@ export const New = styled.div<{ size?: "lrg" | "sml" }>`
   gap: 1.25rem;
 
   cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  ${NewInfo} {
+    width: ${({ size }) => size === "mdn" && "100%"};
+  }
+
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
+    transform: none;
+  }
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
     flex-direction: column;

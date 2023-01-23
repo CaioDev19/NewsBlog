@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { ContentContainer } from "../../../global/styles/ContentContainer"
 import { Text } from "../../../global/styles/Typography"
 
-export const AddContainer = styled.div`
+export const AdContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +21,7 @@ export const MainContainer = styled(ContentContainer)`
     justify-content: center;
     align-items: center;
 
-    ${AddContainer} {
+    ${AdContainer} {
       width: 100%;
     }
   }
@@ -31,6 +31,18 @@ export const Ad = styled.img`
   height: 380px;
   object-fit: cover;
   border-radius: 25px;
+`
+export const MoreNews = styled(Ad)`
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
+    transform: none;
+  }
 `
 
 export const SubTittle = styled(Text)`

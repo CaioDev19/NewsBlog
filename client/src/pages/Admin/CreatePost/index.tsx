@@ -124,10 +124,7 @@ export function CreatePost({ type }: Props) {
 
   return (
     <Sc.MainContainer>
-      <Editor
-        setBody={handleBody}
-        body={type === "edit" ? body : ""}
-      />
+      <Editor setBody={handleBody} body={body} />
       <Sc.Container>
         <Sc.Form
           onSubmit={handleSubmit(

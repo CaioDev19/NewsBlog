@@ -5,10 +5,11 @@ import { usePaginatedNews } from "../../hooks/react-query/query/usePaginatedNews
 import { useRef } from "react"
 import { NewsSkeleton } from "../Skeletons/NewsSkeleton"
 import { Error } from "../Error"
+import { Size } from "../../interfaces/component"
 
 interface Props {
-  size?: "sml" | "lrg"
-  category?: string
+  size?: Size
+  category?: string | number
 }
 
 export function News({ size, category }: Props) {
