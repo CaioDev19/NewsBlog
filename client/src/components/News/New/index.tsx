@@ -12,6 +12,8 @@ import { useTheme } from "styled-components"
 import { useDeletePost } from "../../../hooks/react-query/mutation/useDeletePost"
 import { Spinner } from "react-bootstrap"
 import { Size } from "../../../interfaces/component"
+import { useToggle } from "../../../hooks/useToggle"
+import { ModalDelete } from "../../Admin/ModalDelete"
 
 interface Props {
   news: Article
@@ -25,9 +27,9 @@ export function New({ news, size, primary }: Props) {
   const theme = useTheme()
   const navigate = useNavigate()
   const { mutate, isError, isLoading } = useDeletePost()
+  const [isOpen, toggle] = useToggle()
 
-  function handleDelete(e: any) {
-    e.stopPropagation()
+  function handleDelete() {
     mutate(news.id)
   }
 
@@ -146,7 +148,13 @@ export function New({ news, size, primary }: Props) {
                   size="sm"
                 />
               ) : (
-                <BsFillTrashFill size={20} onClick={handleDelete} />
+                <BsFillTrashFill
+                  size={20}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    toggle()
+                  }}
+                />
               )}
               <FaPencilAlt size={20} onClick={handleUpdate} />
             </Sc.AdminButtons>
@@ -160,6 +168,12 @@ export function New({ news, size, primary }: Props) {
               >
                 Erro ao deletar postagem
               </Text>
+            )}
+            {isOpen && (
+              <ModalDelete
+                toggle={toggle}
+                handleDelete={handleDelete}
+              />
             )}
           </>
         )}

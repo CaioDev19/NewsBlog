@@ -1,5 +1,6 @@
 import { usePaginatedNews } from "../../../hooks/react-query/query/usePaginatedNews"
 import { News } from "../../News"
+import banner from "../../../assets/images/Imagem do WhatsApp de 2023-01-26 à(s) 20.09.09.jpg"
 import * as Sc from "./style"
 
 interface Props {
@@ -12,7 +13,7 @@ export function HeroSection({ primary }: Props) {
   return (
     <Sc.Container>
       <Sc.ContentWrapper>
-        <Sc.Banner src="https://picsum.photos/1000/1000?grayscale" />
+        <Sc.Banner src={banner} />
         {primary && (
           <Sc.LowerContent>
             <Sc.LeftContent src={data?.data.posts?.[0]?.image.url} />

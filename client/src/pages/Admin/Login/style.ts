@@ -18,14 +18,14 @@ export const CardContainer = styled.div`
   background-color: ${({ theme }) => theme.COLORS.white};
   box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.6);
   border-radius: 25px;
-  padding: 5rem 1.25rem;
+  padding: 0rem 1.25rem 2.75rem 1.25rem;
   width: 40%;
   min-width: 300px;
   max-width: 500px;
 
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 1.85rem;
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
     padding: 3rem 1.25rem;
@@ -39,7 +39,7 @@ export const InputContainer = styled.div`
   position: relative;
 `
 export const Logo = styled.img`
-  width: 60%;
+  width: 15%;
   min-width: 200px;
   margin: 0 auto;
 `

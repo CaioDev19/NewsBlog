@@ -4,7 +4,6 @@ import { ContentContainer } from "../../../global/styles/ContentContainer"
 export const Container = styled.header<{ tablet?: boolean }>`
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.black_200};
-  padding: 1.5rem 0;
 
   ${({ tablet }) =>
     tablet &&
@@ -12,7 +11,7 @@ export const Container = styled.header<{ tablet?: boolean }>`
       position: sticky;
       z-index: 1;
       top: 0;
-      padding: 1.5rem 0;
+      padding: 1rem 0;
     `}
 `
 export const ContentWrapper = styled(ContentContainer)`
@@ -25,9 +24,9 @@ export const ContentWrapper = styled(ContentContainer)`
   }
 `
 export const Logo = styled.img`
-  width: 15%;
-  max-width: 225px;
-  min-width: 180px;
+  width: 10%;
+  max-width: 150px;
+  min-width: 125px;
   cursor: pointer;
 `
 export const SocialMediaWrapper = styled.div`
@@ -48,7 +47,7 @@ export const SocialMedia = styled.svg`
 export const HamburguerMenu = styled(SocialMedia)`
   font-size: ${({ theme }) => theme.FONT_SIZE.exl};
   position: fixed;
-  top: 2.75rem;
+  top: 6rem;
   left: 1.5rem;
 `
 export const DateWrapper = styled.div`

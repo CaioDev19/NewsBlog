@@ -1,6 +1,6 @@
 import * as Sc from "./style"
 import { Text } from "../../global/styles/Typography"
-import logo from "../../assets/images/logo.png"
+import logo from "../../assets/images/logo3-portal-m-bonfim.svg"
 import { IoIosCloseCircle } from "react-icons/io"
 import { motion, AnimatePresence } from "framer-motion"
 import { AiOutlineHome } from "react-icons/ai"

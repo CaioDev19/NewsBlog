@@ -1,5 +1,5 @@
 import * as Sc from "./style"
-import logo from "../../../assets/images/logowhite.png"
+import logo from "../../../assets/images/logo2-portal-m-bonfim.svg"
 import { AiOutlineFacebook } from "react-icons/ai"
 import { BsInstagram, BsWhatsapp } from "react-icons/bs"
 import { Text } from "../../../global/styles/Typography"

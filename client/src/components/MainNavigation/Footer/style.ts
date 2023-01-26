@@ -12,10 +12,10 @@ export const Container = styled.footer`
 
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.black_200};
-  padding: 2.5rem 0;
+  padding: 1rem 0;
 `
 export const Logo = styled.img`
-  width: 200px;
+  width: 150px;
   cursor: pointer;
 `
 export const SocialMediaWrapper = styled.div`
@@ -37,7 +37,7 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.35rem;
   width: 30%;
 `
 export const ContactInfo = styled(InfoContainer)`

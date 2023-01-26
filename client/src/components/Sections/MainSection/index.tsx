@@ -6,7 +6,7 @@ import * as Sc from "./style"
 import { CardSkeleton } from "../../Skeletons/CardSkeleton"
 import { usePaginatedNews } from "../../../hooks/react-query/query/usePaginatedNews"
 import { Error } from "../../Error"
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 
 export function MainSection({ primary }: { primary?: boolean }) {
   const { id } = useParams()
@@ -25,6 +25,10 @@ export function MainSection({ primary }: { primary?: boolean }) {
       initialPage: 1,
       categoryId: randomCategory.current,
     })
+
+  useEffect(() => {
+    randomCategory.current = Math.floor(Math.random() * 6)
+  }, [id])
 
   if ((primary && isError) || isRandomError) {
     return <Error message="Não foi possível carregar a notícia" />

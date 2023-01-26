@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { Link as L } from "react-router-dom"
 
 export const StyledMobileSideBar = styled.div`
   background-color: ${({ theme }) => theme.COLORS.whitesh};
@@ -36,10 +35,12 @@ export const CloseBtn = styled.svg`
 `
 export const UpperContent = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 export const Logo = styled.img`
-  width: 150px;
-  align-self: flex-start;
+  width: 100px;
   margin-bottom: 2rem;
 `
 export const Nav = styled.ul`

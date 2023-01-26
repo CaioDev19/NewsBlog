@@ -20,6 +20,7 @@ export const theme = {
     orange_light: "#F9C74F",
 
     blue: "#3399FF",
+    blue_100: "#0038D6",
     light_blue: "#8FD5F4",
   },
   FONT_SIZE: {

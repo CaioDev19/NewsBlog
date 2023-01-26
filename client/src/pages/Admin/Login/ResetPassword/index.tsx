@@ -5,6 +5,7 @@ import * as Sc from "../style"
 import { Text } from "../../../../global/styles/Typography"
 import { Spinner } from "react-bootstrap"
 import { StyledInput } from "../../../../components/Form/Input/style"
+import { ResetContainer } from "./style"
 
 export function ResetPassword() {
   const { resetPassword } = useAuth()
@@ -28,7 +29,7 @@ export function ResetPassword() {
 
   return (
     <Sc.MainContainer>
-      <Sc.CardContainer>
+      <ResetContainer>
         <Sc.Form onSubmit={handleSubmit}>
           <Text type="title" as="h2">
             Redefinir Senha
@@ -72,7 +73,7 @@ export function ResetPassword() {
             </Text>
           )}
         </Sc.Form>
-      </Sc.CardContainer>
+      </ResetContainer>
     </Sc.MainContainer>
   )
 }

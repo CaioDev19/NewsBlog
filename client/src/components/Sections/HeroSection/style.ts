@@ -58,8 +58,8 @@ export const Title = styled(Text)`
   border-bottom: 2px solid;
   border-image: linear-gradient(
       to right,
-      ${({ theme }) => theme.COLORS.orange_red},
-      ${({ theme }) => theme.COLORS.gray_100}
+      ${({ theme }) => theme.COLORS.blue_100},
+      ${({ theme }) => theme.COLORS.light_blue}
     )
     1;
   align-self: flex-start;

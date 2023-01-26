@@ -8,7 +8,7 @@ import {
   Login as ILogin,
   LoginSchema,
 } from "../../../global/validators/loginSchema"
-import logo from "../../../assets/images/logo.png"
+import logo from "../../../assets/images/logoBlack.svg"
 import { Text } from "../../../global/styles/Typography"
 
 export function Login() {
