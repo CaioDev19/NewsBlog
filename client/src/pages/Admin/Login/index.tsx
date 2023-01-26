@@ -83,7 +83,7 @@ export function Login() {
             position="left"
             color="blue"
             pointer
-            onClick={() => navigate("/admin/redefinirSenha")}
+            onClick={() => navigate("/admin/redefinir-senha")}
           >
             Esqueceu a senha?
           </Sc.Link>

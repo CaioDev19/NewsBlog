@@ -12,7 +12,7 @@ export function HeroSection({ primary }: Props) {
   return (
     <Sc.Container>
       <Sc.ContentWrapper>
-        <Sc.Banner src="https://via.placeholder.com/1000/#ffff https://placeholder.com/" />
+        <Sc.Banner src="https://picsum.photos/1000/1000?grayscale" />
         {primary && (
           <Sc.LowerContent>
             <Sc.LeftContent src={data?.data.posts?.[0]?.image.url} />

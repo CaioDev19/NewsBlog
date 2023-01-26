@@ -86,6 +86,11 @@ export const New = styled.div<{ size?: Size }>`
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
     transform: none;
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
   }
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
