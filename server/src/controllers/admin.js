@@ -44,9 +44,8 @@ module.exports = {
           name,
         },
       })
-    } catch (error) {
-      console.log(error)
-      res.status(500).json({ message: "Erro" })
+    } catch {
+      res.status(500).json({ message: "Internal server error" })
     }
   },
   async deletePost(req, res) {
@@ -114,6 +113,77 @@ module.exports = {
           name,
         },
       })
+    } catch {
+      res.status(500).json({ message: "Internal server error" })
+    }
+  },
+  async listAdvertising(_req, res) {
+    try {
+      const advertising = await knex("advertising").select("*")
+
+      const advertisingWithImages = advertising.map((ad) => {
+        const { image_name, image, ...advertisingWithoutImage } = ad
+
+        return {
+          ...advertisingWithoutImage,
+          image: {
+            name: image_name,
+            url: image,
+          },
+        }
+      })
+
+      res.status(200).json(advertisingWithImages)
+    } catch {
+      res.status(500).json({ message: "Internal server error" })
+    }
+  },
+  async createAdvertising(req, res) {
+    const { file } = req
+
+    try {
+      file.originalname = `${file.originalname}_${Date.now()}`
+      const imageUrl = await uploadImageToStorage(file)
+
+      const advertising = await knex("advertising")
+        .insert({
+          image_name: file.originalname,
+          image: imageUrl,
+        })
+        .returning("*")
+
+      const { image_name, image, ...advertisingWithoutImage } =
+        advertising[0]
+
+      return res.status(201).json({
+        ...advertisingWithoutImage,
+        image: {
+          name: image_name,
+          url: image,
+        },
+      })
+    } catch {
+      res.status(500).json({ message: "Internal server error" })
+    }
+  },
+  async deleteAdvertising(req, res) {
+    const { id } = req.params
+
+    try {
+      await deleteFileFromStorage(req.advertising.image_name)
+
+      const deletedAdvertising = await knex("advertising")
+        .where({ id })
+        .del()
+        .returning("*")
+
+      if (!deletedAdvertising) {
+        return res
+          .status(500)
+          .json({ message: "Internal server error" })
+      }
+
+      res.status(204).json()
     } catch {
       res.status(500).json({ message: "Internal server error" })
     }

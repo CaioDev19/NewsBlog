@@ -57,7 +57,7 @@ module.exports = {
         posts: fomatedPosts,
       })
     } catch {
-      res.status(500).json({ message: "Erro" })
+      res.status(500).json({ message: "Internal server error" })
     }
   },
   async listPostByid(req, res) {
@@ -105,7 +105,7 @@ module.exports = {
         },
       })
     } catch {
-      res.status(500).json({ message: "Erro" })
+      res.status(500).json({ message: "Internal server error" })
     }
   },
 }

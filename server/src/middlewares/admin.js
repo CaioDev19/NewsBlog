@@ -1,5 +1,4 @@
 const { isInTheDataBase } = require("../utils/dataBase")
-const knex = require("../config/dataBase")
 
 module.exports = {
   async checkIfCategoryExists(req, res, next) {
@@ -17,8 +16,30 @@ module.exports = {
 
       req.category = data
       return next()
-    } catch (error) {
-      console.log(error)
+    } catch {
+      return res
+        .status(500)
+        .json({ message: "Internal server error" })
+    }
+  },
+  async checkIfAdvertisingExists(req, res, next) {
+    const { id } = req.params
+
+    try {
+      const { data, response } = await isInTheDataBase(
+        { id },
+        "advertising"
+      )
+
+      if (!response) {
+        return res
+          .status(404)
+          .json({ message: "Invalid advertising." })
+      }
+
+      req.advertising = data
+      return next()
+    } catch {
       return res
         .status(500)
         .json({ message: "Internal server error" })
