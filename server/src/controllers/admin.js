@@ -117,27 +117,6 @@ module.exports = {
       res.status(500).json({ message: "Internal server error" })
     }
   },
-  async listAdvertising(_req, res) {
-    try {
-      const advertising = await knex("advertising").select("*")
-
-      const advertisingWithImages = advertising.map((ad) => {
-        const { image_name, image, ...advertisingWithoutImage } = ad
-
-        return {
-          ...advertisingWithoutImage,
-          image: {
-            name: image_name,
-            url: image,
-          },
-        }
-      })
-
-      res.status(200).json(advertisingWithImages)
-    } catch {
-      res.status(500).json({ message: "Internal server error" })
-    }
-  },
   async createAdvertising(req, res) {
     const { file } = req
 

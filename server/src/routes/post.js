@@ -7,7 +7,7 @@ const {
 const express = require("express")
 const router = express.Router()
 
-router.get("/", checkIfThePageExists, listPosts)
+router.get("/", checkIfThePageExists("post"), listPosts)
 router.get("/:id", checkIfPostExists, listPostByid)
 
 module.exports = router
