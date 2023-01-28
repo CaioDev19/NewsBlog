@@ -8,7 +8,7 @@ interface Props {
 }
 
 export function HeroSection({ primary }: Props) {
-  const { data } = usePaginatedNews({})
+  const { data, isLoading } = usePaginatedNews({})
 
   return (
     <Sc.Container>
@@ -16,7 +16,16 @@ export function HeroSection({ primary }: Props) {
         <Sc.Banner src={banner} />
         {primary && (
           <Sc.LowerContent>
-            <Sc.LeftContent src={data?.data.posts?.[0]?.image.url} />
+            {isLoading ? (
+              <Sc.ContainerPlaceholder animation="glow">
+                <Sc.ImagePlaceholder />
+              </Sc.ContainerPlaceholder>
+            ) : (
+              <Sc.LeftContent
+                src={data?.data.posts?.[0]?.image.url}
+              />
+            )}
+
             <Sc.RightContent>
               <Sc.Title
                 type="title"

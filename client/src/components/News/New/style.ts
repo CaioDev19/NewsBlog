@@ -119,6 +119,10 @@ export const PrimaryImage = styled.img`
   object-fit: cover;
   max-height: 700px;
   border-radius: 25px;
+
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
+    min-height: 375px;
+  }
 `
 export const PrimaryNewsInfo = styled.div`
   display: flex;

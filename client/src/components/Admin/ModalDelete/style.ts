@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Colors } from "../../../global/theme"
+import { Button } from "../../../global/styles/Button"
 
 export const Overlay = styled.div`
   position: fixed;
@@ -13,6 +13,7 @@ export const Overlay = styled.div`
 
 export const Container = styled.div`
   position: fixed;
+  width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -28,23 +29,15 @@ export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 1.25rem;
+
+  ${Button} {
+    padding: 0.75em 2.25em;
+  }
 `
-export const Button = styled.button<{ color?: Colors }>`
-  all: unset;
-  box-sizing: border-box;
-  cursor: pointer;
+export const SButton = styled(Button)`
+  padding: 0.75em 2.25em;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 7rem;
-  padding: 0.5rem 1.25rem;
-  background-color: ${({ theme, color }) =>
-    theme.COLORS[color || "orange_red"]};
-
-  border-radius: 25px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  outline: none;
+  @media (max-width: 768px) {
+    width: 8rem;
+  }
 `

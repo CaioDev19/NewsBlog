@@ -11,7 +11,7 @@ export const Container = styled.header<{ tablet?: boolean }>`
       position: sticky;
       z-index: 1;
       top: 0;
-      padding: 1rem 0;
+      padding-bottom: 1rem;
     `}
 `
 export const ContentWrapper = styled(ContentContainer)`
@@ -47,7 +47,7 @@ export const SocialMedia = styled.svg`
 export const HamburguerMenu = styled(SocialMedia)`
   font-size: ${({ theme }) => theme.FONT_SIZE.exl};
   position: fixed;
-  top: 6rem;
+  top: 4.8rem;
   left: 1.5rem;
 `
 export const DateWrapper = styled.div`
@@ -63,6 +63,5 @@ export const MobileLogoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
   margin: 0 auto;
 `

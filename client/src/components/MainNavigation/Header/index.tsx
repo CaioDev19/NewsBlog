@@ -10,12 +10,14 @@ import { GiHamburgerMenu } from "react-icons/gi"
 import { MobileSideBar } from "../../SideBar"
 import { useToggle } from "../../../hooks/useToggle"
 import { useNavigate } from "react-router-dom"
+import { useRef } from "react"
 
 export function Header() {
   const [isOpen, toggle] = useToggle()
   const theme = useTheme()
   const { width } = useWindow()
   const navigate = useNavigate()
+  const currentDate = useRef(new Date().toLocaleDateString())
 
   return (
     <>
@@ -27,7 +29,7 @@ export function Header() {
             <>
               <Sc.DateWrapper>
                 <Text type="span" as="span" color="white" size="sml">
-                  25 / 05 / 2021
+                  {currentDate.current}
                 </Text>
               </Sc.DateWrapper>
               <Sc.Logo

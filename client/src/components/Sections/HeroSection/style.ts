@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { ContentContainer } from "../../../global/styles/ContentContainer"
 import { Text } from "../../../global/styles/Typography"
+import { Placeholder } from "react-bootstrap"
 
 export const Container = styled.section`
   width: 100%;
@@ -70,4 +71,28 @@ export const NewsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+`
+export const ContainerPlaceholder = styled(Placeholder)`
+  width: 60%;
+  min-height: 450px;
+  flex-grow: 1;
+
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.notbook}px) {
+    width: 100%;
+  }
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
+    min-height: 300px;
+  }
+`
+export const ImagePlaceholder = styled(Placeholder)`
+  width: 100%;
+  min-height: 450px;
+  border-radius: 25px;
+
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.notbook}px) {
+    width: 100%;
+  }
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
+    min-height: 300px;
+  }
 `

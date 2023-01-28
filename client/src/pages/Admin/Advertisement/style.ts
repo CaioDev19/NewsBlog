@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Button } from "../../../global/styles/Button"
 import { ContentContainer } from "../../../global/styles/ContentContainer"
 
 export const Container = styled(ContentContainer)`
@@ -10,10 +11,20 @@ export const Container = styled(ContentContainer)`
   margin-top: 2rem;
   margin-bottom: 2rem;
 `
+export const Form = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+`
 export const UpperContent = styled.div`
-  width: 60%;
+  width: 100%;
+  max-width: 1147px;
   height: 570px;
   padding: 0.75rem 0;
+  border-radius: 15px;
   background-color: ${({ theme }) => theme.COLORS.gray};
 `
 export const InnerWrapper = styled.label<{ noPadding: boolean }>`
@@ -67,4 +78,24 @@ export const Trash = styled.div`
   svg {
     font-size: ${({ theme }) => theme.FONT_SIZE.sml};
   }
+`
+export const WrapperErrorButton = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.3rem;
+  width: 100%;
+  max-width: 500px;
+
+  ${Button} {
+    width: 100%;
+  }
+`
+export const AdsContainer = styled.div`
+  width: 100%;
+  max-width: 1147px;
+  display: flex;
+  align-items: stretch;
+  gap: 1.25rem;
 `

@@ -19,3 +19,15 @@ export interface News {
   currentPage: number
   posts: Article[]
 }
+export interface Advertising {
+  id: string
+  image: {
+    url: string
+    name: string
+  }
+}
+export interface Advertisings {
+  totalPages: number
+  currentPage: number
+  advertisings: Advertising[]
+}

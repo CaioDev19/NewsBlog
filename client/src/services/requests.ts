@@ -1,6 +1,12 @@
 import { api } from "./api"
 import { AxiosResponse } from "axios"
-import { Article, Category, News } from "../interfaces/api"
+import {
+  Advertising,
+  Advertisings,
+  Article,
+  Category,
+  News,
+} from "../interfaces/api"
 import { QueryFunctionContext } from "@tanstack/react-query"
 
 export function getNews({
@@ -49,4 +55,20 @@ export function updateNew({
       "Content-Type": "multipart/form-data",
     },
   })
+}
+export function createAdvertising(
+  data: FormData
+): Promise<AxiosResponse<Advertising>> {
+  return api.post("/admin/advertising", data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  })
+}
+export function getAdvertising({
+  queryKey,
+}: QueryFunctionContext): Promise<AxiosResponse<Advertisings>> {
+  return api.get(
+    `/advertising/?page=${queryKey[1]}&limit=${queryKey[2]}`
+  )
 }

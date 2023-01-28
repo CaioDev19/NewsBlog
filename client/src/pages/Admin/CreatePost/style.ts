@@ -23,6 +23,7 @@ export const UpperContent = styled.div`
   width: 100%;
   height: 570px;
   padding: 0.75rem 0;
+  border-radius: 15px;
   background-color: ${({ theme }) => theme.COLORS.gray};
 `
 export const InnerWrapper = styled.label<{ noPadding: boolean }>`
