@@ -43,5 +43,6 @@ export function usePaginetedAds({
     currentPage: page,
     fetchNextPage,
     fetchPreviousPage,
+    goToPage: setPage,
   }
 }

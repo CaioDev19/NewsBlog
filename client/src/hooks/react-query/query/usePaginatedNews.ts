@@ -51,5 +51,6 @@ export function usePaginatedNews({
     currentPage: page,
     fetchNextPage,
     fetchPreviousPage,
+    goToPage: setPage,
   }
 }
