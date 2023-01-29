@@ -29,15 +29,12 @@ export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 1.25rem;
-
-  ${Button} {
-    padding: 0.75em 2.25em;
-  }
 `
 export const SButton = styled(Button)`
   padding: 0.75em 2.25em;
 
   @media (max-width: 768px) {
+    padding: 0.5em 2em;
     width: 8rem;
   }
 `

@@ -1,7 +1,5 @@
 import * as Sc from "./style"
 import { Text } from "../../../global/styles/Typography"
-import { IoCloudUploadOutline } from "react-icons/io5"
-import { FaTrash } from "react-icons/fa"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { AdvertisingSchema } from "../../../global/validators/advertising"
@@ -10,12 +8,17 @@ import { Spinner } from "react-bootstrap"
 import { Button } from "../../../global/styles/Button"
 import { useCreateAdvertising } from "../../../hooks/react-query/mutation/useCreateAdvertising"
 import { usePaginetedAds } from "../../../hooks/react-query/query/usePaginetedAds"
+import { ImageDisplay } from "../../../components/Admin/ImageDisplay"
+import { Error } from "../../../components/Error"
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
+import { Ads } from "../../../components/Admin/Ads"
 
 export function Advertisement() {
   const {
     handleSubmit,
     register,
     resetField,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(AdvertisingSchema),
@@ -29,83 +32,55 @@ export function Advertisement() {
     isError,
     addImage,
     removeImage,
-  } = useImageAsBackground()
+  } = useImageAsBackground(resetField)
   const imageRegister = register("image")
   const {
     mutate,
     isLoading,
     isError: isAdvertisingError,
   } = useCreateAdvertising()
-  const { data: ads, isLoading: isAdsLoading } = usePaginetedAds({})
+  const {
+    data: ads,
+    isSuccess: isAdsSuccess,
+    fetchNextPage,
+    fetchPreviousPage,
+    currentPage,
+  } = usePaginetedAds({
+    limit: 6,
+  })
 
   function handleSucessSubmit(data: any) {
     const formData = new FormData()
     formData.append("image", data.image[0])
 
     mutate(formData)
+    removeImage()
+    reset()
   }
-  console.log(ads)
+
+  function addImageOnDisplay(e: React.ChangeEvent<HTMLInputElement>) {
+    imageRegister.onChange(e)
+    addImage(e.target.files)
+  }
+
+  function removeImageFromDisplay(
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) {
+    removeImage(e)
+  }
 
   return (
     <Sc.Container>
       <Sc.Form onSubmit={handleSubmit(handleSucessSubmit)}>
-        <Sc.UpperContent>
-          <Sc.InnerWrapper noPadding={!!image}>
-            {isImageLoading && (
-              <Spinner as="div" animation="border" variant="danger" />
-            )}
-            {(isError || errors.image?.type === "custom") && (
-              <Text
-                type="span"
-                as="span"
-                size="rgl"
-                color="orange_red"
-              >
-                Arquivo não suportado!
-              </Text>
-            )}
-            {!image ? (
-              <>
-                <Sc.IconContainer>
-                  <IoCloudUploadOutline />
-                  <Text type="span" as="span" size="rgl" weight="str">
-                    Clique para adicionar uma imagem
-                  </Text>
-                </Sc.IconContainer>
-                <Text
-                  type="paragraph"
-                  as="p"
-                  size="rgl"
-                  color="gray_200"
-                  position="left"
-                >
-                  Recomendação: Use JPG, JPEG, SVG, PNG de alta
-                  qualidade, GIF ou TIFF com menos de 20 MB
-                </Text>
-              </>
-            ) : (
-              <>
-                <Sc.ImageUploaded src={image} />
-                <Sc.Trash
-                  onClick={(e) => {
-                    resetField("image")
-                    removeImage(e)
-                  }}
-                >
-                  <FaTrash />
-                </Sc.Trash>
-              </>
-            )}
-            <Sc.Input
-              type="file"
-              {...imageRegister}
-              onChange={(e) => {
-                imageRegister.onChange(e)
-                addImage(e.target.files, resetField)
-              }}
-            />
-          </Sc.InnerWrapper>
-        </Sc.UpperContent>
+        <ImageDisplay
+          image={image}
+          isLoading={isImageLoading}
+          isError={isError || errors.image?.type === "custom"}
+          ref={imageRegister.ref}
+          register={imageRegister}
+          addImage={addImageOnDisplay}
+          removeImage={removeImageFromDisplay}
+        />
         <Sc.WrapperErrorButton>
           {isAdvertisingError && (
             <Text type="span" as="span" size="lrg" color="orange_red">
@@ -127,8 +102,25 @@ export function Advertisement() {
         </Sc.WrapperErrorButton>
       </Sc.Form>
       <Sc.AdsContainer>
-        {!isAdsLoading && <div>cu</div>}
+        {isAdsSuccess ? (
+          <Ads data={ads.data} />
+        ) : (
+          <Error
+            size="lrg"
+            message="Não foi possível carregar os anúncios!"
+          />
+        )}
       </Sc.AdsContainer>
+      <Sc.ArrowsContainer>
+        <Sc.Arrow onClick={fetchPreviousPage}>
+          {currentPage > 1 && <FaArrowLeft />}
+        </Sc.Arrow>
+        <Sc.Arrow onClick={fetchNextPage}>
+          {isAdsSuccess &&
+            currentPage < ads.data.totalPages &&
+            ads.data.totalPages > 0 && <FaArrowRight />}
+        </Sc.Arrow>
+      </Sc.ArrowsContainer>
     </Sc.Container>
   )
 }

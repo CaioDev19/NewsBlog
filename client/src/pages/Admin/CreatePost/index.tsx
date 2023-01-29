@@ -2,8 +2,6 @@ import * as Sc from "./style"
 import { Spinner } from "react-bootstrap"
 import { useImageAsBackground } from "../../../hooks/useImageAsBackground"
 import { Text } from "../../../global/styles/Typography"
-import { IoCloudUploadOutline } from "react-icons/io5"
-import { FaTrash } from "react-icons/fa"
 import { useForm } from "react-hook-form"
 import { Input } from "../../../components/Form/Input"
 import { Select } from "../../../components/Form/Select"
@@ -17,19 +15,13 @@ import { Category } from "../../../interfaces/api"
 import { useParams } from "react-router-dom"
 import { useNew } from "../../../hooks/react-query/query/useNew"
 import { useUpdatePost } from "../../../hooks/react-query/mutation/useUpdatePost"
+import { ImageDisplay } from "../../../components/Admin/ImageDisplay"
 
 interface Props {
   type: "create" | "edit"
 }
 
 export function CreatePost({ type }: Props) {
-  const {
-    image,
-    isLoading: isImageLoading,
-    isError,
-    addImage,
-    removeImage,
-  } = useImageAsBackground()
   const {
     handleSubmit,
     control,
@@ -46,6 +38,13 @@ export function CreatePost({ type }: Props) {
       image: null as FileList | null,
     },
   })
+  const {
+    image,
+    isLoading: isImageLoading,
+    isError,
+    addImage,
+    removeImage,
+  } = useImageAsBackground(resetField)
   const {
     mutate: mutateCreate,
     isLoading: isCreateLoading,
@@ -113,6 +112,17 @@ export function CreatePost({ type }: Props) {
     setBody(body)
   }
 
+  function addImageOnDisplay(e: React.ChangeEvent<HTMLInputElement>) {
+    imageRegister.onChange(e)
+    addImage(e.target.files)
+  }
+
+  function removeImageFromDisplay(
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) {
+    removeImage(e)
+  }
+
   useEffect(() => {
     if (type === "edit" && isSuccess) {
       setValue("title", data?.data.title)
@@ -132,72 +142,15 @@ export function CreatePost({ type }: Props) {
             handleErrorSubmit
           )}
         >
-          <Sc.UpperContent>
-            <Sc.InnerWrapper noPadding={!!image}>
-              {isImageLoading && (
-                <Spinner
-                  as="div"
-                  animation="border"
-                  variant="danger"
-                />
-              )}
-              {(isError || errors.image?.type === "custom") && (
-                <Text
-                  type="span"
-                  as="span"
-                  size="rgl"
-                  color="orange_red"
-                >
-                  Arquivo não suportado!
-                </Text>
-              )}
-              {!image ? (
-                <>
-                  <Sc.IconContainer>
-                    <IoCloudUploadOutline />
-                    <Text
-                      type="span"
-                      as="span"
-                      size="rgl"
-                      weight="str"
-                    >
-                      Clique para adicionar uma imagem
-                    </Text>
-                  </Sc.IconContainer>
-                  <Text
-                    type="paragraph"
-                    as="p"
-                    size="rgl"
-                    color="gray_200"
-                    position="left"
-                  >
-                    Recomendação: Use JPG, JPEG, SVG, PNG de alta
-                    qualidade, GIF ou TIFF com menos de 20 MB
-                  </Text>
-                </>
-              ) : (
-                <>
-                  <Sc.ImageUploaded src={image} />
-                  <Sc.Trash
-                    onClick={(e) => {
-                      resetField("image")
-                      removeImage(e)
-                    }}
-                  >
-                    <FaTrash />
-                  </Sc.Trash>
-                </>
-              )}
-              <Sc.Input
-                type="file"
-                {...imageRegister}
-                onChange={(e) => {
-                  imageRegister.onChange(e)
-                  addImage(e.target.files, resetField)
-                }}
-              />
-            </Sc.InnerWrapper>
-          </Sc.UpperContent>
+          <ImageDisplay
+            image={image}
+            isLoading={isImageLoading}
+            isError={isError || errors.image?.type === "custom"}
+            ref={imageRegister.ref}
+            register={imageRegister}
+            addImage={addImageOnDisplay}
+            removeImage={removeImageFromDisplay}
+          />
           <Sc.LowerContent>
             <Input
               name="title"

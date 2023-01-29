@@ -52,10 +52,9 @@ export function News({ size, category }: Props) {
             {currentPage > 1 && <FaArrowLeft />}
           </Sc.Arrow>
           <Sc.Arrow onClick={fetchNextPage}>
-            {currentPage !==
-              (isSuccess ? news?.data.totalPages : 1) && (
-              <FaArrowRight />
-            )}
+            {isSuccess &&
+              currentPage < news.data.totalPages &&
+              news.data.totalPages > 0 && <FaArrowRight />}
           </Sc.Arrow>
         </Sc.ArrowsContainer>
       )}

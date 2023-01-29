@@ -1,26 +1,23 @@
 import { useState } from "react"
 import { MouseEvent } from "react"
+import { UseFormResetField } from "react-hook-form"
 
 interface ReturnType {
   image: string | null
   isLoading: boolean
   isError: boolean
-  addImage: (
-    imageFile: FileList | null,
-    reset: (x: any) => any
-  ) => void
+  addImage: (imageFile: FileList | null) => void
   removeImage: (e?: MouseEvent<HTMLDivElement>) => void
 }
 
-export function useImageAsBackground(): ReturnType {
+export function useImageAsBackground(
+  reset: UseFormResetField<any>
+): ReturnType {
   const [image, setImage] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
-  function addImage(
-    imageFile: FileList | null,
-    reset: (x: any) => any
-  ): void {
+  function addImage(imageFile: FileList | null): void {
     const validImageTypes = [
       "image/jpeg",
       "image/png",
@@ -59,6 +56,7 @@ export function useImageAsBackground(): ReturnType {
 
   function removeImage(e?: MouseEvent<HTMLDivElement>): void {
     if (e) e.preventDefault()
+    reset("image")
     setIsError(false)
     setImage(null)
   }

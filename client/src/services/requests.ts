@@ -72,3 +72,8 @@ export function getAdvertising({
     `/advertising/?page=${queryKey[1]}&limit=${queryKey[2]}`
   )
 }
+export function deleteAdvertising(
+  id: string | number
+): Promise<AxiosResponse> {
+  return api.delete(`admin/advertising/${id}`)
+}
