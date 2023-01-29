@@ -12,11 +12,17 @@ const fadeIn = keyframes`
 
 export const Image = styled.img`
   width: 60%;
+  min-width: 320px;
   border-radius: 25px;
   object-fit: cover;
   max-height: 450px;
   flex-grow: 1;
   animation: ${fadeIn} 1s ease-in-out;
+
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.notbook}px) {
+    width: 100%;
+    height: 230px;
+  }
 `
 export const ContainerPlaceholder = styled(Placeholder)`
   width: 60%;

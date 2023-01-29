@@ -32,19 +32,6 @@ export const Ad = styled.img`
   object-fit: cover;
   border-radius: 25px;
 `
-export const MoreNews = styled(Ad)`
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-
-  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
-    transform: none;
-  }
-`
-
 export const SubTittle = styled(Text)`
   text-transform: uppercase;
   border-bottom: 2px solid;

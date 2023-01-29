@@ -11,7 +11,7 @@ interface Props {
   categoryId?: string | number
 }
 
-export function usePaginetedAds({
+export function usePaginatedAds({
   initialPage = 1,
   limit = 5,
   enabled = true,

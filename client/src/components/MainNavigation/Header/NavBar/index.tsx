@@ -4,18 +4,16 @@ import { SlArrowDown } from "react-icons/sl"
 import { useToggle } from "../../../../hooks/useToggle"
 import { motion, AnimatePresence } from "framer-motion"
 import { useCategories } from "../../../../hooks/react-query/query/useCategories"
-import { useNavigate } from "react-router-dom"
 
 export function NavBar() {
   const { isSuccess, data } = useCategories()
   const [isOpen, toggle] = useToggle()
-  const navigate = useNavigate()
 
   return (
     <Sc.ContainerNav>
       <ContentContainer>
         <Sc.Nav>
-          <Sc.Link onClick={() => navigate("/")}>HOME</Sc.Link>
+          <Sc.Link to="/">HOME</Sc.Link>
           <Sc.LiRelative>
             <Sc.Link as="span" onClick={toggle}>
               NOTÍCIAS <SlArrowDown />
@@ -32,11 +30,9 @@ export function NavBar() {
                     data?.data.map((category) => (
                       <Sc.Link
                         key={category.id}
+                        to={`/notícia/categoria/${category.id}`}
                         onClick={() => {
                           toggle()
-                          navigate(
-                            `/notícia/categoria/${category.id}`
-                          )
                         }}
                       >
                         {category.name}
@@ -46,7 +42,7 @@ export function NavBar() {
               )}
             </AnimatePresence>
           </Sc.LiRelative>
-          <Sc.Link>SOBRE NÓS</Sc.Link>
+          <Sc.Link to="/">SOBRE NÓS</Sc.Link>
         </Sc.Nav>
       </ContentContainer>
     </Sc.ContainerNav>

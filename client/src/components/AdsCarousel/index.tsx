@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { usePaginetedAds } from "../../hooks/react-query/query/usePaginetedAds"
+import { usePaginatedAds } from "../../hooks/react-query/query/usePaginatedAds"
 import { Error } from "../Error"
 import * as Sc from "./style"
 
@@ -12,7 +12,7 @@ export function AdsCarousel() {
     goToPage,
     fetchPreviousPage,
     currentPage,
-  } = usePaginetedAds({ limit: 1 })
+  } = usePaginatedAds({ limit: 1 })
 
   useEffect(() => {
     const intervalId = setInterval(() => {

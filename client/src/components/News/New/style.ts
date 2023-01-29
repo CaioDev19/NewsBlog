@@ -98,7 +98,7 @@ export const New = styled.div<{ size?: Size }>`
 
     ${NewImage} {
       width: 100%;
-      height: 370px;
+      height: 280px;
       flex-shrink: 1;
     }
 

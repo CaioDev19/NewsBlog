@@ -8,7 +8,6 @@ import { GiNewspaper } from "react-icons/gi"
 import { BsInfoCircle } from "react-icons/bs"
 import { useToggle } from "../../hooks/useToggle"
 import { useCategories } from "../../hooks/react-query/query/useCategories"
-import { useNavigate } from "react-router-dom"
 
 interface Props {
   handleToggle: () => void
@@ -17,7 +16,6 @@ interface Props {
 
 export function MobileSideBar({ handleToggle, isOpen }: Props) {
   const [isMenuOpen, toggle] = useToggle()
-  const navigate = useNavigate()
   const { isSuccess, data } = useCategories()
   const variants = {
     open: { opacity: 1, x: 0 },
@@ -38,7 +36,7 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
           <Sc.UpperContent>
             <Sc.Logo src={logo} alt="logo" />
             <Sc.Nav>
-              <Sc.Link onClick={() => navigate("/")}>
+              <Sc.Link to="/">
                 <AiOutlineHome /> Home
               </Sc.Link>
               <Sc.LiRelative>
@@ -55,23 +53,19 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
                     >
                       {isSuccess &&
                         data?.data.map((category) => (
-                          <Sc.Link
+                          <Sc.LinkNewsMenu
                             key={category.id}
-                            onClick={() => {
-                              toggle()
-                              navigate(
-                                `/notícia/categoria/${category.id}`
-                              )
-                            }}
+                            to={`/notícia/categoria/${category.id}`}
+                            onClick={toggle}
                           >
                             {category.name}
-                          </Sc.Link>
+                          </Sc.LinkNewsMenu>
                         ))}
                     </Sc.NewsMenu>
                   )}
                 </AnimatePresence>
               </Sc.LiRelative>
-              <Sc.Link>
+              <Sc.Link to="/">
                 <BsInfoCircle /> Sobre Nós
               </Sc.Link>
             </Sc.Nav>

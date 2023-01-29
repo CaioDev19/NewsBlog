@@ -9,6 +9,7 @@ import { AiOutlineArrowUp } from "react-icons/ai"
 import { scrollToTop } from "../../../utils/window"
 import { NewsLetterSchema } from "../../../global/validators/newsLetterSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useNavigate } from "react-router-dom"
 
 export function Footer() {
   const { handleSubmit, control } = useForm({
@@ -18,6 +19,7 @@ export function Footer() {
       email: "",
     },
   })
+  const navigate = useNavigate()
 
   function handleSucessSubmit(data: any) {
     console.log(data)
@@ -31,7 +33,11 @@ export function Footer() {
     <Sc.Container>
       <Sc.MainContainer>
         <Sc.InfoContainer>
-          <Sc.Logo src={logo} alt="logo" />
+          <Sc.Logo
+            src={logo}
+            alt="logo"
+            onClick={() => navigate("/")}
+          />
           <Text
             type="paragraph"
             size="rgl"

@@ -9,10 +9,10 @@ import { Size } from "../../interfaces/component"
 
 interface Props {
   size?: Size
-  category?: string | number
+  categoryId?: string | number
 }
 
-export function News({ size, category }: Props) {
+export function News({ size, categoryId }: Props) {
   const newsRef = useRef<HTMLDivElement>(null)
   const limit = size === "lrg" ? 5 : 3
   const {
@@ -26,7 +26,7 @@ export function News({ size, category }: Props) {
   } = usePaginatedNews({
     limit,
     ref: newsRef,
-    categoryId: category || undefined,
+    categoryId: categoryId || undefined,
   })
 
   if (isError) {

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 import styled from "styled-components"
 
 export const StyledMobileSideBar = styled.div`
@@ -61,7 +62,7 @@ export const DateWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
 `
-export const Link = styled.li`
+export const Link = styled(NavLink)`
   text-decoration: none;
   list-style-type: none;
 
@@ -87,6 +88,9 @@ export const Link = styled.li`
   &:hover {
     color: ${({ theme }) => theme.COLORS.orange_red};
   }
+`
+export const LinkNewsMenu = styled(Link)`
+  border: none;
 `
 export const LiRelative = styled.li`
   position: relative;

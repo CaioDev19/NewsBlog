@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 import styled from "styled-components"
 import { Text } from "../../../../global/styles/Typography"
 
@@ -20,7 +21,7 @@ export const Nav = styled.ul`
   ${Text} {
   }
 `
-export const Link = styled.li`
+export const Link = styled(NavLink)`
   text-decoration: none;
   list-style-type: none;
   cursor: pointer;

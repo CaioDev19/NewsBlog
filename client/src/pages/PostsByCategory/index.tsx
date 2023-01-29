@@ -10,7 +10,7 @@ export function PostsByCategory() {
     <>
       <HeroSection />
       <Sc.Container>
-        <News category={categoryId} size="lrg" />
+        <News categoryId={categoryId} size="lrg" />
       </Sc.Container>
     </>
   )

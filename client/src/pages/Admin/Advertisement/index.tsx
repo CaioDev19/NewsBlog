@@ -7,7 +7,7 @@ import { useImageAsBackground } from "../../../hooks/useImageAsBackground"
 import { Spinner } from "react-bootstrap"
 import { Button } from "../../../global/styles/Button"
 import { useCreateAdvertising } from "../../../hooks/react-query/mutation/useCreateAdvertising"
-import { usePaginetedAds } from "../../../hooks/react-query/query/usePaginetedAds"
+import { usePaginatedAds } from "../../../hooks/react-query/query/usePaginatedAds"
 import { ImageDisplay } from "../../../components/Admin/ImageDisplay"
 import { Error } from "../../../components/Error"
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
@@ -45,7 +45,7 @@ export function Advertisement() {
     fetchNextPage,
     fetchPreviousPage,
     currentPage,
-  } = usePaginetedAds({
+  } = usePaginatedAds({
     limit: 6,
   })
 
