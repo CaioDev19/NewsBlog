@@ -7,7 +7,7 @@ import { Editor } from "../../Admin/Editor"
 import { useAuth } from "../../../hooks/useAuth"
 import { BsFillTrashFill } from "react-icons/bs"
 import { FaPencilAlt } from "react-icons/fa"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useTheme } from "styled-components"
 import { useDeletePost } from "../../../hooks/react-query/mutation/useDeletePost"
 import { Spinner } from "react-bootstrap"
@@ -19,10 +19,12 @@ interface Props {
   news: Article
   size?: Size
   primary?: boolean
+  variant?: "light" | "dark"
 }
 
-export function New({ news, size, primary }: Props) {
+export function New({ news, size, primary, variant }: Props) {
   const { url, width } = useWindow()
+  const { id: idUrl } = useParams()
   const { token } = useAuth()
   const theme = useTheme()
   const navigate = useNavigate()
@@ -66,7 +68,7 @@ export function New({ news, size, primary }: Props) {
             as="span"
             size={width! > theme.BREAKPOINTS.mobile ? "lrg" : "rgl"}
             position="left"
-            color="light_blue"
+            color="blue"
             pointer
           >
             {news.category.name}
@@ -95,7 +97,11 @@ export function New({ news, size, primary }: Props) {
   return (
     <Sc.New
       size={size}
-      onClick={() => navigate(`/notícia/${news.id}`)}
+      onClick={() => {
+        if (Number(idUrl) === news.id) return
+        console.log("entrou")
+        navigate(`/notícia/${news.id}`)
+      }}
     >
       <Sc.NewImage
         size={size}
@@ -104,7 +110,14 @@ export function New({ news, size, primary }: Props) {
       />
       <Sc.NewInfo>
         <Sc.Flex>
-          <Text type="span" as="span" size="lrg" position="center">
+          <Text
+            type="span"
+            as="span"
+            size="lrg"
+            weight={variant === "light" ? "str" : "wek"}
+            position="center"
+            color={variant === "light" ? "gray_100" : "black"}
+          >
             {news.title}
           </Text>
           <Text
@@ -112,7 +125,8 @@ export function New({ news, size, primary }: Props) {
             as="span"
             size="rgl"
             position="center"
-            color="light_blue"
+            weight={variant === "light" ? "str" : "wek"}
+            color="blue"
             pointer
           >
             {news.category.name}
@@ -131,7 +145,7 @@ export function New({ news, size, primary }: Props) {
         <Text
           type="span"
           as="span"
-          color="gray_200"
+          color={variant === "light" ? "gray_100" : "gray_200"}
           weight="str"
           size={size === "lrg" || size === "mdn" ? "rgl" : "sml"}
         >

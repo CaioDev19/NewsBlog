@@ -5,6 +5,7 @@ export const Container = styled.div`
   position: fixed;
   bottom: 1rem;
   right: 2.5rem;
+  z-index: 5;
 `
 
 export const AdmBtn = styled.svg`

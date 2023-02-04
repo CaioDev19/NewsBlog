@@ -9,6 +9,7 @@ interface Props {
   enabled?: boolean
   ref?: RefObject<HTMLDivElement>
   categoryId?: string | number
+  keepPreviousData?: boolean
 }
 export function usePaginatedNews({
   initialPage = 1,
@@ -16,18 +17,20 @@ export function usePaginatedNews({
   enabled = true,
   ref,
   categoryId,
+  keepPreviousData = false,
 }: Props) {
   const [page, setPage] = useState(() => initialPage)
 
-  const queryKey = categoryId
-    ? ["news", page, limit, categoryId]
-    : ["news", page, limit]
+  const queryKey =
+    typeof categoryId !== "undefined"
+      ? ["news", page, limit, categoryId]
+      : ["news", page, limit]
 
   const queryFn = categoryId ? getNewByCategory : getNews
 
   const query = useQuery(queryKey, queryFn, {
     enabled,
-    keepPreviousData: true,
+    keepPreviousData,
   })
 
   const fetchNextPage = useCallback(() => {

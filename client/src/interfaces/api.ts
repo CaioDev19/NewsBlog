@@ -1,9 +1,9 @@
 export type Category = {
-  id: string
+  id: number
   name: string
 }
 export interface Article {
-  id: string
+  id: number
   title: string
   content: string
   summary: string
@@ -20,7 +20,7 @@ export interface News {
   posts: Article[]
 }
 export interface Advertising {
-  id: string
+  id: number
   image: {
     url: string
     name: string

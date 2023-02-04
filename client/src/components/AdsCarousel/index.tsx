@@ -12,7 +12,7 @@ export function AdsCarousel() {
     goToPage,
     fetchPreviousPage,
     currentPage,
-  } = usePaginatedAds({ limit: 1 })
+  } = usePaginatedAds({ limit: 1, keepPreviousData: true })
 
   useEffect(() => {
     const intervalId = setInterval(() => {

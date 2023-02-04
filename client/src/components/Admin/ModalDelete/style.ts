@@ -8,7 +8,7 @@ export const Overlay = styled.div`
   right: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+  z-index: 6;
 `
 
 export const Container = styled.div`
@@ -17,7 +17,7 @@ export const Container = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 7;
 
   display: flex;
   flex-direction: column;

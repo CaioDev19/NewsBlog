@@ -8,5 +8,6 @@ interface Props {
 export function useNew({ id, enabled = true }: Props) {
   return useQuery(["new", id], getNew, {
     enabled,
+    cacheTime: 0,
   })
 }

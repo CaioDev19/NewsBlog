@@ -7,8 +7,8 @@ interface Props {
   initialPage?: number
   limit?: number
   enabled?: boolean
+  keepPreviousData?: boolean
   ref?: RefObject<HTMLDivElement>
-  categoryId?: string | number
 }
 
 export function usePaginatedAds({
@@ -16,6 +16,7 @@ export function usePaginatedAds({
   limit = 5,
   enabled = true,
   ref,
+  keepPreviousData = false,
 }: Props) {
   const [page, setPage] = useState(() => initialPage)
 
@@ -24,7 +25,7 @@ export function usePaginatedAds({
     getAdvertising,
     {
       enabled,
-      keepPreviousData: true,
+      keepPreviousData,
     }
   )
 

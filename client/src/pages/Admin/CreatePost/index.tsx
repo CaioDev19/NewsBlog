@@ -79,7 +79,7 @@ export function CreatePost({ type }: Props) {
     formData.append("image", data.image[0])
     formData.append("title", data.title)
     formData.append("summary", data.summary)
-    formData.append("category_id", categoryId)
+    formData.append("category_id", String(categoryId))
     formData.append("content", body)
 
     if (type === "create") {

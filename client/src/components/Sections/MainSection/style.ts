@@ -37,8 +37,8 @@ export const SubTittle = styled(Text)`
   border-bottom: 2px solid;
   border-image: linear-gradient(
       to right,
-      ${({ theme }) => theme.COLORS.blue_100},
-      ${({ theme }) => theme.COLORS.light_blue}
+      ${({ theme }) => theme.COLORS.orange_red},
+      ${({ theme }) => theme.COLORS.orange_light}
     )
     1;
   align-self: flex-start;

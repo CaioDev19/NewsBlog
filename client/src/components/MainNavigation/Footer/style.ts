@@ -1,21 +1,27 @@
 import styled from "styled-components"
 import { ContentContainer } from "../../../global/styles/ContentContainer"
 import { Text } from "../../../global/styles/Typography"
-import { Input } from "../../Form/Input"
 
 export const Container = styled.footer`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
 
+  position: relative;
+
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.black_200};
-  padding: 1rem 0;
+  padding-top: 2.5rem;
+  padding-bottom: 3.75rem;
+
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
+    flex-direction: column;
+  }
 `
 export const Logo = styled.img`
   width: 150px;
+  object-fit: cover;
   cursor: pointer;
 `
 export const SocialMediaWrapper = styled.div`
@@ -58,41 +64,31 @@ export const ArrowUp = styled.svg`
     color: ${({ theme }) => theme.COLORS.gray_200};
   }
 `
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-`
-export const SInput = styled(Input)`
-  border: 0;
-  background-color: transparent;
-  border-bottom: 1px solid ${({ theme }) => theme.COLORS.white};
-  background-color: transparent;
-  color: ${({ theme }) => theme.COLORS.white};
-
-  &::placeholder {
-    color: ${({ theme }) => theme.COLORS.white};
-    text-transform: uppercase;
-    text-align: center;
-    opacity: 0.8;
-  }
-`
 export const ContainerBackTop = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  position: absolute;
+  bottom: 2rem;
+  right: 8rem;
 
   gap: 1.5rem;
 
   ${Text} {
     margin: 0;
   }
+
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
+    position: relative;
+    right: 0;
+    bottom: 0;
+  }
 `
 export const MainContainer = styled(ContentContainer)`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
+  justify-content: center;
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
     flex-direction: column;

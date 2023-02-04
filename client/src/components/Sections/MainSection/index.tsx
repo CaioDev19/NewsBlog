@@ -5,7 +5,6 @@ import { New } from "../../News/New"
 import * as Sc from "./style"
 import { CardSkeleton } from "../../Skeletons/CardSkeleton"
 import { Error } from "../../Error"
-import { useEffect, useRef } from "react"
 import { Ads } from "../../Ads"
 
 export function MainSection({ primary }: { primary?: boolean }) {
@@ -15,14 +14,9 @@ export function MainSection({ primary }: { primary?: boolean }) {
     isLoading,
     isError,
   } = useNew({
-    id: id || "1",
+    id: id!,
     enabled: primary || false,
   })
-  const randomCategory = useRef(Math.floor(Math.random() * 6))
-
-  useEffect(() => {
-    randomCategory.current = Math.floor(Math.random() * 6)
-  }, [id])
 
   if (primary && isError) {
     return <Error message="Não foi possível carregar a notícia" />
@@ -48,11 +42,7 @@ export function MainSection({ primary }: { primary?: boolean }) {
         >
           {primary ? "Mais notícias" : "Patrocinadores"}
         </Sc.SubTittle>
-        {primary ? (
-          <News categoryId={randomCategory.current} size="mdn" />
-        ) : (
-          <Ads />
-        )}
+        {primary ? <News size="mdn" randomize /> : <Ads />}
       </Sc.AdContainer>
     </Sc.MainContainer>
   )

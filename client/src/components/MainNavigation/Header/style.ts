@@ -9,7 +9,7 @@ export const Container = styled.header<{ tablet?: boolean }>`
     tablet &&
     css`
       position: sticky;
-      z-index: 1;
+      z-index: 5;
       top: 0;
       padding-bottom: 1rem;
     `}

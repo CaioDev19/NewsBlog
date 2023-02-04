@@ -2,16 +2,36 @@ import styled from "styled-components"
 import { ContentContainer } from "../../../global/styles/ContentContainer"
 import { Text } from "../../../global/styles/Typography"
 
-export const Container = styled.section`
+export const Container = styled.section<{ image: string }>`
   width: 100%;
-  background-color: ${({ theme }) => theme.COLORS.gray_100};
+  background-image: url(${({ image }) => image});
+  background-size: cover;
+  background-repeat: no-repeat;
   padding: 1.75rem 0;
+
+  position: relative;
+
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
+    background-position: center;
+  }
+`
+export const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  z-index: 1;
 `
 export const ContentWrapper = styled(ContentContainer)`
   display: flex;
   align-items: center;
   gap: 2.5rem;
   flex-direction: column;
+  position: relative;
+  z-index: 2;
 `
 export const Banner = styled.img`
   width: 100%;
@@ -58,8 +78,8 @@ export const Title = styled(Text)`
   border-bottom: 2px solid;
   border-image: linear-gradient(
       to right,
-      ${({ theme }) => theme.COLORS.blue_100},
-      ${({ theme }) => theme.COLORS.light_blue}
+      ${({ theme }) => theme.COLORS.orange_red},
+      ${({ theme }) => theme.COLORS.orange}
     )
     1;
   align-self: flex-start;
