@@ -14,13 +14,16 @@ export const Image = styled.img`
   width: 60%;
   min-width: 320px;
   border-radius: 25px;
-  object-fit: cover;
+  object-fit: fill;
   max-height: 450px;
   flex-grow: 1;
   animation: ${fadeIn} 1s ease-in-out;
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.notbook}px) {
     width: 100%;
+    height: 430px;
+  }
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
     height: 230px;
   }
 `

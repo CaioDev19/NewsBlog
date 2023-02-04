@@ -63,6 +63,7 @@ export const DateWrapper = styled.div`
   gap: 0.5rem;
 `
 export const Link = styled(NavLink)`
+  width: 100%;
   text-decoration: none;
   list-style-type: none;
 
