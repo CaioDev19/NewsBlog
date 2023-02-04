@@ -55,7 +55,7 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
                         data?.data.map((category) => (
                           <Sc.LinkNewsMenu
                             key={category.id}
-                            to={`/notícia/categoria/${category.id}`}
+                            to={`/noticia/categoria/${category.id}`}
                             onClick={toggle}
                           >
                             {category.name}
@@ -65,7 +65,7 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
                   )}
                 </AnimatePresence>
               </Sc.LiRelative>
-              <Sc.Link to="/">
+              <Sc.Link to="/sobre-nos">
                 <BsInfoCircle /> Sobre Nós
               </Sc.Link>
             </Sc.Nav>

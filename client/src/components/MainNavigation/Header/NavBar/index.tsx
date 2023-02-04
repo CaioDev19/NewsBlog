@@ -30,7 +30,7 @@ export function NavBar() {
                     data?.data.map((category) => (
                       <Sc.Link
                         key={category.id}
-                        to={`/notícia/categoria/${category.id}`}
+                        to={`/noticia/categoria/${category.id}`}
                         onClick={() => {
                           toggle()
                         }}
@@ -42,7 +42,7 @@ export function NavBar() {
               )}
             </AnimatePresence>
           </Sc.LiRelative>
-          <Sc.Link to="/">SOBRE NÓS</Sc.Link>
+          <Sc.Link to="/sobre-nos">SOBRE NÓS</Sc.Link>
         </Sc.Nav>
       </ContentContainer>
     </Sc.ContainerNav>

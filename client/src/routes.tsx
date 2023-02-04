@@ -9,6 +9,7 @@ import { PrivateRoutes } from "./utils/PrivateRoutes"
 import { ScrollToTop } from "./utils/ScrollToTop"
 import { ResetPassword } from "./pages/Admin/Login/ResetPassword"
 import { Advertisement } from "./pages/Admin/Advertisement"
+import { AboutUs } from "./pages/AboutUs"
 
 export function MainRoutes() {
   return (
@@ -16,7 +17,7 @@ export function MainRoutes() {
       <Route element={<MainNavigation />}>
         <Route element={<ScrollToTop />}>
           <Route path="/" element={<Home />} />
-          <Route path="/notícia">
+          <Route path="/noticia">
             <Route path=":id" element={<PostDetail />} />
             <Route
               path="categoria/:categoryId"
@@ -27,16 +28,17 @@ export function MainRoutes() {
             <Route index element={<Navigate to="/" />} />
             <Route element={<PrivateRoutes />}>
               <Route
-                path="criar-notícia"
+                path="criar-noticia"
                 element={<CreatePost type="create" />}
               />
-              <Route path="anúncio" element={<Advertisement />} />
+              <Route path="anuncio" element={<Advertisement />} />
               <Route
                 path="editar/:id"
                 element={<CreatePost type="edit" />}
               />
             </Route>
           </Route>
+          <Route path="/sobre-nos" element={<AboutUs />} />
         </Route>
       </Route>
       <Route path="/admin">

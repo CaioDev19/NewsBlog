@@ -35,7 +35,6 @@ export const Text = styled.p<Props>`
             props.size
               ? theme.FONT_SIZE[props.size]
               : theme.FONT_SIZE.lrg};
-          line-height: 1.5rem;
         `
       case "paragraph":
         return css`
@@ -47,7 +46,6 @@ export const Text = styled.p<Props>`
             props.size
               ? theme.FONT_SIZE[props.size]
               : theme.FONT_SIZE.rgl};
-          line-height: 1.3rem;
         `
       case "span":
         return css`
@@ -59,7 +57,6 @@ export const Text = styled.p<Props>`
             props.size
               ? theme.FONT_SIZE[props.size]
               : theme.FONT_SIZE.sml};
-          line-height: 1.2rem;
         `
     }
   }}

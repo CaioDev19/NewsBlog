@@ -100,7 +100,7 @@ export function New({ news, size, primary, variant }: Props) {
       onClick={() => {
         if (Number(idUrl) === news.id) return
         console.log("entrou")
-        navigate(`/notícia/${news.id}`)
+        navigate(`/noticia/${news.id}`)
       }}
     >
       <Sc.NewImage
