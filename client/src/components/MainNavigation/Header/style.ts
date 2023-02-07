@@ -36,6 +36,8 @@ export const SocialMediaWrapper = styled.div`
 `
 export const SocialMedia = styled.svg`
   color: ${({ theme }) => theme.COLORS.white};
+  width: 1.25rem;
+  height: 1.25rem;
   font-size: ${({ theme }) => theme.FONT_SIZE.lrg};
   cursor: pointer;
   transition: 0.2s ease-in-out;

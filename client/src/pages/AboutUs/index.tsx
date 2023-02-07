@@ -1,5 +1,5 @@
 import * as Sc from "./style"
-import image from "../../assets/images/salvador-31.jpg"
+import image from "../../assets/images/joanImage.jpg"
 import { Text } from "../../global/styles/Typography"
 
 export function AboutUs() {
@@ -10,19 +10,14 @@ export function AboutUs() {
         <Text
           type="paragraph"
           as="p"
-          position="left"
+          position="justify"
+          size="lrg"
           color="black_200"
         >
-          Eu possuo conhecimento sólido em HTML, CSS e JavaScript, bem
-          como familiaridade com o framework React. Além disso, possuo
-          experiência em ferramentas de desenvolvimento como o Git,
-          npm, e tenho familiaridade com algumas bibliotecas no React
-          como react-query, react-hook-forms, react-icons, zod e
-          framer-motion. Sou capaz de criar componentes reutilizáveis
-          e integrar a interface do usuário com APIs de back-end. Sou
-          também capaz de solucionar problemas de compatibilidade de
-          navegador e garantir que a interface do usuário seja
-          responsiva em diferentes dispositivos.
+          Nascido em Custódia PE em 05 de abril de 1974 , radialista
+          desde os 17 anos , com passagens por emissoras do interior
+          da Bahia e Pernambuco , atualmente faz parte da Rainha FM de
+          Senhor do Bonfim.
         </Text>
         <Text
           type="title"
@@ -31,7 +26,7 @@ export function AboutUs() {
           size="exl"
           position="left"
         >
-          Caio Araújo
+          Joan Márton Bernardo Lopes
         </Text>
         <Text
           type="title"
@@ -41,7 +36,7 @@ export function AboutUs() {
           position="left"
           color="gray_200"
         >
-          Programador Full Stack
+          Radialista
         </Text>
       </Sc.RightContent>
     </Sc.Container>

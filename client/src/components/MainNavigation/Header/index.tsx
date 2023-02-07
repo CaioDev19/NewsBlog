@@ -1,6 +1,6 @@
 import * as Sc from "./style"
 import logo from "../../../assets/images/logo2-portal-m-bonfim.svg"
-import { AiOutlineFacebook } from "react-icons/ai"
+import { FaFacebookF } from "react-icons/fa"
 import { BsInstagram, BsWhatsapp } from "react-icons/bs"
 import { Text } from "../../../global/styles/Typography"
 import { NavBar } from "./NavBar"
@@ -38,7 +38,7 @@ export function Header() {
                 onClick={() => navigate("/")}
               />
               <Sc.SocialMediaWrapper>
-                <Sc.SocialMedia as={AiOutlineFacebook} />
+                <Sc.SocialMedia as={FaFacebookF} />
                 <Sc.SocialMedia as={BsInstagram} />
                 <Sc.SocialMedia as={BsWhatsapp} />
               </Sc.SocialMediaWrapper>
@@ -57,7 +57,7 @@ export function Header() {
                   onClick={() => navigate("/")}
                 />
                 <Sc.SocialMediaWrapper>
-                  <Sc.SocialMedia as={AiOutlineFacebook} />
+                  <Sc.SocialMedia as={FaFacebookF} />
                   <Sc.SocialMedia as={BsInstagram} />
                   <Sc.SocialMedia as={BsWhatsapp} />
                 </Sc.SocialMediaWrapper>

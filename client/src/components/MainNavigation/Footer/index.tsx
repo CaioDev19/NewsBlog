@@ -1,6 +1,6 @@
 import * as Sc from "./style"
 import logo from "../../../assets/images/logo2-portal-m-bonfim.svg"
-import { AiOutlineFacebook } from "react-icons/ai"
+import { FaFacebookF } from "react-icons/fa"
 import { BsInstagram, BsWhatsapp } from "react-icons/bs"
 import { Text } from "../../../global/styles/Typography"
 import { AiOutlineArrowUp } from "react-icons/ai"
@@ -25,12 +25,12 @@ export function Footer() {
             color="white"
             position="center"
           >
-            Far far away, behind the word mountains, far from the
-            countries Vokalia and Consonantia, there live the blind
-            texts.
+            Nasce esse canal de comunicação , com a responsabilidade e
+            o comprometimento de levar a informação verdadeira a todos
+            que buscam seriedade e a livre opinião de pensamento.
           </Text>
           <Sc.SocialMediaWrapper>
-            <Sc.SocialMedia as={AiOutlineFacebook} />
+            <Sc.SocialMedia as={FaFacebookF} />
             <Sc.SocialMedia as={BsInstagram} />
             <Sc.SocialMedia as={BsWhatsapp} />
           </Sc.SocialMediaWrapper>

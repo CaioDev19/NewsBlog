@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Ad = styled.img`
   width: 480px;
-  height: 380px;
+  height: 340px;
   object-fit: fill;
   border-radius: 25px;
 

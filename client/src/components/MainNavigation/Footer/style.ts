@@ -30,6 +30,8 @@ export const SocialMediaWrapper = styled.div`
   gap: 1.5rem;
 `
 export const SocialMedia = styled.svg`
+  width: 1.25rem;
+  height: 1.25rem;
   color: ${({ theme }) => theme.COLORS.white};
   font-size: ${({ theme }) => theme.FONT_SIZE.lrg};
   cursor: pointer;

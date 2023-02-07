@@ -8,7 +8,6 @@ import { useAuth } from "../../../hooks/useAuth"
 import { BsFillTrashFill } from "react-icons/bs"
 import { FaPencilAlt } from "react-icons/fa"
 import { useNavigate, useParams } from "react-router-dom"
-import { useTheme } from "styled-components"
 import { useDeletePost } from "../../../hooks/react-query/mutation/useDeletePost"
 import { Spinner } from "react-bootstrap"
 import { Size } from "../../../interfaces/component"
@@ -23,10 +22,9 @@ interface Props {
 }
 
 export function New({ news, size, primary, variant }: Props) {
-  const { url, width } = useWindow()
+  const { url } = useWindow()
   const { id: idUrl } = useParams()
   const { token } = useAuth()
-  const theme = useTheme()
   const navigate = useNavigate()
   const { mutate, isError, isLoading } = useDeletePost()
   const [isOpen, toggle] = useToggle()
@@ -46,7 +44,7 @@ export function New({ news, size, primary, variant }: Props) {
         <Text
           type="title"
           as="h2"
-          size={width! > theme.BREAKPOINTS.mobile ? "exl" : "lrg"}
+          size={"exl"}
           weight="str"
           position="left"
         >
@@ -56,7 +54,7 @@ export function New({ news, size, primary, variant }: Props) {
           <Text
             type="span"
             as="span"
-            size={width! > theme.BREAKPOINTS.mobile ? "lrg" : "rgl"}
+            size={"lrg"}
             position="left"
             color="gray_200"
           >
@@ -66,7 +64,7 @@ export function New({ news, size, primary, variant }: Props) {
           <Text
             type="span"
             as="span"
-            size={width! > theme.BREAKPOINTS.mobile ? "lrg" : "rgl"}
+            size="lrg"
             position="left"
             color="blue"
             pointer
@@ -147,7 +145,7 @@ export function New({ news, size, primary, variant }: Props) {
           as="span"
           color={variant === "light" ? "gray_100" : "gray_200"}
           weight="str"
-          size={size === "lrg" || size === "mdn" ? "rgl" : "sml"}
+          size="rgl"
         >
           Postado em {new Date(news.date).toLocaleDateString()}
         </Text>
@@ -168,9 +166,14 @@ export function New({ news, size, primary, variant }: Props) {
                     e.stopPropagation()
                     toggle()
                   }}
+                  color={variant === "light" ? "white" : ""}
                 />
               )}
-              <FaPencilAlt size={20} onClick={handleUpdate} />
+              <FaPencilAlt
+                size={20}
+                onClick={handleUpdate}
+                color={variant === "light" ? "white" : ""}
+              />
             </Sc.AdminButtons>
             {isError && (
               <Text

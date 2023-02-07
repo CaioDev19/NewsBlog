@@ -10,10 +10,6 @@ export const Container = styled.section<{ image: string }>`
   padding: 1.75rem 0;
 
   position: relative;
-
-  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
-    background-position: center;
-  }
 `
 export const Overlay = styled.div`
   position: absolute;

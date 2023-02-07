@@ -48,7 +48,7 @@ export const NewInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.65rem;
   width: 55%;
 
   ${Text} {
@@ -59,7 +59,7 @@ export const Flex = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 0.65rem;
 `
 export const New = styled.div<{ size?: Size }>`
   all: unset;
