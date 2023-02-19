@@ -3,15 +3,15 @@ import { Text } from "../../../global/styles/Typography"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { AdvertisingSchema } from "../../../global/validators/advertising"
-import { useImageAsBackground } from "../../../hooks/useImageAsBackground"
+import { useImageAsBackground } from "../hooks/useImageAsBackground"
 import { Spinner } from "react-bootstrap"
 import { Button } from "../../../global/styles/Button"
 import { useCreateAdvertising } from "../../../hooks/react-query/mutation/useCreateAdvertising"
 import { usePaginatedAds } from "../../../hooks/react-query/query/usePaginatedAds"
-import { ImageDisplay } from "../../../components/Admin/ImageDisplay"
+import { ImageDisplay } from "../components/ImageDisplay"
 import { Error } from "../../../components/Error"
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
-import { Ads } from "../../../components/Admin/Ads"
+import { Ads } from "../components/Ads"
 
 export function Advertisement() {
   const {

@@ -3,7 +3,7 @@ import { Text } from "../../../global/styles/Typography"
 import { Article } from "../../../interfaces/api"
 import { ShareButton } from "../../ShareButton"
 import { useWindow } from "../../../hooks/useWindow"
-import { Editor } from "../../Admin/Editor"
+import { Editor } from "../../Editor"
 import { useAuth } from "../../../hooks/useAuth"
 import { BsFillTrashFill } from "react-icons/bs"
 import { FaPencilAlt } from "react-icons/fa"
@@ -12,7 +12,7 @@ import { useDeletePost } from "../../../hooks/react-query/mutation/useDeletePost
 import { Spinner } from "react-bootstrap"
 import { Size } from "../../../interfaces/component"
 import { useToggle } from "../../../hooks/useToggle"
-import { ModalDelete } from "../../Admin/ModalDelete"
+import { ModalDelete } from "../../../pages/Admin/components/ModalDelete"
 
 interface Props {
   news: Article
@@ -97,7 +97,6 @@ export function New({ news, size, primary, variant }: Props) {
       size={size}
       onClick={() => {
         if (Number(idUrl) === news.id) return
-        console.log("entrou")
         navigate(`/noticia/${news.id}`)
       }}
     >

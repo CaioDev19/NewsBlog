@@ -39,6 +39,25 @@ export function Footer() {
       <Sc.ContainerBackTop>
         <Sc.ArrowUp as={AiOutlineArrowUp} onClick={scrollToTop} />
       </Sc.ContainerBackTop>
+      <Sc.DevContainer>
+        <Text
+          type="paragraph"
+          as="span"
+          position="center"
+          color="whitesh"
+        >
+          Desenvolvido por{" "}
+          <Sc.DevLink
+            as="a"
+            type="paragraph"
+            color="whitesh"
+            href="https://www.linkedin.com/in/caio-ara%C3%BAjo-416815243/"
+            target="_blank"
+          >
+            Caio Araújo
+          </Sc.DevLink>
+        </Text>
+      </Sc.DevContainer>
     </Sc.Container>
   )
 }

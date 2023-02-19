@@ -6,7 +6,9 @@ export const Container = styled.section<{ image: string }>`
   width: 100%;
   background-image: url(${({ image }) => image});
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
+  background-color: ${({ theme }) => theme.COLORS.gray_100};
   padding: 1.75rem 0;
 
   position: relative;
@@ -17,7 +19,7 @@ export const Overlay = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
   z-index: 1;
 `

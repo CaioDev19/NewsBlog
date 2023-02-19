@@ -20,25 +20,28 @@ export function NavBar() {
             </Sc.Link>
             <AnimatePresence>
               {isOpen && (
-                <Sc.NewsMenu
-                  as={motion.ul}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                >
-                  {isSuccess &&
-                    data?.data.map((category) => (
-                      <Sc.Link
-                        key={category.id}
-                        to={`/noticia/categoria/${category.id}`}
-                        onClick={() => {
-                          toggle()
-                        }}
-                      >
-                        {category.name}
-                      </Sc.Link>
-                    ))}
-                </Sc.NewsMenu>
+                <>
+                  <Sc.NewsMenuToggle onClick={toggle} />
+                  <Sc.NewsMenu
+                    as={motion.ul}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                  >
+                    {isSuccess &&
+                      data?.data.map((category) => (
+                        <Sc.Link
+                          key={category.id}
+                          to={`/noticia/categoria/${category.id}`}
+                          onClick={() => {
+                            toggle()
+                          }}
+                        >
+                          {category.name}
+                        </Sc.Link>
+                      ))}
+                  </Sc.NewsMenu>
+                </>
               )}
             </AnimatePresence>
           </Sc.LiRelative>

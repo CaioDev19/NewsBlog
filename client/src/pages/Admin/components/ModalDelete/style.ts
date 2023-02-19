@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Button } from "../../../global/styles/Button"
+import { Button } from "../../../../global/styles/Button"
 
 export const Overlay = styled.div`
   position: fixed;

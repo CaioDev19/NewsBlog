@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom"
 import * as Sc from "./style"
-import { Text } from "../../../global/styles/Typography"
-import { useWindow } from "../../../hooks/useWindow"
+import { Text } from "../../../../global/styles/Typography"
+import { useWindow } from "../../../../hooks/useWindow"
 import { useTheme } from "styled-components"
 
 interface Props {
@@ -34,6 +34,24 @@ export function ModalDelete({ toggle, handleDelete }: Props) {
           <Sc.SButton
             size="lrg"
             color="white"
+            background="blue"
+            onClick={(e) => {
+              e.stopPropagation()
+              toggle()
+            }}
+          >
+            <Text
+              type="span"
+              size={width! > theme.BREAKPOINTS.mobile ? "rgl" : "sml"}
+              as="span"
+              color="white"
+            >
+              NÃO
+            </Text>
+          </Sc.SButton>
+          <Sc.SButton
+            size="lrg"
+            color="white"
             background="red"
             onClick={(e) => {
               e.stopPropagation()
@@ -48,24 +66,6 @@ export function ModalDelete({ toggle, handleDelete }: Props) {
               color="white"
             >
               SIM
-            </Text>
-          </Sc.SButton>
-          <Sc.SButton
-            size="lrg"
-            color="white"
-            background="blue"
-            onClick={(e) => {
-              e.stopPropagation()
-              toggle()
-            }}
-          >
-            <Text
-              type="span"
-              size={width! > theme.BREAKPOINTS.mobile ? "rgl" : "sml"}
-              as="span"
-              color="white"
-            >
-              NÃO
             </Text>
           </Sc.SButton>
         </Sc.ButtonContainer>

@@ -1,8 +1,8 @@
 import { RiAdminFill } from "react-icons/ri"
-import { useToggle } from "../../../hooks/useToggle"
+import { useToggle } from "../../../../hooks/useToggle"
 import { motion, AnimatePresence } from "framer-motion"
 import * as Sc from "./style"
-import { useAuth } from "../../../hooks/useAuth"
+import { useAuth } from "../../../../hooks/useAuth"
 
 export function MenuAdm() {
   const [open, toggle] = useToggle()

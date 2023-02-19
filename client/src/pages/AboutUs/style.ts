@@ -20,7 +20,11 @@ export const Image = styled.img`
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.notbook}px) {
     width: 100%;
-    max-height: 450px;
+    max-height: 800px;
+  }
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
+    width: 100%;
+    max-height: 425px;
   }
 `
 

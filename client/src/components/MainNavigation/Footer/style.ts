@@ -46,10 +46,7 @@ export const InfoContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1.35rem;
-  width: 30%;
-`
-export const ContactInfo = styled(InfoContainer)`
-  width: 50%;
+  width: 35%;
 `
 export const ArrowUp = styled.svg`
   color: ${({ theme }) => theme.COLORS.white};
@@ -105,5 +102,23 @@ export const MainContainer = styled(ContentContainer)`
         max-width: 60ch;
       }
     }
+  }
+`
+export const DevContainer = styled.div`
+  position: absolute;
+  bottom: 0.55rem;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+export const DevLink = styled(Text)`
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+    color: white;
   }
 `

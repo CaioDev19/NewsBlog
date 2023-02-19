@@ -1,6 +1,6 @@
 import * as Sc from "./style"
 import { forwardRef } from "react"
-import { Text } from "../../../global/styles/Typography"
+import { Text } from "../../../../global/styles/Typography"
 import { IoCloudUploadOutline } from "react-icons/io5"
 import { FaTrash } from "react-icons/fa"
 import { Spinner } from "react-bootstrap"
