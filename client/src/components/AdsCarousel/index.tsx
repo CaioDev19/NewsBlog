@@ -47,7 +47,7 @@ export function AdsCarousel() {
   }
 
   if (data?.data.advertisings.length === 0) {
-    return <Error message="Nenhum anúncio encontrado" />
+    return <Error theme="light" message="Nenhum anúncio encontrado" />
   }
 
   return (
@@ -61,6 +61,7 @@ export function AdsCarousel() {
       ) : (
         <Error
           size="lrg"
+          theme="light"
           message="Não foi possível carregar o anúncio"
         />
       )}

@@ -9,7 +9,13 @@ import {
 } from "@tanstack/react-query"
 import { AuthProvider } from "./context/Auth"
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  logger: {
+    log: () => {},
+    warn: () => {},
+    error: () => {},
+  },
+})
 
 export function App() {
   return (

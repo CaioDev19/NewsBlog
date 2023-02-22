@@ -41,11 +41,21 @@ export function News({ size, categoryId, randomize }: Props) {
   }, [isSuccess, isLoading, news, randomize, idUrl])
 
   if (isError) {
-    return <Error message="Não foi possível carregar as notícias" />
+    return (
+      <Error
+        theme={size === "sml" ? "light" : "dark"}
+        message="Não foi possível carregar as notícias"
+      />
+    )
   }
 
   if (news?.data.posts.length === 0) {
-    return <Error message=" Nenhuma notícia encontrada" />
+    return (
+      <Error
+        theme={size === "sml" ? "light" : "dark"}
+        message="Nenhuma notícia encontrada"
+      />
+    )
   }
 
   return (
