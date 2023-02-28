@@ -119,8 +119,24 @@ module.exports = {
   },
   async createAdvertising(req, res) {
     const { file } = req
+    const { status } = req.body
 
     try {
+      if (status === "Fixo") {
+        const allFixedAdvertising = await knex("advertising")
+          .where({
+            status: "Fixo",
+          })
+          .count("* as total")
+          .first()
+
+        if (allFixedAdvertising.total === 10) {
+          return res.status(400).json({
+            message: "You can't add more than 10 fixed advertising",
+          })
+        }
+      }
+
       file.originalname = `${file.originalname}_${Date.now()}`
       const imageUrl = await uploadImageToStorage(file)
 
@@ -128,6 +144,7 @@ module.exports = {
         .insert({
           image_name: file.originalname,
           image: imageUrl,
+          status,
         })
         .returning("*")
 

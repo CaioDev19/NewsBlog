@@ -72,6 +72,18 @@ export function getAdvertising({
     `/advertising/?page=${queryKey[1]}&limit=${queryKey[2]}`
   )
 }
+export function getRotativeAdvertising({
+  queryKey,
+}: QueryFunctionContext): Promise<AxiosResponse<Advertisings>> {
+  return api.get(
+    `/advertising/rotative/?page=${queryKey[1]}&limit=${queryKey[2]}`
+  )
+}
+export function getFixedAdvertising(): Promise<
+  AxiosResponse<Advertisings>
+> {
+  return api.get("/advertising/fixed")
+}
 export function deleteAdvertising(
   id: string | number
 ): Promise<AxiosResponse> {

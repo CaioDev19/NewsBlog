@@ -16,4 +16,5 @@ export const AdvertisingSchema = z.object({
     },
     { message: "Arquivo não suportado" }
   ),
+  status: z.union([z.literal("Fixo"), z.literal("Móvel")]),
 })

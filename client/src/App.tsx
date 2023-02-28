@@ -7,15 +7,17 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import { AuthProvider } from "./context/Auth"
 
-const queryClient = new QueryClient({
+const queryClient = new QueryClient()
+/* {
   logger: {
     log: () => {},
     warn: () => {},
     error: () => {},
   },
-})
+} */
 
 export function App() {
   return (
@@ -27,6 +29,7 @@ export function App() {
           </AuthProvider>
           <GlobalStyles />
         </ThemeProvider>
+        <ReactQueryDevtools />
       </QueryClientProvider>
     </Router>
   )

@@ -19,7 +19,7 @@ interface Props {
 export function News({ size, categoryId, randomize }: Props) {
   const newsRef = useRef<HTMLDivElement>(null)
   const { id: idUrl } = useParams()
-  const limit = size === "lrg" ? 5 : 3
+  const limit = size === "lrg" ? 10 : 3
   const {
     data: news,
     isLoading,

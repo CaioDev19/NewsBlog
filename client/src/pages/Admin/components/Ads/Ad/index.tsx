@@ -11,7 +11,7 @@ interface Props {
   data: Advertising
 }
 
-export function Ad({ data: { image, id } }: Props) {
+export function Ad({ data: { image, id, status } }: Props) {
   const [isOpen, toggle] = useToggle()
   const { mutate, isError, isLoading } = useDeleteAd()
 
@@ -23,6 +23,15 @@ export function Ad({ data: { image, id } }: Props) {
     <>
       <Sc.Container>
         <Sc.AdImage src={image.url} alt={image.name} />
+        <Text
+          type="title"
+          as="h2"
+          size="lrg"
+          weight="str"
+          position="left"
+        >
+          {status}
+        </Text>
         <Sc.Trash>
           {isLoading ? (
             <Spinner

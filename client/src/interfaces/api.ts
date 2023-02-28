@@ -25,6 +25,7 @@ export interface Advertising {
     url: string
     name: string
   }
+  status: "Fixo" | "Móvel"
 }
 export interface Advertisings {
   totalPages: number

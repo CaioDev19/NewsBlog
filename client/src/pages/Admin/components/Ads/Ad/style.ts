@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Text } from "../../../../../global/styles/Typography"
 
 export const Container = styled.div`
   display: flex;
@@ -8,6 +9,10 @@ export const Container = styled.div`
   gap: 1.25rem;
 
   position: relative;
+
+  ${Text} {
+    align-self: center;
+  }
 `
 export const AdImage = styled.img`
   width: 550px;
@@ -17,7 +22,7 @@ export const AdImage = styled.img`
 `
 export const Trash = styled.div`
   position: absolute;
-  bottom: 0.75em;
+  bottom: 3.8rem;
   right: 1rem;
 
   background-color: ${({ theme }) => theme.COLORS.white};

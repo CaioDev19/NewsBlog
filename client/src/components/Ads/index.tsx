@@ -1,24 +1,9 @@
-import { useEffect, useState } from "react"
-import { usePaginatedAds } from "../../hooks/react-query/query/usePaginatedAds"
-import { Advertising } from "../../interfaces/api"
-import { randomize } from "../../utils/array"
+import { useFixedAds } from "../../hooks/react-query/query/useFixedAds"
 import { Error } from "../Error"
 import * as Sc from "./style"
 
 export function Ads() {
-  const { data, isError, isSuccess, isLoading } = usePaginatedAds({
-    limit: 10,
-  })
-  const [shuffledAds, setShuffledAds] = useState<
-    Advertising[] | null
-  >()
-
-  useEffect(() => {
-    if (!isSuccess) return
-    if (isLoading) return
-
-    setShuffledAds(randomize(data.data.advertisings))
-  }, [isSuccess, data?.data.advertisings, isLoading])
+  const { data, isError, isSuccess } = useFixedAds({})
 
   if (isError) {
     return <Error message="Não foi possível carregar o anúncio" />
@@ -31,8 +16,7 @@ export function Ads() {
   return (
     <>
       {isSuccess &&
-        shuffledAds?.map((ad, index) => {
-          if (index > 2) return null
+        data.data.advertisings?.map((ad) => {
           return (
             <Sc.Ad
               src={ad.image.url}

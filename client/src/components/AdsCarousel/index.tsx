@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { usePaginatedAds } from "../../hooks/react-query/query/usePaginatedAds"
+import { usePaginatedAdsRotative } from "../../hooks/react-query/query/usePaginatedAdsRotative"
 import { Error } from "../Error"
 import * as Sc from "./style"
 
@@ -12,7 +12,7 @@ export function AdsCarousel() {
     goToPage,
     fetchPreviousPage,
     currentPage,
-  } = usePaginatedAds({ limit: 1, keepPreviousData: true })
+  } = usePaginatedAdsRotative({ limit: 1, keepPreviousData: true })
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -27,7 +27,6 @@ export function AdsCarousel() {
         fetchNextPage()
       }
     }, 5000)
-
     return () => clearInterval(intervalId)
   }, [
     currentPage,

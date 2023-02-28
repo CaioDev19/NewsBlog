@@ -22,6 +22,9 @@ const AdvertisingSchema = z.object({
 
       "Invalid image type"
     ),
+  body: z.object({
+    status: z.union([z.literal("Fixo"), z.literal("Móvel")]),
+  }),
 })
 
 module.exports = {

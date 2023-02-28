@@ -10,6 +10,8 @@ export const Container = styled(ContentContainer)`
   gap: 2rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  max-width: 1147px;
+  width: 100%;
 `
 export const Form = styled.form`
   width: 100%;
@@ -34,7 +36,6 @@ export const WrapperErrorButton = styled.div`
 `
 export const AdsContainer = styled.div`
   width: 100%;
-  max-width: 1147px;
   display: flex;
   align-items: stretch;
   justify-content: center;

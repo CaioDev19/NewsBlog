@@ -7,9 +7,16 @@ interface Props extends React.InputHTMLAttributes<HTMLSelectElement> {
   options: Category[] | []
   name: string
   control: Control<any, any>
+  customPlaceholder?: string
 }
 
-export function Select({ options, name, control, ...rest }: Props) {
+export function Select({
+  options,
+  name,
+  control,
+  customPlaceholder,
+  ...rest
+}: Props) {
   return (
     <Controller
       name={name}
@@ -24,7 +31,7 @@ export function Select({ options, name, control, ...rest }: Props) {
             {...rest}
           >
             <option value="" disabled>
-              Selecione uma categoria
+              {customPlaceholder}
             </option>
             {options.map((option) => {
               return (

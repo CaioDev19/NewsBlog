@@ -168,6 +168,7 @@ export function CreatePost({ type }: Props) {
               name="category"
               control={control}
               options={!isCategoriesLoading ? categories?.data! : []}
+              customPlaceholder="Selecione uma categoria"
             />
             <Sc.WrapperErrorButton>
               {(isPostError || isUpdateError) && (

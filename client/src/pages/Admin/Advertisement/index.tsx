@@ -12,6 +12,7 @@ import { ImageDisplay } from "../components/ImageDisplay"
 import { Error } from "../../../components/Error"
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
 import { Ads } from "../components/Ads"
+import { Select } from "../../../components/Form/Select"
 
 export function Advertisement() {
   const {
@@ -19,11 +20,13 @@ export function Advertisement() {
     register,
     resetField,
     reset,
+    control,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(AdvertisingSchema),
     defaultValues: {
       image: null as FileList | null,
+      status: "",
     },
   })
   const {
@@ -52,6 +55,7 @@ export function Advertisement() {
   function handleSucessSubmit(data: any) {
     const formData = new FormData()
     formData.append("image", data.image[0])
+    formData.append("status", data.status)
 
     mutate(formData)
     removeImage()
@@ -80,6 +84,15 @@ export function Advertisement() {
           register={imageRegister}
           addImage={addImageOnDisplay}
           removeImage={removeImageFromDisplay}
+        />
+        <Select
+          name="status"
+          control={control}
+          options={[
+            { id: 1, name: "Fixo" },
+            { id: 2, name: "Móvel" },
+          ]}
+          customPlaceholder="Selecione o tipo de anúncio"
         />
         <Sc.WrapperErrorButton>
           {isAdvertisingError && (
