@@ -21,7 +21,6 @@ export const Text = styled.p<Props>`
     return color ? theme.COLORS[color] : theme.COLORS.black
   }};
   word-wrap: break-word;
-  word-break: break-all;
 
   ${(props) => {
     switch (props.type) {

@@ -130,7 +130,8 @@ module.exports = {
           .count("* as total")
           .first()
 
-        if (allFixedAdvertising.total === 10) {
+        console.log(allFixedAdvertising)
+        if (allFixedAdvertising.total == 10) {
           return res.status(400).json({
             message: "You can't add more than 10 fixed advertising",
           })

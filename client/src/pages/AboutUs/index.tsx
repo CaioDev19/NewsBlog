@@ -16,7 +16,7 @@ export function AboutUs() {
           type="paragraph"
           as="p"
           position="justify"
-          size={width! > theme.BREAKPOINTS.mobile ? "lrg" : "rgl"}
+          size="lrg"
           color="black_200"
         >
           Nascido em Custódia PE em 05 de abril de 1974, radialista
