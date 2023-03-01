@@ -30,8 +30,7 @@ module.exports = {
         currentPage: totalPages === 0 ? 0 : page,
         advertisings: advertisingWithImages,
       })
-    } catch (e) {
-      console.log(e)
+    } catch {
       res.status(500).json({ message: "Internal server error" })
     }
   },
@@ -57,8 +56,7 @@ module.exports = {
       res.status(200).json({
         advertisings: advertisingWithImages,
       })
-    } catch (e) {
-      console.log(e)
+    } catch {
       res.status(500).json({ message: "Internal server error" })
     }
   },
@@ -104,8 +102,7 @@ module.exports = {
         currentPage: totalPages === 0 ? 0 : page,
         advertisings: advertisingWithImages,
       })
-    } catch (e) {
-      console.log(e)
+    } catch {
       res.status(500).json({ message: "Internal server error" })
     }
   },
