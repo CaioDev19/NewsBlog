@@ -39,7 +39,7 @@ module.exports = {
       const advertising = await knex("advertising")
         .select("*")
         .where({ status: "Fixo" })
-        .orderBy("id", "desc")
+        .orderBy("id", "asc")
 
       const advertisingWithImages = advertising.map((ad) => {
         const { image_name, image, ...advertisingWithoutImage } = ad

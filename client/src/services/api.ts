@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const api = axios.create({
-  baseURL: "http://localhost:4000",
+  baseURL: "https://newsblog-production.up.railway.app",
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",
