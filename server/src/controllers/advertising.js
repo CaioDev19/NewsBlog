@@ -81,7 +81,7 @@ module.exports = {
       const advertising = await knex("advertising")
         .select("*")
         .where({ status: "Móvel" })
-        .orderBy("id", "desc")
+        .orderBy("id", "asc")
         .limit(limit)
         .offset((page - 1) * limit)
 
