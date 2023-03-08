@@ -145,6 +145,7 @@ export function New({ news, size, primary, variant }: Props) {
           color={variant === "light" ? "gray_100" : "gray_200"}
           weight="str"
           size="rgl"
+          position="left"
         >
           Postado em {new Date(news.date).toLocaleDateString()}
         </Text>
