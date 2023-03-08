@@ -5,7 +5,6 @@ import { Size } from "../../../interfaces/component"
 export const NewImage = styled.img<{ size?: Size }>`
   border-radius: 25px;
   object-fit: cover;
-  flex-shrink: 0;
 
   ${({ size }) => {
     switch (size) {

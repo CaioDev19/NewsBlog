@@ -15,10 +15,6 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Rubik', sans-serif;
     background-color: ${({ theme }) => theme.COLORS.white};
   }
-  
-  img {
-    max-width: 100%;
-  }
 
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
     html {
