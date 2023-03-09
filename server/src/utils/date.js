@@ -1,9 +1,9 @@
 const moment = require("moment-timezone")
 
-function formatToBrTimeZone() {
+function formatToUtcTimeZone() {
   return moment.utc().format()
 }
 
 module.exports = {
-  formatToBrTimeZone,
+  formatToUtcTimeZone,
 }

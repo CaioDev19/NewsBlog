@@ -13,25 +13,28 @@ export function MenuAdm() {
   }
 
   return (
-    <Sc.Container>
-      <AnimatePresence>
-        {open && (
-          <Sc.MenuContainer
-            as={motion.div}
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={variants}
-          >
-            <Sc.Link to="/admin/criar-noticia">Nóticia</Sc.Link>
-            <Sc.Link to="/admin/anuncio">Anúncio</Sc.Link>
-            <Sc.Link as="span" onClick={logOut}>
-              Sair
-            </Sc.Link>
-          </Sc.MenuContainer>
-        )}
-      </AnimatePresence>
-      <Sc.AdmBtn as={RiAdminFill} onClick={toggle} />
-    </Sc.Container>
+    <>
+      <Sc.OverLayToggle onClick={toggle} />
+      <Sc.Container>
+        <AnimatePresence>
+          {open && (
+            <Sc.MenuContainer
+              as={motion.div}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={variants}
+            >
+              <Sc.Link to="/admin/criar-noticia">Nóticia</Sc.Link>
+              <Sc.Link to="/admin/anuncio">Anúncio</Sc.Link>
+              <Sc.Link as="span" onClick={logOut}>
+                Sair
+              </Sc.Link>
+            </Sc.MenuContainer>
+          )}
+        </AnimatePresence>
+        <Sc.AdmBtn as={RiAdminFill} onClick={toggle} />
+      </Sc.Container>
+    </>
   )
 }

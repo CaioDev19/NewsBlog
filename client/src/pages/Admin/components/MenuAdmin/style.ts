@@ -7,7 +7,14 @@ export const Container = styled.div`
   right: 2.5rem;
   z-index: 5;
 `
-
+export const OverLayToggle = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+`
 export const AdmBtn = styled.svg`
   position: relative;
   width: 3rem;

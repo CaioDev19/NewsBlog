@@ -14,6 +14,7 @@ import { Size } from "../../../interfaces/component"
 import { useToggle } from "../../../hooks/useToggle"
 import { ModalDelete } from "../../../pages/Admin/components/ModalDelete"
 import { useTheme } from "styled-components"
+import { formatDateBrazil } from "../../../utils/date"
 
 interface Props {
   news: Article
@@ -40,10 +41,6 @@ export function New({ news, size, primary, variant }: Props) {
     navigate(`/admin/editar/${news.id}`)
   }
 
-  if (news.category.name === "Famosos") {
-    console.log(news.date)
-  }
-
   if (primary) {
     return (
       <Sc.PrimaryContainer>
@@ -64,8 +61,7 @@ export function New({ news, size, primary, variant }: Props) {
             position="left"
             color="gray_200"
           >
-            Postado em{" "}
-            {new Date(news.date).toLocaleDateString("pt-br")}
+            Postado em {formatDateBrazil(news.date)}
           </Text>
           |
           <Text
@@ -166,7 +162,7 @@ export function New({ news, size, primary, variant }: Props) {
           }
           position="left"
         >
-          Postado em {new Date(news.date).toLocaleDateString()}
+          Postado em {formatDateBrazil(news.date)}
         </Text>
         {token && (
           <>

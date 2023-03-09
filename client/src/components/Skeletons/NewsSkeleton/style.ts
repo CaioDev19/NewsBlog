@@ -15,6 +15,11 @@ export const StyledPlaceholder = styled(Placeholder)<{
         max-width: 100%;
         gap: 1rem;
         flex-direction: column;
+
+        @media (max-width: ${({ theme }) =>
+            theme.BREAKPOINTS.notbook}px) {
+          flex-direction: row;
+        }
       `
     } else {
       return css`
@@ -37,12 +42,16 @@ export const ImagePlaceholder = styled(Placeholder)<{
       case "mdn":
         return css`
           width: 100%;
-          height: 350px;
+          height: 320px;
+
+          @media (max-width: 1550px) {
+            height: 220px;
+          }
         `
       case "lrg":
         return css`
           width: 45%;
-          height: 350px;
+          height: 320px;
         `
       default:
         return css`
@@ -52,9 +61,14 @@ export const ImagePlaceholder = styled(Placeholder)<{
     }
   }}
 
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.notbook}px) {
+    width: 400px;
+    height: 280px;
+  }
+
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
     width: 100%;
-    height: 350px;
+    height: 320px;
   }
 `
 export const TextCol = styled(Col)<{
@@ -70,6 +84,11 @@ export const TextCol = styled(Col)<{
         return css`
           align-items: flex-start;
           width: 100%;
+
+          @media (max-width: ${({ theme }) =>
+              theme.BREAKPOINTS.notbook}px) {
+            width: 55%;
+          }
         `
       default:
         return css`
