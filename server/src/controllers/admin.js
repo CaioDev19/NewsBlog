@@ -1,4 +1,5 @@
 const knex = require("../config/dataBase")
+const { formatToBrTimeZone } = require("../utils/date")
 const {
   uploadImageToStorage,
   deleteFileFromStorage,
@@ -22,7 +23,7 @@ module.exports = {
           category_id,
           image_name: file.originalname,
           image_url: imageUrl,
-          date: new Date(),
+          date: formatToBrTimeZone(new Date()),
         })
         .returning("*")
 
@@ -91,7 +92,7 @@ module.exports = {
           category_id,
           image_name: file.originalname,
           image_url: imageUrl,
-          date: new Date(),
+          date: formatToBrTimeZone(new Date()),
         })
         .returning("*")
 

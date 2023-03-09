@@ -40,6 +40,10 @@ export function New({ news, size, primary, variant }: Props) {
     navigate(`/admin/editar/${news.id}`)
   }
 
+  if (news.category.name === "Famosos") {
+    console.log(news.date)
+  }
+
   if (primary) {
     return (
       <Sc.PrimaryContainer>
@@ -60,7 +64,8 @@ export function New({ news, size, primary, variant }: Props) {
             position="left"
             color="gray_200"
           >
-            Postado em {new Date(news.date).toLocaleDateString()}
+            Postado em{" "}
+            {new Date(news.date).toLocaleDateString("pt-br")}
           </Text>
           |
           <Text

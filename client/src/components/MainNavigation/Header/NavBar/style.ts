@@ -28,6 +28,7 @@ export const Link = styled(NavLink)`
   font-size: ${({ theme }) => theme.FONT_SIZE.rgl};
   color: ${({ theme }) => theme.COLORS.black};
   line-height: 1.3rem;
+  text-align: center;
 
   transition: 0.2s ease-in-out;
 
@@ -59,6 +60,7 @@ export const NewsMenu = styled.ul`
   background-color: ${({ theme }) => theme.COLORS.white};
   padding: 1.25rem 2rem;
   border-radius: 15px;
+  width: 200px;
 `
 export const NewsMenuToggle = styled.div`
   position: fixed;

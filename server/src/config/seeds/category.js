@@ -9,12 +9,11 @@ exports.seed = async function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex("category").insert([
-        { name: "Local" },
+        { name: "Senhor do Bonfim" },
+        { name: "Região" },
         { name: "Bahia" },
         { name: "Brasil" },
-        { name: "Esporte" },
-        { name: "Internacional" },
-        { name: "Famosos" },
+        { name: "Esportes" },
       ])
     })
 }
