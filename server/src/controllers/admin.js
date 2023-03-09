@@ -23,7 +23,7 @@ module.exports = {
           category_id,
           image_name: file.originalname,
           image_url: imageUrl,
-          date: formatToBrTimeZone(new Date()),
+          date: formatToBrTimeZone(),
         })
         .returning("*")
 
@@ -92,7 +92,6 @@ module.exports = {
           category_id,
           image_name: file.originalname,
           image_url: imageUrl,
-          date: formatToBrTimeZone(new Date()),
         })
         .returning("*")
 

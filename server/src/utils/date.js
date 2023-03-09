@@ -1,7 +1,7 @@
 const moment = require("moment-timezone")
 
-function formatToBrTimeZone(date) {
-  return moment(date).tz("America/Sao_Paulo").format()
+function formatToBrTimeZone() {
+  return moment().utc().format()
 }
 
 module.exports = {
