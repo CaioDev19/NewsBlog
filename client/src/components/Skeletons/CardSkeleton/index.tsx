@@ -1,9 +1,10 @@
-import Card from "react-bootstrap/Card"
 import Placeholder from "react-bootstrap/Placeholder"
+import { Card } from "react-bootstrap"
+import { CardStyled } from "./style"
 
 export function CardSkeleton() {
   return (
-    <Card style={{ width: "100%", flexWrap: "wrap" }}>
+    <CardStyled>
       <Placeholder xs={10} as={Card.Title} animation="glow">
         <Placeholder xs={6} />
         <Placeholder xs={6} />
@@ -23,6 +24,6 @@ export function CardSkeleton() {
           <Placeholder xs={12} />
         </Placeholder>
       </Card.Body>
-    </Card>
+    </CardStyled>
   )
 }

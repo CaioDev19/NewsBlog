@@ -14,7 +14,7 @@ export function MenuAdm() {
 
   return (
     <>
-      <Sc.OverLayToggle onClick={toggle} />
+      {open && <Sc.OverLayToggle onClick={toggle} />}
       <Sc.Container>
         <AnimatePresence>
           {open && (
