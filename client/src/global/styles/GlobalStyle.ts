@@ -16,6 +16,10 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.COLORS.white};
   }
 
+  img {
+    max-width: 100%;
+  }
+
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
     html {
       font-size: ${({ theme }) => theme.FONT_SIZE.sml};

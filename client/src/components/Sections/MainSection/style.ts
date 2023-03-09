@@ -2,13 +2,13 @@ import styled from "styled-components"
 import { ContentContainer } from "../../../global/styles/ContentContainer"
 import { Text } from "../../../global/styles/Typography"
 
-export const AdContainer = styled.div`
+export const AdContainer = styled.div<{ primary?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
 
   gap: 1.25rem;
-  width: 50%;
+  width: ${({ primary }) => (primary ? "30%" : "50%")};
 `
 export const MainContainer = styled(ContentContainer)`
   display: flex;

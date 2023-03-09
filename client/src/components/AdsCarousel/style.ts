@@ -15,7 +15,7 @@ export const Image = styled.img`
   min-width: 320px;
   border-radius: 25px;
   object-fit: fill;
-  max-height: 450px;
+  max-height: 500px;
   flex-grow: 1;
   animation: ${fadeIn} 1s ease-in-out;
 

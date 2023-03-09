@@ -40,6 +40,7 @@ export const theme = {
     lrg: "1.3rem",
   },
   BREAKPOINTS: {
+    mobile_small: 550,
     mobile: 800,
     tablet: 1000,
     notbook: 1250,

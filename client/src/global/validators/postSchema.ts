@@ -5,8 +5,7 @@ export const PostSchema = z.object({
     .string({
       required_error: "O título é obrigatório",
     })
-    .min(1, "O título é obrigatório")
-    .max(100, "O título deve ter no máximo 100 caracteres"),
+    .min(1, "O título é obrigatório"),
   category: z.string().min(1),
   image: z.instanceof(FileList).refine(
     (val) => {
@@ -27,8 +26,7 @@ export const PostSchema = z.object({
     .string({
       required_error: "O resumo é obrigatório",
     })
-    .min(1, "O resumo é obrigatório")
-    .max(200, "O resumo deve ter no máximo 200 caracteres"),
+    .min(1, "O resumo é obrigatório"),
 })
 
 export type PostForm = z.infer<typeof PostSchema>

@@ -5,24 +5,23 @@ import { Size } from "../../../interfaces/component"
 export const NewImage = styled.img<{ size?: Size }>`
   border-radius: 25px;
   object-fit: cover;
+  flex-shrink: 0;
 
   ${({ size }) => {
     switch (size) {
       case "sml":
         return css`
           width: 240px;
-          height: 120px;
-
-          @media (max-width: ${({ theme }) =>
-              theme.BREAKPOINTS.notbook}px) {
-            width: 400px;
-            height: 280px;
-          }
+          height: 140px;
         `
       case "mdn":
         return css`
           width: 100%;
-          height: 380px;
+          height: 320px;
+
+          @media (max-width: 1550px) {
+            height: 220px;
+          }
         `
       case "lrg":
         return css`
@@ -32,16 +31,14 @@ export const NewImage = styled.img<{ size?: Size }>`
       default:
         return css`
           width: 240px;
-          height: 120px;
-
-          @media (max-width: ${({ theme }) =>
-              theme.BREAKPOINTS.notbook}px) {
-            width: 400px;
-            height: 280px;
-          }
+          height: 140px;
         `
     }
   }}
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.notbook}px) {
+    width: 400px;
+    height: 280px;
+  }
 `
 export const NewInfo = styled.div`
   display: flex;
@@ -83,6 +80,17 @@ export const New = styled.div<{ size?: Size }>`
     width: ${({ size }) => size === "mdn" && "100%"};
   }
 
+  ${({ size }) => {
+    if (size === "mdn") {
+      return css`
+        @media (max-width: ${({ theme }) =>
+            theme.BREAKPOINTS.notbook}px) {
+          flex-direction: row;
+        }
+      `
+    }
+  }}
+
   @media (max-width: ${({ theme }) => theme.BREAKPOINTS.tablet}px) {
     transform: none;
     transition: none;
@@ -97,7 +105,7 @@ export const New = styled.div<{ size?: Size }>`
 
     ${NewImage} {
       width: 100%;
-      height: 280px;
+      height: 380px;
       flex-shrink: 1;
     }
 
@@ -105,12 +113,26 @@ export const New = styled.div<{ size?: Size }>`
       width: 100%;
     }
   }
+  ${({ theme }) => {
+    return css`
+      @media (max-width: ${theme.BREAKPOINTS.mobile_small}px) {
+        ${NewImage} {
+          height: 280px;
+        }
+      }
+    `
+  }} {
+  }
 `
 export const PrimaryContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.25rem;
-  width: 100%;
+  width: 70%;
+
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.notbook}px) {
+    width: 100%;
+  }
 `
 
 export const PrimaryImage = styled.img`

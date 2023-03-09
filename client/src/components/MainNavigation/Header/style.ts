@@ -34,7 +34,7 @@ export const SocialMediaWrapper = styled.div`
   align-items: center;
   gap: 1.5rem;
 `
-export const SocialMedia = styled.svg`
+export const SocialMedia = styled.a`
   color: ${({ theme }) => theme.COLORS.white};
   width: 1.25rem;
   height: 1.25rem;

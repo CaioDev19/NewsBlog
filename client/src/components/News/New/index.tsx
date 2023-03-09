@@ -13,6 +13,7 @@ import { Spinner } from "react-bootstrap"
 import { Size } from "../../../interfaces/component"
 import { useToggle } from "../../../hooks/useToggle"
 import { ModalDelete } from "../../../pages/Admin/components/ModalDelete"
+import { useTheme } from "styled-components"
 
 interface Props {
   news: Article
@@ -22,12 +23,13 @@ interface Props {
 }
 
 export function New({ news, size, primary, variant }: Props) {
-  const { url } = useWindow()
+  const { url, width } = useWindow()
   const { id: idUrl } = useParams()
   const { token } = useAuth()
   const navigate = useNavigate()
   const { mutate, isError, isLoading } = useDeletePost()
   const [isOpen, toggle] = useToggle()
+  const theme = useTheme()
 
   function handleDelete() {
     mutate(news.id)
@@ -110,9 +112,13 @@ export function New({ news, size, primary, variant }: Props) {
           <Text
             type="span"
             as="span"
-            size="lrg"
+            size={
+              size === "sml" && width! > theme.BREAKPOINTS.notbook
+                ? "rgl"
+                : "lrg"
+            }
             weight={variant === "light" ? "str" : "wek"}
-            position="center"
+            position="left"
             color={variant === "light" ? "gray_100" : "black"}
           >
             {news.title}
@@ -120,7 +126,11 @@ export function New({ news, size, primary, variant }: Props) {
           <Text
             type="span"
             as="span"
-            size="rgl"
+            size={
+              size === "sml" && width! > theme.BREAKPOINTS.notbook
+                ? "sml"
+                : "rgl"
+            }
             position="center"
             weight={variant === "light" ? "str" : "wek"}
             color="blue"
@@ -144,7 +154,11 @@ export function New({ news, size, primary, variant }: Props) {
           as="span"
           color={variant === "light" ? "gray_100" : "gray_200"}
           weight="str"
-          size="rgl"
+          size={
+            size === "sml" && width! > theme.BREAKPOINTS.notbook
+              ? "sml"
+              : "rgl"
+          }
           position="left"
         >
           Postado em {new Date(news.date).toLocaleDateString()}

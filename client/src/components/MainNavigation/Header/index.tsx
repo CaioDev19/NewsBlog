@@ -38,9 +38,24 @@ export function Header() {
                 onClick={() => navigate("/")}
               />
               <Sc.SocialMediaWrapper>
-                <Sc.SocialMedia as={FaFacebookF} />
-                <Sc.SocialMedia as={BsInstagram} />
-                <Sc.SocialMedia as={BsWhatsapp} />
+                <Sc.SocialMedia
+                  href="https://www.facebook.com/profile.php?id=100077172681111"
+                  target="_blank"
+                >
+                  <FaFacebookF />
+                </Sc.SocialMedia>
+                <Sc.SocialMedia
+                  href="https://www.instagram.com/joan.radio/"
+                  target="_blank"
+                >
+                  <BsInstagram />
+                </Sc.SocialMedia>
+                <Sc.SocialMedia
+                  href="https://wa.me/5571988853626"
+                  target="_blank"
+                >
+                  <BsWhatsapp />
+                </Sc.SocialMedia>
               </Sc.SocialMediaWrapper>
             </>
           ) : (
@@ -57,9 +72,24 @@ export function Header() {
                   onClick={() => navigate("/")}
                 />
                 <Sc.SocialMediaWrapper>
-                  <Sc.SocialMedia as={FaFacebookF} />
-                  <Sc.SocialMedia as={BsInstagram} />
-                  <Sc.SocialMedia as={BsWhatsapp} />
+                  <Sc.SocialMedia
+                    href="https://www.facebook.com/profile.php?id=100077172681111"
+                    target="_blank"
+                  >
+                    <FaFacebookF />
+                  </Sc.SocialMedia>
+                  <Sc.SocialMedia
+                    href="https://www.instagram.com/joan.radio/"
+                    target="_blank"
+                  >
+                    <BsInstagram />
+                  </Sc.SocialMedia>
+                  <Sc.SocialMedia
+                    href="https://wa.me/5571988853626"
+                    target="_blank"
+                  >
+                    <BsWhatsapp />
+                  </Sc.SocialMedia>
                 </Sc.SocialMediaWrapper>
               </Sc.MobileLogoWrapper>
             </>

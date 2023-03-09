@@ -33,7 +33,7 @@ export function MainSection({ primary }: { primary?: boolean }) {
       ) : (
         <News size="lrg" />
       )}
-      <Sc.AdContainer>
+      <Sc.AdContainer primary={!!primary}>
         <Sc.SubTittle
           type="title"
           as="h2"

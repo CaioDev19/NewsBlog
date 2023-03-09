@@ -26,7 +26,7 @@ export function MenuAdm() {
             <Sc.Link to="/admin/criar-noticia">Nóticia</Sc.Link>
             <Sc.Link to="/admin/anuncio">Anúncio</Sc.Link>
             <Sc.Link as="span" onClick={logOut}>
-              LogOut
+              Sair
             </Sc.Link>
           </Sc.MenuContainer>
         )}

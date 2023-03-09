@@ -13,25 +13,13 @@ export function AboutUs() {
       <Sc.Image src={image} />
       <Sc.RightContent>
         <Text
-          type="paragraph"
-          as="p"
-          position="justify"
-          size="lrg"
-          color="black_200"
-        >
-          Nascido em Custódia PE em 05 de abril de 1974, radialista
-          desde os 17 anos, com passagens por emissoras do interior da
-          Bahia e Pernambuco, atualmente faz parte da Rainha FM de
-          Senhor do Bonfim.
-        </Text>
-        <Text
           type="title"
           as="h1"
           weight="str"
           size={width! > theme.BREAKPOINTS.mobile ? "exl" : "lrg"}
           position="left"
         >
-          Joan Márton Bernardo Lopes
+          Joan Lopes
         </Text>
         <Text
           type="title"
@@ -42,6 +30,21 @@ export function AboutUs() {
           color="gray_200"
         >
           Radialista
+        </Text>
+        <Text
+          type="paragraph"
+          as="p"
+          position="justify"
+          size="lrg"
+          color="black_200"
+        >
+          Nascido em Custódia-PE em 05 de abril de 1974, radialista
+          desde os 17 anos, com passagens por emissoras do interior da
+          Bahia e Pernambuco. Atualmente faz parte da Rainha FM de
+          Senhor do Bonfim sendo o idealizador do Portal mais Bonfim,
+          que tem por objetivo potencializar as informações de maneira
+          rápida, clara e verdadeira respeitando a sua livre
+          expressão de pensamento.
         </Text>
       </Sc.RightContent>
     </Sc.Container>

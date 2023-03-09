@@ -19,7 +19,7 @@ export const Overlay = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.45);
   color: white;
   z-index: 1;
 `
@@ -34,8 +34,12 @@ export const ContentWrapper = styled(ContentContainer)`
 export const Banner = styled.img`
   width: 100%;
   object-fit: cover;
-  max-height: 200px;
+  height: 200px;
   border-radius: 25px;
+
+  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
+    object-fit: fill;
+  }
 `
 
 export const LeftContent = styled.img`

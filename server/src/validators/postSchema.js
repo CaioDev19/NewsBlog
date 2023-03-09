@@ -16,8 +16,7 @@ const PostSchema = z.object({
         invalid_type_error: "Title must be a string",
         required_error: "Title is required",
       })
-      .min(1, "Title can't be empty")
-      .max(100, "Title can't be longer than 100 characters"),
+      .min(1, "Title can't be empty"),
     content: z
       .string({
         invalid_type_error: "Content must be a string",
@@ -29,8 +28,7 @@ const PostSchema = z.object({
         invalid_type_error: "Summary must be a string",
         required_error: "Summary is required",
       })
-      .min(1, "Summary can't be empty")
-      .max(200, "Summary can't be longer than 200 characters"),
+      .min(1, "Summary can't be empty"),
     category_id: z
       .number({
         invalid_type_error: "Category ID must be a number",

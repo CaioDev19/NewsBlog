@@ -1,5 +1,5 @@
 import { News } from "../../News"
-import banner from "../../../assets/images/Imagem do WhatsApp de 2023-01-26 à(s) 20.09.09.jpg"
+import banner from "../../../assets/images/Imagem_do_WhatsApp_de_2023-01-26_à_s__20.09.09-removebg.png"
 import church from "../../../assets/images/banner.jpg"
 import * as Sc from "./style"
 import { AdsCarousel } from "../../AdsCarousel"
