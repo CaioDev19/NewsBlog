@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { MainNavigation } from "./components/MainNavigation"
-import { CreatePost } from "./pages/Admin/CreatePost"
+import { CreatePost } from "./components/CreatePost"
 import { Home } from "./pages/Home"
 import { Login } from "./pages/Admin/Login"
 import { PostDetail } from "./pages/PostDetail"
@@ -27,15 +27,7 @@ export function MainRoutes() {
           <Route path="/admin">
             <Route index element={<Navigate to="/" />} />
             <Route element={<PrivateRoutes />}>
-              <Route
-                path="criar-noticia"
-                element={<CreatePost type="create" />}
-              />
               <Route path="anuncio" element={<Advertisement />} />
-              <Route
-                path="editar/:id"
-                element={<CreatePost type="edit" />}
-              />
             </Route>
           </Route>
           <Route path="/sobre-nos" element={<AboutUs />} />
