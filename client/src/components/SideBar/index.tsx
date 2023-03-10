@@ -8,6 +8,7 @@ import { GiNewspaper } from "react-icons/gi"
 import { BsInfoCircle } from "react-icons/bs"
 import { useToggle } from "../../hooks/useToggle"
 import { useCategories } from "../../hooks/react-query/query/useCategories"
+import { useRef } from "react"
 
 interface Props {
   handleToggle: () => void
@@ -17,6 +18,7 @@ interface Props {
 export function MobileSideBar({ handleToggle, isOpen }: Props) {
   const [isMenuOpen, toggle] = useToggle()
   const { isSuccess, data } = useCategories()
+  const currentDate = useRef(new Date().toLocaleDateString())
   const variants = {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: "-100%" },
@@ -86,7 +88,7 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
                 Hoje
               </Text>
               <Text type="paragraph" size="rgl">
-                é 25 / 05 / 2021
+                é {currentDate.current}
               </Text>
             </Sc.DateWrapper>
           </Sc.StyledMobileSideBar>

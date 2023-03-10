@@ -16,7 +16,7 @@ export function AboutUs() {
           type="title"
           as="h1"
           weight="str"
-          size={width! > theme.BREAKPOINTS.mobile ? "exl" : "lrg"}
+          size="exl"
           position="left"
         >
           Joan Lopes
@@ -43,8 +43,8 @@ export function AboutUs() {
           Bahia e Pernambuco. Atualmente faz parte da Rainha FM de
           Senhor do Bonfim sendo o idealizador do Portal mais Bonfim,
           que tem por objetivo potencializar as informações de maneira
-          rápida, clara e verdadeira respeitando a sua livre
-          expressão de pensamento.
+          rápida, clara e verdadeira respeitando a sua livre expressã
+          de pensamento.
         </Text>
       </Sc.RightContent>
     </Sc.Container>

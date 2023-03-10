@@ -148,7 +148,27 @@ export const PrimaryImage = styled.img`
 export const PrimaryNewsInfo = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1.25rem;
+`
+export const InfoWrapper = styled.div`
+  padding-right: 1.25rem;
+  position: relative;
+
+  &::after {
+    content: "|";
+    position: absolute;
+    right: 0;
+    top: 0.2rem;
+    bottom: 0;
+  }
+
+  @media (max-width: 400px) {
+    padding: 0;
+    &::after {
+      content: none;
+    }
+  }
 `
 export const ShareContainer = styled(PrimaryNewsInfo)`
   svg {

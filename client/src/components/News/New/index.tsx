@@ -54,16 +54,17 @@ export function New({ news, size, primary, variant }: Props) {
           {news.title}
         </Text>
         <Sc.PrimaryNewsInfo>
-          <Text
-            type="span"
-            as="span"
-            size={"lrg"}
-            position="left"
-            color="gray_200"
-          >
-            Postado em {formatDateBrazil(news.date)}
-          </Text>
-          |
+          <Sc.InfoWrapper>
+            <Text
+              type="span"
+              as="span"
+              size={"lrg"}
+              position="left"
+              color="gray_200"
+            >
+              Postado em {formatDateBrazil(news.date)}
+            </Text>
+          </Sc.InfoWrapper>
           <Text
             type="span"
             as="span"
