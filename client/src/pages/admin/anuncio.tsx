@@ -11,7 +11,7 @@ import { usePaginatedAds } from "../../hooks/react-query/query/usePaginatedAds"
 import { ImageDisplay } from "../../components/Admin/ImageDisplay"
 import { Error } from "../../components/Error"
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
-import { Ads } from "../Admin/components/Ads"
+import { Ads } from "../../components/Admin/Ads"
 import { Select } from "../../components/Form/Select"
 import { NextPage } from "next"
 

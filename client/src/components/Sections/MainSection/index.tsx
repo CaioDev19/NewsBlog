@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom"
 import { useNew } from "../../../hooks/react-query/query/useNew"
 import { News } from "../../News"
 import { New } from "../../News/New"
@@ -6,15 +5,18 @@ import * as Sc from "./style"
 import { CardSkeleton } from "../../Skeletons/CardSkeleton"
 import { Error } from "../../Error"
 import { Ads } from "../../Ads"
+import { useRouter } from "next/router"
 
 export function MainSection({ primary }: { primary?: boolean }) {
-  const { id } = useParams()
+  const {
+    query: { id },
+  } = useRouter()
   const {
     data: news,
     isLoading,
     isError,
   } = useNew({
-    id: id!,
+    id: id as string,
     enabled: primary || false,
   })
 

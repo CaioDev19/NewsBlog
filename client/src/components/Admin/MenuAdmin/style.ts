@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Link as L } from "react-router-dom"
+import NextLink from "next/link"
 
 export const Container = styled.div`
   position: fixed;
@@ -63,7 +63,7 @@ export const Nav = styled.ul`
   }
 `
 
-export const Link = styled(L)`
+export const Link = styled(NextLink)`
   text-decoration: none;
   list-style-type: none;
 

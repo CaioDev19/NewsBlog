@@ -1,13 +1,13 @@
 import { useMutation } from "@tanstack/react-query"
-import { useNavigate } from "react-router-dom"
 import { updateNew } from "../../../services/requests"
 import { useQueryClient } from "@tanstack/react-query"
 import { useSignOutOnError } from "../../useSignOutOnError"
 import { useEffect } from "react"
 import { AxiosError } from "axios"
+import { useRouter } from "next/router"
 
 export function useUpdatePost() {
-  const navigate = useNavigate()
+  const router = useRouter()
   const [setShouldSignOut] = useSignOutOnError()
   const queryClient = useQueryClient()
   const mutation = useMutation(updateNew, {
@@ -15,7 +15,7 @@ export function useUpdatePost() {
       queryClient.invalidateQueries({
         queryKey: ["news"],
       })
-      navigate("/")
+      router.push("/")
     },
     onError: (_error: AxiosError) => {},
   })

@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { Input } from "../components/Form/Input"
 import { Button } from "../global/styles/Button"
 import NextLink from "next/link"
+import NextImage from "next/image"
 
 export const MainContainer = styled.div`
   min-height: 100vh;
@@ -38,7 +39,8 @@ export const InputContainer = styled.div`
 
   position: relative;
 `
-export const Logo = styled.img`
+export const Logo = styled(NextImage)`
+  height: auto;
   width: 15%;
   min-width: 200px;
   margin: 0 auto;

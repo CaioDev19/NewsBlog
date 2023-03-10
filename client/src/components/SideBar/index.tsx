@@ -1,6 +1,6 @@
 import * as Sc from "./style"
 import { Text } from "../../global/styles/Typography"
-import logo from "../../assets/images/logo3-portal-m-bonfim.svg"
+import logo from "../../../public/assets/images/logo3-portal-m-bonfim.svg"
 import { IoIosCloseCircle } from "react-icons/io"
 import { motion, AnimatePresence } from "framer-motion"
 import { AiOutlineHome } from "react-icons/ai"
@@ -43,7 +43,7 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
             <Sc.UpperContent>
               <Sc.Logo src={logo} alt="logo" />
               <Sc.Nav>
-                <Sc.Link to="/">
+                <Sc.Link href="/">
                   <AiOutlineHome /> Home
                 </Sc.Link>
                 <Sc.LiRelative>
@@ -62,7 +62,7 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
                           data?.data.map((category) => (
                             <Sc.LinkNewsMenu
                               key={category.id}
-                              to={`/noticia/categoria/${category.id}`}
+                              href={`/noticia/categoria/${category.id}`}
                               onClick={toggle}
                             >
                               {category.name}
@@ -72,7 +72,7 @@ export function MobileSideBar({ handleToggle, isOpen }: Props) {
                     )}
                   </AnimatePresence>
                 </Sc.LiRelative>
-                <Sc.Link to="/sobre-nos">
+                <Sc.Link href="/sobre-nos">
                   <BsInfoCircle /> Sobre Nós
                 </Sc.Link>
               </Sc.Nav>

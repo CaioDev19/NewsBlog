@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom"
 import styled from "styled-components"
+import NextLink from "next/link"
 
 export const StyledMobileSideBar = styled.div`
   background-color: ${({ theme }) => theme.COLORS.whitesh};
@@ -62,7 +62,7 @@ export const DateWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
 `
-export const Link = styled(NavLink)`
+export const Link = styled(NextLink)`
   width: 100%;
   text-decoration: none;
   list-style-type: none;

@@ -1,10 +1,11 @@
 import styled from "styled-components"
 import { ContentContainer } from "../../../global/styles/ContentContainer"
 import { Text } from "../../../global/styles/Typography"
+import Image from "next/image"
 
-export const Container = styled.section<{ image: string }>`
+export const Container = styled.section<{ image: any }>`
   width: 100%;
-  background-image: url(${({ image }) => image});
+  background-image: url(${({ image }) => image.src});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31,7 +32,7 @@ export const ContentWrapper = styled(ContentContainer)`
   position: relative;
   z-index: 2;
 `
-export const Banner = styled.img`
+export const Banner = styled(Image)`
   width: 100%;
   object-fit: cover;
   height: 200px;

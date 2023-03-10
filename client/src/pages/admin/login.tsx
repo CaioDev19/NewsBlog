@@ -8,7 +8,7 @@ import {
   Login as ILogin,
   LoginSchema,
 } from "../../global/validators/loginSchema"
-import logo from "../../../assets/images/logoBlack.svg"
+import logo from "../../../public/assets/images/logoBlack.svg"
 import { Text } from "../../global/styles/Typography"
 import { useRouter } from "next/router"
 
@@ -55,7 +55,7 @@ const Login: NextPage = () => {
   return (
     <Sc.MainContainer>
       <Sc.CardContainer>
-        <Sc.Logo src={logo} alt="Logo" />
+        <Sc.Logo priority src={logo} alt="Logo" />
         {!isLoading && isError && (
           <Text type="title" as="h2" size="lrg" color="red">
             Email ou senha inválidos

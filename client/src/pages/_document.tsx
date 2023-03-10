@@ -1,11 +1,11 @@
-import { Html, Head } from "next/document"
+import { Html, Head, NextScript } from "next/document"
 
 export default function Document() {
   return (
     <Html lang="pt-br" translate="no">
       <Head>
         <meta charSet="utf-8" />
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1"
@@ -38,6 +38,7 @@ export default function Document() {
         />
         <title>Portal Mais Bonfim</title>
       </Head>
+      <NextScript />
     </Html>
   )
 }

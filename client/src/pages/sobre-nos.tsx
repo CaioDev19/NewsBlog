@@ -1,5 +1,5 @@
 import * as Sc from "../styles/AboutUs"
-import image from "../../assets/images/joanImage.jpg"
+import image from "../../public/assets/images/joanImage.jpg"
 import { Text } from "../global/styles/Typography"
 import { useTheme } from "styled-components"
 import { useWindow } from "../hooks/useWindow"
@@ -11,7 +11,7 @@ const AboutUs: NextPage = () => {
 
   return (
     <Sc.Container>
-      <Sc.Image src={image} alt="Joan Lopes" />
+      <Sc.Image priority src={image} alt="Joan Lopes" />
       <Sc.RightContent>
         <Text
           type="title"

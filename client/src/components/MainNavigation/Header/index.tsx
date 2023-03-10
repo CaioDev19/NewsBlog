@@ -1,5 +1,5 @@
 import * as Sc from "./style"
-import logo from "../../../assets/images/logo2-portal-m-bonfim.svg"
+import logo from "../../../../public/assets/images/logo2-portal-m-bonfim.svg"
 import { FaFacebookF } from "react-icons/fa"
 import { BsInstagram, BsWhatsapp } from "react-icons/bs"
 import { Text } from "../../../global/styles/Typography"
@@ -9,14 +9,14 @@ import { useWindow } from "../../../hooks/useWindow"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { MobileSideBar } from "../../SideBar"
 import { useToggle } from "../../../hooks/useToggle"
-import { useNavigate } from "react-router-dom"
 import { useRef } from "react"
+import { useRouter } from "next/router"
 
 export function Header() {
   const [isOpen, toggle] = useToggle()
   const theme = useTheme()
   const { width } = useWindow()
-  const navigate = useNavigate()
+  const router = useRouter()
   const currentDate = useRef(new Date().toLocaleDateString())
 
   return (
@@ -35,7 +35,7 @@ export function Header() {
               <Sc.Logo
                 src={logo}
                 alt="logo"
-                onClick={() => navigate("/")}
+                onClick={() => router.push("/")}
               />
               <Sc.SocialMediaWrapper>
                 <Sc.SocialMedia
@@ -69,7 +69,7 @@ export function Header() {
                 <Sc.Logo
                   src={logo}
                   alt="logo"
-                  onClick={() => navigate("/")}
+                  onClick={() => router.push("/")}
                 />
                 <Sc.SocialMediaWrapper>
                   <Sc.SocialMedia

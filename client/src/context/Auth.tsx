@@ -6,7 +6,6 @@ import {
   useMemo,
   useState,
 } from "react"
-import { useLocalStorage } from "../hooks/useLocalStorage"
 import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -35,10 +34,7 @@ export const AuthContext = createContext<AuthContextData>({
 })
 
 export function AuthProvider({ children }: PropsWithChildren) {
-  const [token, setToken, remove] = useLocalStorage<string | null>(
-    "@FirebaseToken",
-    null
-  )
+  const [token, setToken] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
@@ -46,7 +42,6 @@ export function AuthProvider({ children }: PropsWithChildren) {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (!user) {
         setToken(null)
-        remove()
         return
       }
       const tokenId = await user.getIdToken(false)
@@ -57,7 +52,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
     })
 
     return unsubscribe
-  }, [setToken, remove])
+  }, [setToken])
 
   const login = useCallback(
     async (email: string, password: string) => {

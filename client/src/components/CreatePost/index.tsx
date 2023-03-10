@@ -12,10 +12,10 @@ import { useEffect, useState } from "react"
 import { useCreatePost } from "../../hooks/react-query/mutation/useCreatePost"
 import { useCategories } from "../../hooks/react-query/query/useCategories"
 import { Category } from "../../interfaces/api"
-import { useParams } from "react-router-dom"
 import { useNew } from "../../hooks/react-query/query/useNew"
 import { useUpdatePost } from "../../hooks/react-query/mutation/useUpdatePost"
-import { ImageDisplay } from "../../pages/Admin/components/ImageDisplay"
+import { ImageDisplay } from "../Admin/ImageDisplay"
+import { useRouter } from "next/router"
 
 interface Props {
   type: "create" | "edit"
@@ -58,7 +58,9 @@ export function CreatePost({ type }: Props) {
   const { isLoading: isCategoriesLoading, data: categories } =
     useCategories()
   const [body, setBody] = useState("")
-  const { id } = useParams()
+  const {
+    query: { id },
+  } = useRouter()
   const { data, isSuccess } = useNew({
     id: id as string,
     enabled: type === "edit" ? true : false,

@@ -8,7 +8,7 @@ import { Error } from "../Error"
 import { Size } from "../../interfaces/component"
 import { Article } from "../../interfaces/api"
 import { randomize as randomizeFunc } from "../../utils/array"
-import { useParams } from "react-router-dom"
+import { useRouter } from "next/router"
 
 interface Props {
   size?: Size
@@ -18,7 +18,9 @@ interface Props {
 
 export function News({ size, categoryId, randomize }: Props) {
   const newsRef = useRef<HTMLDivElement>(null)
-  const { id: idUrl } = useParams()
+  const {
+    query: { id: idUrl },
+  } = useRouter()
   const limit = size === "lrg" ? 10 : 3
   const {
     data: news,

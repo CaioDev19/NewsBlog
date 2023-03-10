@@ -13,7 +13,7 @@ export function NavBar() {
     <Sc.ContainerNav>
       <ContentContainer>
         <Sc.Nav>
-          <Sc.Link to="/">HOME</Sc.Link>
+          <Sc.Link href="/">HOME</Sc.Link>
           <Sc.LiRelative>
             <Sc.Link as="span" onClick={toggle}>
               NOTÍCIAS <SlArrowDown />
@@ -32,7 +32,7 @@ export function NavBar() {
                       data?.data.map((category) => (
                         <Sc.Link
                           key={category.id}
-                          to={`/noticia/categoria/${category.id}`}
+                          href={`/noticia/categoria/${category.id}`}
                           onClick={() => {
                             toggle()
                           }}
@@ -45,7 +45,7 @@ export function NavBar() {
               )}
             </AnimatePresence>
           </Sc.LiRelative>
-          <Sc.Link to="/sobre-nos">SOBRE NÓS</Sc.Link>
+          <Sc.Link href="/sobre-nos">SOBRE NÓS</Sc.Link>
         </Sc.Nav>
       </ContentContainer>
     </Sc.ContainerNav>

@@ -7,14 +7,14 @@ import { Editor } from "../../Editor"
 import { useAuth } from "../../../hooks/useAuth"
 import { BsFillTrashFill } from "react-icons/bs"
 import { FaPencilAlt } from "react-icons/fa"
-import { useNavigate, useParams } from "react-router-dom"
 import { useDeletePost } from "../../../hooks/react-query/mutation/useDeletePost"
 import { Spinner } from "react-bootstrap"
 import { Size } from "../../../interfaces/component"
 import { useToggle } from "../../../hooks/useToggle"
-import { ModalDelete } from "../../../pages/Admin/components/ModalDelete"
+import { ModalDelete } from "../../Admin/ModalDelete"
 import { useTheme } from "styled-components"
 import { formatDateBrazil } from "../../../utils/date"
+import { useRouter } from "next/router"
 
 interface Props {
   news: Article
@@ -25,9 +25,9 @@ interface Props {
 
 export function New({ news, size, primary, variant }: Props) {
   const { url, width } = useWindow()
-  const { id: idUrl } = useParams()
+  const router = useRouter()
+  const { id: idUrl } = router.query
   const { token } = useAuth()
-  const navigate = useNavigate()
   const { mutate, isError, isLoading } = useDeletePost()
   const [isOpen, toggle] = useToggle()
   const theme = useTheme()
@@ -38,7 +38,7 @@ export function New({ news, size, primary, variant }: Props) {
 
   function handleUpdate(e: any) {
     e.stopPropagation()
-    navigate(`/admin/editar/${news.id}`)
+    router.push(`/admin/editar/${news.id}`)
   }
 
   if (primary) {
@@ -101,7 +101,7 @@ export function New({ news, size, primary, variant }: Props) {
       size={size}
       onClick={() => {
         if (Number(idUrl) === news.id) return
-        navigate(`/noticia/${news.id}`)
+        router.push(`/noticia/${news.id}`)
       }}
     >
       <Sc.NewImage

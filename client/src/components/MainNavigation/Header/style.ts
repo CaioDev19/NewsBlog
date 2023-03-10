@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components"
 import { ContentContainer } from "../../../global/styles/ContentContainer"
+import Image from "next/image"
 
 export const Container = styled.header<{ tablet?: boolean }>`
   width: 100%;
@@ -23,10 +24,13 @@ export const ContentWrapper = styled(ContentContainer)`
     justify-content: center;
   }
 `
-export const Logo = styled.img`
+export const Logo = styled(Image)`
+  all: unset;
+  box-sizing: border-box;
   width: 10%;
   max-width: 150px;
   min-width: 125px;
+  height: auto;
   cursor: pointer;
 `
 export const SocialMediaWrapper = styled.div`

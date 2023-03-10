@@ -1,14 +1,14 @@
 import * as Sc from "./style"
-import logo from "../../../assets/images/logo2-portal-m-bonfim.svg"
+import logo from "../../../../public/assets/images/logo2-portal-m-bonfim.svg"
 import { FaFacebookF } from "react-icons/fa"
 import { BsInstagram, BsWhatsapp } from "react-icons/bs"
 import { Text } from "../../../global/styles/Typography"
 import { AiOutlineArrowUp } from "react-icons/ai"
 import { scrollToTop } from "../../../utils/window"
-import { useNavigate } from "react-router-dom"
+import { useRouter } from "next/router"
 
 export function Footer() {
-  const navigate = useNavigate()
+  const router = useRouter()
 
   return (
     <Sc.Container>
@@ -17,7 +17,7 @@ export function Footer() {
           <Sc.Logo
             src={logo}
             alt="logo"
-            onClick={() => navigate("/")}
+            onClick={() => router.push("/")}
           />
           <Text
             type="paragraph"
@@ -27,7 +27,7 @@ export function Footer() {
           >
             O Portal Mais Bonfim nasce com a responsabilidade e o
             comprometimento de levar a informação verdadeira a todos
-            que buscam seriedade e a livre opinião de pensamento.
+            que buscam seriedade e a livre opinião de pensamento.
           </Text>
           <Sc.SocialMediaWrapper>
             <Sc.SocialMedia

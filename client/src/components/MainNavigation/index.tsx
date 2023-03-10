@@ -1,7 +1,7 @@
 import * as Sc from "./style"
 import { Header } from "./Header"
 import { Footer } from "./Footer"
-import { MenuAdm } from "../../pages/Admin/components/MenuAdmin"
+import { MenuAdm } from "../Admin/MenuAdmin"
 import { useAuth } from "../../hooks/useAuth"
 
 export function MainNavigation({

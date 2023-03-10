@@ -1,6 +1,6 @@
-import { NavLink } from "react-router-dom"
 import styled from "styled-components"
 import { Text } from "../../../../global/styles/Typography"
+import NextLink from "next/link"
 
 export const ContainerNav = styled.nav`
   position: sticky;
@@ -21,7 +21,7 @@ export const Nav = styled.ul`
   ${Text} {
   }
 `
-export const Link = styled(NavLink)`
+export const Link = styled(NextLink)`
   text-decoration: none;
   list-style-type: none;
   cursor: pointer;

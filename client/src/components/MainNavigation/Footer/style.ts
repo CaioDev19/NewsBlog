@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { ContentContainer } from "../../../global/styles/ContentContainer"
 import { Text } from "../../../global/styles/Typography"
+import Image from "next/image"
 
 export const Container = styled.footer`
   display: flex;
@@ -19,8 +20,9 @@ export const Container = styled.footer`
     flex-direction: column;
   }
 `
-export const Logo = styled.img`
+export const Logo = styled(Image)`
   width: 150px;
+  height: auto;
   object-fit: cover;
   cursor: pointer;
 `
