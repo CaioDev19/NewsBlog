@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import NextLink from "next/link"
+import NextImage from "next/image"
 
 export const StyledMobileSideBar = styled.div`
   background-color: ${({ theme }) => theme.COLORS.whitesh};
@@ -40,8 +41,9 @@ export const UpperContent = styled.div`
   flex-direction: column;
   align-items: center;
 `
-export const Logo = styled.img`
+export const Logo = styled(NextImage)`
   width: 100px;
+  height: auto;
   margin-bottom: 2rem;
 `
 export const Nav = styled.ul`

@@ -3,9 +3,10 @@ import image from "../../public/assets/images/joanImage.jpg"
 import { Text } from "../global/styles/Typography"
 import { useTheme } from "styled-components"
 import { useWindow } from "../hooks/useWindow"
-import { NextPage } from "next"
+import { NextPageWithLayout } from "./_app"
+import { MainNavigation } from "../components/MainNavigation"
 
-const AboutUs: NextPage = () => {
+const AboutUs: NextPageWithLayout = () => {
   const theme = useTheme()
   const { width } = useWindow()
 
@@ -50,6 +51,10 @@ const AboutUs: NextPage = () => {
       </Sc.RightContent>
     </Sc.Container>
   )
+}
+
+AboutUs.getLayout = (page) => {
+  return <MainNavigation>{page}</MainNavigation>
 }
 
 export default AboutUs

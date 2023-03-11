@@ -11,7 +11,6 @@ export const Container = styled(ContentContainer)`
   margin-top: 2rem;
   margin-bottom: 2rem;
   max-width: 1147px;
-  width: 100%;
 `
 export const Form = styled.form`
   width: 100%;

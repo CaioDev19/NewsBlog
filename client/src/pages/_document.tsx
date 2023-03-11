@@ -1,16 +1,9 @@
-import { Html, Head, NextScript } from "next/document"
+import { Html, Head, NextScript, Main } from "next/document"
 
 export default function Document() {
   return (
     <Html lang="pt-br" translate="no">
       <Head>
-        <meta charSet="utf-8" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-        />
-        <meta name="theme-color" content="#000000" />
         <meta
           name="description"
           content="O Portal Mais Bonfim nasce com a responsabilidade e o comprometimento de levar a informação verdadeira a todos que buscam seriedade e a livre opinião de pensamento."
@@ -36,9 +29,12 @@ export default function Document() {
           rel="apple-touch-icon"
           href="%PUBLIC_URL%/logo192.png"
         />
-        <title>Portal Mais Bonfim</title>
       </Head>
-      <NextScript />
+      <body>
+        <Main />
+        <div id="portal" />
+        <NextScript />
+      </body>
     </Html>
   )
 }

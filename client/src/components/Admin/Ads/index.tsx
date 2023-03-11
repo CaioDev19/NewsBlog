@@ -1,6 +1,6 @@
 import * as Sc from "./style"
-import { Advertisings } from "../../../../interfaces/api"
-import { Error } from "../../../../components/Error"
+import { Advertisings } from "../../../interfaces/api"
+import { Error } from "../../../components/Error"
 import { Ad } from "./Ad"
 
 interface Props {

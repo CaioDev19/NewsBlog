@@ -13,9 +13,10 @@ import { Error } from "../../components/Error"
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
 import { Ads } from "../../components/Admin/Ads"
 import { Select } from "../../components/Form/Select"
-import { NextPage } from "next"
+import { NextPageWithLayout } from "../_app"
+import { MainNavigation } from "../../components/MainNavigation"
 
-const Advertisement: NextPage = () => {
+const Advertisement: NextPageWithLayout = () => {
   const {
     handleSubmit,
     register,
@@ -137,6 +138,10 @@ const Advertisement: NextPage = () => {
       </Sc.ArrowsContainer>
     </Sc.Container>
   )
+}
+
+Advertisement.getLayout = (page) => {
+  return <MainNavigation>{page}</MainNavigation>
 }
 
 export default Advertisement

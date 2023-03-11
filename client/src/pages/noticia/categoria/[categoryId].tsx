@@ -2,9 +2,10 @@ import { News } from "../../../components/News"
 import * as Sc from "../../../styles/PostByCategory"
 import { HeroSection } from "../../../components/Sections/HeroSection"
 import { useRouter } from "next/router"
-import { NextPage } from "next"
+import { NextPageWithLayout } from "../../_app"
+import { MainNavigation } from "../../../components/MainNavigation"
 
-const PostsByCategory: NextPage = () => {
+const PostsByCategory: NextPageWithLayout = () => {
   const {
     query: { categoryId },
   } = useRouter()
@@ -17,6 +18,10 @@ const PostsByCategory: NextPage = () => {
       </Sc.Container>
     </>
   )
+}
+
+PostsByCategory.getLayout = (page) => {
+  return <MainNavigation>{page}</MainNavigation>
 }
 
 export default PostsByCategory

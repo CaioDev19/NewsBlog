@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Text } from "../../../../../global/styles/Typography"
+import { Text } from "../../../../global/styles/Typography"
 
 export const Container = styled.div`
   display: flex;

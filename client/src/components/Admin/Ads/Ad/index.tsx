@@ -1,9 +1,9 @@
 import { Spinner } from "react-bootstrap"
 import { BsFillTrashFill } from "react-icons/bs"
-import { Text } from "../../../../../global/styles/Typography"
-import { useDeleteAd } from "../../../../../hooks/react-query/mutation/useDeleteAd"
-import { useToggle } from "../../../../../hooks/useToggle"
-import { Advertising } from "../../../../../interfaces/api"
+import { Text } from "../../../../global/styles/Typography"
+import { useDeleteAd } from "../../../../hooks/react-query/mutation/useDeleteAd"
+import { useToggle } from "../../../../hooks/useToggle"
+import { Advertising } from "../../../../interfaces/api"
 import { ModalDelete } from "../../ModalDelete"
 import * as Sc from "./style"
 

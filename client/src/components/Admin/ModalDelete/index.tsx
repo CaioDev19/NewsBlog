@@ -2,6 +2,7 @@ import * as Sc from "./style"
 import { Text } from "../../../global/styles/Typography"
 import { useWindow } from "../../../hooks/useWindow"
 import { useTheme } from "styled-components"
+import { createPortal } from "react-dom"
 
 interface Props {
   toggle: () => void
@@ -11,7 +12,7 @@ export function ModalDelete({ toggle, handleDelete }: Props) {
   const { width } = useWindow()
   const theme = useTheme()
 
-  return (
+  return createPortal(
     <>
       <Sc.Overlay
         onClick={(e) => {
@@ -69,6 +70,7 @@ export function ModalDelete({ toggle, handleDelete }: Props) {
           </Sc.SButton>
         </Sc.ButtonContainer>
       </Sc.Container>
-    </>
+    </>,
+    document.getElementById("portal")!
   )
 }
