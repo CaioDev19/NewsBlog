@@ -3,6 +3,7 @@ import image from "../../assets/images/joanImage.jpg"
 import { Text } from "../../global/styles/Typography"
 import { useTheme } from "styled-components"
 import { useWindow } from "../../hooks/useWindow"
+import { Seo } from "../../components/Seo"
 
 export function AboutUs() {
   const theme = useTheme()
@@ -10,6 +11,10 @@ export function AboutUs() {
 
   return (
     <Sc.Container>
+      <Seo
+        title="Portal Mais Bonfim - Sobre nós"
+        description="Conheça o Portal Mais Bonfim, comprometido em fornecer informações precisas e opiniões livres de preconceitos. Saiba mais sobre nossa missão de levar a verdadeira informação a todos que buscam seriedade e transparência."
+      />
       <Sc.Image src={image} />
       <Sc.RightContent>
         <Text

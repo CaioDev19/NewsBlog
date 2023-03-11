@@ -6,6 +6,49 @@ import ImageResize from "quill-image-resize-module-react"
 
 Quill.register("modules/imageResize", ImageResize)
 
+const modules = {
+  toolbar: [
+    [{ size: [] }, { color: [] }, { background: [] }],
+    ["bold", "italic", "underline", "strike", "blockquote"],
+    [{ align: [] }],
+    [
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
+    ],
+    ["link", "image"],
+  ],
+  imageResize: {
+    parchment: Quill.import("parchment"),
+    modules: ["Resize", "DisplaySize"],
+  },
+  clipboard: {
+    matchVisual: false,
+  },
+}
+
+const formats = [
+  "header",
+  "font",
+  "size",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "blockquote",
+  "list",
+  "bullet",
+  "indent",
+  "link",
+  "image",
+  "video",
+  "align",
+  "color",
+  "background",
+  "image",
+]
+
 interface Props {
   setBody?: (body: string) => void
   theme?: "snow" | "bubble" | "core"
@@ -19,49 +62,6 @@ export function Editor({
   body,
   type = "create",
 }: Props) {
-  const modules = {
-    toolbar: [
-      [{ size: [] }, { color: [] }, { background: [] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ align: [] }],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
-      ["link", "image"],
-    ],
-    imageResize: {
-      parchment: Quill.import("parchment"),
-      modules: ["Resize", "DisplaySize"],
-    },
-    clipboard: {
-      matchVisual: false,
-    },
-  }
-
-  const formats = [
-    "header",
-    "font",
-    "size",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "bullet",
-    "indent",
-    "link",
-    "image",
-    "video",
-    "align",
-    "color",
-    "background",
-    "image",
-  ]
-
   if (body && type === "show") {
     return (
       <Sc.QuillContentContainer>

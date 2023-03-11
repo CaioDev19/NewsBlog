@@ -13,7 +13,7 @@ export function HeroSection({ primary }: Props) {
     <Sc.Container image={church}>
       <Sc.Overlay />
       <Sc.ContentWrapper>
-        <Sc.Banner src={banner} />
+        <Sc.Banner src={banner} alt="Banner Portal Mais Bonfim" />
         {primary && (
           <Sc.LowerContent>
             <AdsCarousel />

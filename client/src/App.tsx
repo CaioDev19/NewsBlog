@@ -8,26 +8,34 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query"
 import { AuthProvider } from "./context/Auth"
-
-const queryClient = new QueryClient({
-  logger: {
-    log: () => {},
-    warn: () => {},
-    error: () => {},
-  },
-})
+import { HelmetProvider } from "react-helmet-async"
+import { useState } from "react"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 
 export function App() {
+  const [queryClient] = useState(() => {
+    return new QueryClient({
+      logger: {
+        log: () => {},
+        warn: () => {},
+        error: () => {},
+      },
+    })
+  })
+
   return (
-    <Router>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme}>
-          <AuthProvider>
-            <MainRoutes />
-          </AuthProvider>
-          <GlobalStyles />
-        </ThemeProvider>
-      </QueryClientProvider>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider theme={theme}>
+            <AuthProvider>
+              <MainRoutes />
+            </AuthProvider>
+            <GlobalStyles />
+          </ThemeProvider>
+          <ReactQueryDevtools />
+        </QueryClientProvider>
+      </Router>
+    </HelmetProvider>
   )
 }

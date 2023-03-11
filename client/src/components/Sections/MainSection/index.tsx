@@ -6,6 +6,8 @@ import * as Sc from "./style"
 import { CardSkeleton } from "../../Skeletons/CardSkeleton"
 import { Error } from "../../Error"
 import { Ads } from "../../Ads"
+import { Seo } from "../../Seo"
+import { limitMetaTagsLength } from "../../../utils/limitMetaTags"
 
 export function MainSection({ primary }: { primary?: boolean }) {
   const { id } = useParams()
@@ -13,6 +15,7 @@ export function MainSection({ primary }: { primary?: boolean }) {
     data: news,
     isLoading,
     isError,
+    isSuccess,
   } = useNew({
     id: id!,
     enabled: primary || false,
@@ -43,6 +46,20 @@ export function MainSection({ primary }: { primary?: boolean }) {
           {primary ? "Mais notícias" : "Patrocinadores"}
         </Sc.SubTittle>
         {primary ? <News size="mdn" randomize /> : <Ads />}
+
+        {primary && isSuccess ? (
+          <Seo
+            title={`Portal Mais Bonfim - ${limitMetaTagsLength(
+              news.data.title
+            )}`}
+            description={news.data.summary}
+          />
+        ) : (
+          <Seo
+            title={"Portal Mais Bonfim - Home"}
+            description="Encontre as notícias mais importantes do dia no nosso site de notícias, com cobertura abrangente de política, entretenimento, esportes e muito mais. Leia as notícias mais recentes e navegue pelas categorias para se manter informado. Visite-nos agora e fique atualizado!"
+          />
+        )}
       </Sc.AdContainer>
     </Sc.MainContainer>
   )
