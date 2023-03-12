@@ -1,4 +1,4 @@
-const knex = require("../config/dataBase")
+const prisma = require("../config/dataBase")
 const { formatToUtcTimeZone } = require("../utils/date")
 const {
   uploadImageToStorage,
@@ -9,40 +9,38 @@ module.exports = {
   async createPost(req, res) {
     const { title, content, summary, category_id } = req.body
     const { file } = req
-    const { name } = req.category
 
     try {
       file.originalname = `${file.originalname}_${Date.now()}`
       const imageUrl = await uploadImageToStorage(file)
 
-      const post = await knex("post")
-        .insert({
+      const post = await prisma.post.create({
+        data: {
           title,
           content,
           summary,
-          category_id,
-          image_name: file.originalname,
-          image_url: imageUrl,
+          category_id: Number(category_id),
+          imageName: file.originalname,
+          imageUrl,
           date: formatToUtcTimeZone(),
-        })
-        .returning("*")
+        },
+        include: {
+          category: true,
+        },
+      })
 
       const {
-        image_name,
-        image_url,
+        imageName,
+        imageUrl: image_url,
         category_id: category,
-        ...postWithoutImageAndCategory
-      } = post[0]
+        ...postWithoutImage
+      } = post
 
       res.status(201).json({
-        ...postWithoutImageAndCategory,
+        ...postWithoutImage,
         image: {
-          name: image_name,
+          name: imageName,
           url: image_url,
-        },
-        category: {
-          id: category,
-          name,
         },
       })
     } catch {
@@ -53,12 +51,13 @@ module.exports = {
     const { id } = req.params
 
     try {
-      await deleteFileFromStorage(req.post.image_name)
+      await deleteFileFromStorage(req.post.imageName)
 
-      const deletedPost = await knex("post")
-        .where({ id })
-        .del()
-        .returning("*")
+      const deletedPost = await prisma.post.delete({
+        where: {
+          id: Number(id),
+        },
+      })
 
       if (!deletedPost) {
         return res
@@ -75,42 +74,41 @@ module.exports = {
     const { id } = req.params
     const { title, content, summary, category_id } = req.body
     const { file } = req
-    const { name } = req.category
 
     try {
-      await deleteFileFromStorage(req.post.image_name)
+      await deleteFileFromStorage(req.post.imageName)
 
       file.originalname = `${file.originalname}_${Date.now()}`
       const imageUrl = await uploadImageToStorage(file)
 
-      const updatedPost = await knex("post")
-        .where({ id })
-        .update({
+      const updatedPost = await prisma.post.update({
+        where: {
+          id: Number(id),
+        },
+        data: {
           title,
           content,
           summary,
-          category_id,
-          image_name: file.originalname,
-          image_url: imageUrl,
-        })
-        .returning("*")
+          category_id: Number(category_id),
+          imageName: file.originalname,
+          imageUrl,
+        },
+        include: {
+          category: true,
+        },
+      })
 
       const {
-        image_name,
-        image_url,
-        category_id: category,
-        ...postWithoutImageAndCategory
-      } = updatedPost[0]
+        imageUrl: image_url,
+        imageName,
+        ...postWithoutImage
+      } = updatedPost
 
       return res.status(200).json({
-        ...postWithoutImageAndCategory,
+        ...postWithoutImage,
         image: {
-          name: image_name,
+          name: imageName,
           url: image_url,
-        },
-        category: {
-          id: category,
-          name,
         },
       })
     } catch {
@@ -123,15 +121,14 @@ module.exports = {
 
     try {
       if (status === "Fixo") {
-        const allFixedAdvertising = await knex("advertising")
-          .where({
-            status: "Fixo",
-          })
-          .count("* as total")
-          .first()
-
-        console.log(allFixedAdvertising)
-        if (allFixedAdvertising.total == 10) {
+        const allFixedAdvertising = await prisma.advertising.findMany(
+          {
+            where: {
+              status: "Fixo",
+            },
+          }
+        )
+        if (allFixedAdvertising.length == 10) {
           return res.status(400).json({
             message: "You can't add more than 10 fixed advertising",
           })
@@ -141,22 +138,25 @@ module.exports = {
       file.originalname = `${file.originalname}_${Date.now()}`
       const imageUrl = await uploadImageToStorage(file)
 
-      const advertising = await knex("advertising")
-        .insert({
-          image_name: file.originalname,
-          image: imageUrl,
+      const advertising = await prisma.advertising.create({
+        data: {
+          imageName: file.originalname,
+          imageUrl,
           status,
-        })
-        .returning("*")
+        },
+      })
 
-      const { image_name, image, ...advertisingWithoutImage } =
-        advertising[0]
+      const {
+        imageName,
+        imageUrl: image_url,
+        ...advertisingWithoutImage
+      } = advertising
 
       return res.status(201).json({
         ...advertisingWithoutImage,
         image: {
-          name: image_name,
-          url: image,
+          name: imageName,
+          url: image_url,
         },
       })
     } catch {
@@ -167,12 +167,13 @@ module.exports = {
     const { id } = req.params
 
     try {
-      await deleteFileFromStorage(req.advertising.image_name)
+      await deleteFileFromStorage(req.advertising.imageName)
 
-      const deletedAdvertising = await knex("advertising")
-        .where({ id })
-        .del()
-        .returning("*")
+      const deletedAdvertising = await prisma.advertising.delete({
+        where: {
+          id: Number(id),
+        },
+      })
 
       if (!deletedAdvertising) {
         return res

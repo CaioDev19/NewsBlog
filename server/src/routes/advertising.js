@@ -11,9 +11,5 @@ const router = express.Router()
 router.get("/", checkIfThePageExists("advertising"), listAdvertising)
 
 router.get("/fixed", listFixedAdvertising)
-router.get(
-  "/rotative",
-  checkIfThePageExists("advertising"),
-  listRotativeAdvertising
-)
+router.get("/rotative", listRotativeAdvertising)
 module.exports = router

@@ -20,6 +20,9 @@ export function News({ size, categoryId, randomize }: Props) {
   const newsRef = useRef<HTMLDivElement>(null)
   const { id: idUrl } = useParams()
   const limit = size === "lrg" ? 10 : 3
+  const [shuffledNews, setShuffledNews] = useState<Article[] | null>(
+    null
+  )
   const {
     data: news,
     isLoading,
@@ -32,8 +35,12 @@ export function News({ size, categoryId, randomize }: Props) {
     limit: randomize ? 50 : limit,
     ref: newsRef,
     categoryId: categoryId || undefined,
+    enabled: randomize
+      ? shuffledNews === null
+        ? true
+        : false
+      : true,
   })
-  const [shuffledNews, setShuffledNews] = useState<Article[] | null>()
 
   useEffect(() => {
     if (!isSuccess || isLoading || !randomize) return

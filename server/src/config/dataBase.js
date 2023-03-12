@@ -1,5 +1,5 @@
-const knexfile = require("../../knexfile")
-const env = process.env.KNEX_FILE || "development"
-const knex = require("knex")(knexfile[env])
+const { PrismaClient } = require("@prisma/client")
 
-module.exports = knex
+const prisma = new PrismaClient()
+
+module.exports = prisma

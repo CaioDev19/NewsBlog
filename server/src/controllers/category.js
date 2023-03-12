@@ -1,12 +1,12 @@
-const knex = require("../config/dataBase")
+const prisma = require("../config/dataBase")
 
 module.exports = {
   async listCategories(_req, res) {
     try {
-      const categories = await knex("category").select("*")
+      const categories = await prisma.category.findMany()
       res.status(200).json(categories)
     } catch {
-      res.status(500).json({ message: "Erro" })
+      res.status(500).json({ message: "Internal server error" })
     }
   },
 }
