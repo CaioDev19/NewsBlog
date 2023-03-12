@@ -1,4 +1,4 @@
-const prisma = require("../config/database")
+const prisma = require("../config/dataBase")
 
 module.exports = {
   async checkIfCategoryExists(req, res, next) {
