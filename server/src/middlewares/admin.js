@@ -1,20 +1,21 @@
-const { isInTheDataBase } = require("../utils/dataBase")
+const prisma = require("../config/database")
 
 module.exports = {
   async checkIfCategoryExists(req, res, next) {
     const { category_id } = req.body
 
     try {
-      const { data, response } = await isInTheDataBase(
-        { id: category_id },
-        "category"
-      )
+      const category = await prisma.category.findUnique({
+        where: {
+          id: Number(category_id),
+        },
+      })
 
-      if (!response) {
+      if (!category) {
         return res.status(404).json({ message: "Invalid category." })
       }
 
-      req.category = data
+      req.category = category
       return next()
     } catch {
       return res
@@ -26,18 +27,19 @@ module.exports = {
     const { id } = req.params
 
     try {
-      const { data, response } = await isInTheDataBase(
-        { id },
-        "advertising"
-      )
+      const advertising = await prisma.advertising.findUnique({
+        where: {
+          id: Number(id),
+        },
+      })
 
-      if (!response) {
+      if (!advertising) {
         return res
           .status(404)
           .json({ message: "Invalid advertising." })
       }
 
-      req.advertising = data
+      req.advertising = advertising
       return next()
     } catch {
       return res

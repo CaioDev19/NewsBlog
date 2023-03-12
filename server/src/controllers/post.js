@@ -1,4 +1,4 @@
-const knex = require("../config/dataBase")
+const prisma = require("../config/dataBase")
 
 module.exports = {
   async listPosts(req, res) {
@@ -10,43 +10,35 @@ module.exports = {
     const { totalPages } = req
 
     try {
-      const condition = categoryId
-        ? { "post.category_id": categoryId }
-        : {}
-      const posts = await knex("post")
-        .join("category", "category.id", "=", "post.category_id")
-        .select(
-          "post.id",
-          "post.title",
-          "post.content",
-          "post.summary",
-          "post.image_name",
-          "post.image_url",
-          "post.date",
-          "category.id as category_id",
-          "category.name as category_name"
-        )
-        .where(condition)
-        .orderBy("post.date", "desc")
-        .limit(limit)
-        .offset((page - 1) * limit)
+      const condition = categoryId ? { category_id: categoryId } : {}
+
+      const posts = await prisma.post.findMany({
+        select: {
+          id: true,
+          title: true,
+          content: true,
+          summary: true,
+          imageName: true,
+          imageUrl: true,
+          date: true,
+          category: true,
+        },
+        where: {
+          ...condition,
+        },
+        orderBy: {
+          date: "desc",
+        },
+        take: limit,
+        skip: (page - 1) * limit,
+      })
 
       const fomatedPosts = posts.map(
-        ({
-          image_name,
-          image_url,
-          category_id,
-          category_name,
-          ...post
-        }) => ({
+        ({ imageName, imageUrl, ...post }) => ({
           ...post,
           image: {
-            name: image_name,
-            url: image_url,
-          },
-          category: {
-            id: category_id,
-            name: category_name,
+            name: imageName,
+            url: imageUrl,
           },
         })
       )
@@ -61,51 +53,16 @@ module.exports = {
     }
   },
   async listPostByid(req, res) {
-    const { id } = req.params
+    const { post } = req
 
-    try {
-      const post = await knex("post")
-        .join("category", "category.id", "=", "post.category_id")
-        .select(
-          "post.id",
-          "post.title",
-          "post.content",
-          "post.summary",
-          "post.image_name",
-          "post.image_url",
-          "post.date",
-          "category.id as category_id",
-          "category.name as category_name"
-        )
-        .where("post.id", id)
-        .orderBy("post.date", "desc")
-        .first()
+    const { imageName, imageUrl, ...postWithoutImage } = post
 
-      if (!post) {
-        return res.status(404).json({ message: "Not Found." })
-      }
-
-      const {
-        image_name,
-        image_url,
-        category_id,
-        category_name,
-        ...postWithoutImageAndCategory
-      } = post
-
-      res.status(200).json({
-        ...postWithoutImageAndCategory,
-        image: {
-          name: image_name,
-          url: image_url,
-        },
-        category: {
-          id: category_id,
-          name: category_name,
-        },
-      })
-    } catch {
-      res.status(500).json({ message: "Internal server error" })
-    }
+    res.status(200).json({
+      ...postWithoutImage,
+      image: {
+        name: imageName,
+        url: imageUrl,
+      },
+    })
   },
 }

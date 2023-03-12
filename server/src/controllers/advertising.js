@@ -1,4 +1,4 @@
-const knex = require("../config/dataBase")
+const prisma = require("../config/dataBase")
 
 module.exports = {
   async listAdvertising(req, res) {
@@ -7,20 +7,22 @@ module.exports = {
     const { totalPages } = req
 
     try {
-      const advertising = await knex("advertising")
-        .select("*")
-        .orderBy("id", "desc")
-        .limit(limit)
-        .offset((page - 1) * limit)
+      const advertising = await prisma.advertising.findMany({
+        orderBy: {
+          id: "desc",
+        },
+        take: limit,
+        skip: (page - 1) * limit,
+      })
 
       const advertisingWithImages = advertising.map((ad) => {
-        const { image_name, image, ...advertisingWithoutImage } = ad
+        const { imageName, imageUrl, ...advertisingWithoutImage } = ad
 
         return {
           ...advertisingWithoutImage,
           image: {
-            name: image_name,
-            url: image,
+            name: imageName,
+            url: imageUrl,
           },
         }
       })
@@ -36,19 +38,23 @@ module.exports = {
   },
   async listFixedAdvertising(_req, res) {
     try {
-      const advertising = await knex("advertising")
-        .select("*")
-        .where({ status: "Fixo" })
-        .orderBy("id", "asc")
+      const advertising = await prisma.advertising.findMany({
+        where: {
+          status: "Fixo",
+        },
+        orderBy: {
+          id: "desc",
+        },
+      })
 
       const advertisingWithImages = advertising.map((ad) => {
-        const { image_name, image, ...advertisingWithoutImage } = ad
+        const { imageName, imageUrl, ...advertisingWithoutImage } = ad
 
         return {
           ...advertisingWithoutImage,
           image: {
-            name: image_name,
-            url: image,
+            name: imageName,
+            url: imageUrl,
           },
         }
       })
@@ -65,34 +71,36 @@ module.exports = {
     const limit = Number(req.query.limit) || 10
 
     try {
-      const totalPosts = await knex("advertising")
-        .where({
+      const totalPosts = await prisma.advertising.findMany({
+        where: {
           status: "Móvel",
-        })
-        .count("id")
-        .first()
+        },
+      })
 
-      const totalPages = Math.ceil(Number(totalPosts.count) / limit)
+      const totalPages = Math.ceil(Number(totalPosts.length) / limit)
 
       if ((totalPages > 0 && page > totalPages) || page < 1) {
         return res.status(404).json({ message: "Page not found." })
       }
-
-      const advertising = await knex("advertising")
-        .select("*")
-        .where({ status: "Móvel" })
-        .orderBy("id", "asc")
-        .limit(limit)
-        .offset((page - 1) * limit)
+      const advertising = await prisma.advertising.findMany({
+        where: {
+          status: "Móvel",
+        },
+        orderBy: {
+          id: "asc",
+        },
+        take: limit,
+        skip: (page - 1) * limit,
+      })
 
       const advertisingWithImages = advertising.map((ad) => {
-        const { image_name, image, ...advertisingWithoutImage } = ad
+        const { imageName, imageUrl, ...advertisingWithoutImage } = ad
 
         return {
           ...advertisingWithoutImage,
           image: {
-            name: image_name,
-            url: image,
+            name: imageName,
+            url: imageUrl,
           },
         }
       })

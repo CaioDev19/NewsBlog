@@ -1,5 +1,4 @@
-const { isInTheDataBase } = require("../utils/dataBase")
-const knex = require("../config/dataBase")
+const prisma = require("../config/database")
 
 module.exports = {
   checkIfThePageExists(table = "post") {
@@ -13,12 +12,13 @@ module.exports = {
       try {
         let totalPosts
         if (categoryId) {
-          totalPosts = await knex(table)
-            .where({ category_id: categoryId })
-            .count("id")
-            .first()
+          totalPosts = await prisma[table].findMany({
+            where: {
+              category_id: categoryId,
+            },
+          })
         } else {
-          totalPosts = await knex(table).count("id").first()
+          totalPosts = await prisma[table].findMany()
         }
 
         if (typeof totalPosts === "undefined") {
@@ -27,7 +27,9 @@ module.exports = {
             .json({ message: "Server internal error." })
         }
 
-        const totalPages = Math.ceil(Number(totalPosts.count) / limit)
+        const totalPages = Math.ceil(
+          Number(totalPosts.length) / limit
+        )
 
         if (page === null) {
           req.totalPages = totalPages
@@ -51,13 +53,27 @@ module.exports = {
     const { id } = req.params
 
     try {
-      const { data, response } = await isInTheDataBase({ id }, "post")
+      const post = await prisma.post.findUnique({
+        where: {
+          id: Number(id),
+        },
+        select: {
+          id: true,
+          title: true,
+          content: true,
+          summary: true,
+          imageName: true,
+          imageUrl: true,
+          date: true,
+          category: true,
+        },
+      })
 
-      if (!response) {
+      if (!post) {
         return res.status(404).json({ message: "Not Found." })
       }
 
-      req.post = data
+      req.post = post
       return next()
     } catch {
       return res
