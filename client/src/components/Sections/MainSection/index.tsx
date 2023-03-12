@@ -56,8 +56,8 @@ export function MainSection({ primary }: { primary?: boolean }) {
           />
         ) : (
           <Seo
-            title={"Portal Mais Bonfim - Home"}
-            description="Encontre as notícias mais importantes do dia no nosso site de notícias, com cobertura abrangente de política, entretenimento, esportes e muito mais. Leia as notícias mais recentes e navegue pelas categorias para se manter informado. Visite-nos agora e fique atualizado!"
+            title="Portal Mais Bonfim - Home"
+            description="O Portal Mais Bonfim nasce com a responsabilidade e o comprometimento de levar a informação verdadeira a todos que buscam seriedade e a livre opinião de pensamento."
           />
         )}
       </Sc.AdContainer>

@@ -11,7 +11,7 @@ export function PostsByCategory() {
     <>
       <Seo
         title={"Portal Mais Bonfim - Notícias"}
-        description="O Portal Mais Bonfim nasce com a responsabilidade e o comprometimento de levar a informação verdadeira a todos que buscam seriedade e a livre opinião de pensamento."
+        description="Encontre as notícias mais importantes do dia no nosso site de notícias, com cobertura abrangente de política, entretenimento, esportes e muito mais. Leia as notícias mais recentes e navegue pelas categorias para se manter informado."
       />
       <HeroSection />
       <Sc.Container>
