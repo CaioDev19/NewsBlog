@@ -1,4 +1,4 @@
-import { createRouter } from "./index"
+import { createRouter } from "."
 import { advertisingRouter } from "./routers/advertising"
 import { categoryRouter } from "./routers/category"
 import { postRouter } from "./routers/post"

@@ -1,4 +1,4 @@
-import { createRouter, publicProcedure } from "../index"
+import { createRouter, publicProcedure } from "../"
 import { TRPCError } from "@trpc/server"
 
 export const categoryRouter = createRouter({

@@ -1,7 +1,7 @@
 import { z } from "zod"
 import { checkPagination } from "../../utils/checkPagination"
 import { paginatedSchema } from "../../validators/pagination"
-import { createRouter, publicProcedure } from "../index"
+import { createRouter, publicProcedure } from ".."
 import { TRPCError } from "@trpc/server"
 import { Advertising } from "@prisma/client"
 

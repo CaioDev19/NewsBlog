@@ -1,10 +1,11 @@
+export * from "./trpc/root"
 require("dotenv").config()
 
 import routes from "./routes/admin/index"
 import express from "express"
 import cors from "cors"
 import * as trpcExpress from "@trpc/server/adapters/express"
-import { createContext } from "./trpc/index"
+import { createContext } from "./trpc"
 import { appRouter } from "./trpc/root"
 
 const app = express()

@@ -1,4 +1,4 @@
-import { createRouter, publicProcedure } from "../index"
+import { createRouter, publicProcedure } from ".."
 import { z } from "zod"
 import { TRPCError } from "@trpc/server"
 import { checkPagination } from "../../utils/checkPagination"
