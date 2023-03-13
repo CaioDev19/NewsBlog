@@ -1,4 +1,4 @@
-const { z } = require("zod")
+import { z } from "zod"
 
 const validImageTypes = [
   "image/jpeg",
@@ -9,7 +9,7 @@ const validImageTypes = [
   "image/tiff",
 ]
 
-const PostSchema = z.object({
+export const PostSchema = z.object({
   body: z.object({
     title: z
       .string({
@@ -54,6 +54,4 @@ const PostSchema = z.object({
     ),
 })
 
-module.exports = {
-  PostSchema,
-}
+export type Post = z.infer<typeof PostSchema>

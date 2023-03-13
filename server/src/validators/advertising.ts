@@ -1,4 +1,4 @@
-const { z } = require("zod")
+import { z } from "zod"
 
 const validImageTypes = [
   "image/jpeg",
@@ -9,7 +9,7 @@ const validImageTypes = [
   "image/tiff",
 ]
 
-const AdvertisingSchema = z.object({
+export const AdvertisingSchema = z.object({
   file: z
     .any({
       required_error: "Image is required",
@@ -26,7 +26,3 @@ const AdvertisingSchema = z.object({
     status: z.union([z.literal("Fixo"), z.literal("Móvel")]),
   }),
 })
-
-module.exports = {
-  AdvertisingSchema,
-}

@@ -1,5 +1,5 @@
 const admin = require("firebase-admin")
-const { getStorage } = require("firebase-admin/storage")
+import { getStorage } from "firebase-admin/storage"
 
 admin.initializeApp({
   credential: admin.credential.cert({
@@ -22,7 +22,4 @@ admin.initializeApp({
 
 const bucket = getStorage().bucket()
 
-module.exports = {
-  admin,
-  bucket,
-}
+export { admin, bucket }
