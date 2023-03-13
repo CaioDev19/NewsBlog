@@ -1,8 +1,7 @@
-import { useQuery } from "@tanstack/react-query"
-import { listCategories } from "../../../services/requests"
+import { trpc } from "../../../config/trpc"
 
 export function useCategories() {
-  return useQuery(["category"], listCategories, {
+  return trpc.category.list.useQuery(undefined, {
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: true,

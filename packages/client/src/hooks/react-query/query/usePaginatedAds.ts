@@ -1,6 +1,5 @@
-import { useQuery } from "@tanstack/react-query"
 import { RefObject, useCallback, useState } from "react"
-import { getAdvertising } from "../../../services/requests"
+import { trpc } from "../../../config/trpc"
 import { scrollToRef } from "../../../utils/window"
 
 interface Props {
@@ -9,6 +8,7 @@ interface Props {
   enabled?: boolean
   keepPreviousData?: boolean
   ref?: RefObject<HTMLDivElement>
+  status?: "Fixo" | "Móvel"
 }
 
 export function usePaginatedAds({
@@ -17,12 +17,12 @@ export function usePaginatedAds({
   enabled = true,
   ref,
   keepPreviousData = false,
+  status,
 }: Props) {
   const [page, setPage] = useState(() => initialPage)
 
-  const query = useQuery(
-    ["advertising", page, limit],
-    getAdvertising,
+  const query = trpc.advertising.list.useQuery(
+    { page, limit, status: status },
     {
       enabled,
       keepPreviousData,

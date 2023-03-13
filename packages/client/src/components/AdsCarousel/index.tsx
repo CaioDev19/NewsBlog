@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { usePaginatedAdsRotative } from "../../hooks/react-query/query/usePaginatedAdsRotative"
+import { usePaginatedAds } from "../../hooks/react-query/query/usePaginatedAds"
 import { Error } from "../Error"
 import * as Sc from "./style"
 
@@ -12,18 +12,19 @@ export function AdsCarousel() {
     goToPage,
     fetchPreviousPage,
     currentPage,
-  } = usePaginatedAdsRotative({ limit: 1, keepPreviousData: true })
+  } = usePaginatedAds({
+    limit: 1,
+    keepPreviousData: true,
+    status: "Móvel",
+  })
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (!isSuccess) return
 
-      if (
-        currentPage === data.data.totalPages &&
-        data.data.totalPages > 0
-      ) {
+      if (currentPage === data.totalPages && data?.totalPages > 0) {
         goToPage(1)
-      } else if (data.data.totalPages > 0) {
+      } else if (data?.totalPages > 0) {
         fetchNextPage()
       }
     }, 5000)
@@ -31,7 +32,7 @@ export function AdsCarousel() {
   }, [
     currentPage,
     isSuccess,
-    data?.data?.totalPages,
+    data?.totalPages,
     fetchNextPage,
     fetchPreviousPage,
     goToPage,
@@ -45,7 +46,7 @@ export function AdsCarousel() {
     )
   }
 
-  if (data?.data.advertisings.length === 0) {
+  if (data?.advertisings.length === 0) {
     return <Error theme="light" message="Nenhum anúncio encontrado" />
   }
 
@@ -53,9 +54,9 @@ export function AdsCarousel() {
     <>
       {isSuccess ? (
         <Sc.Image
-          src={data.data.advertisings[0].image.url}
-          alt={data.data.advertisings[0].image.name}
-          key={data.data.advertisings[0].id}
+          src={data.advertisings[0].image.url}
+          alt={data.advertisings[0].image.name}
+          key={data.advertisings[0].id}
         />
       ) : (
         <Error

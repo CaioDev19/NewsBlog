@@ -116,7 +116,7 @@ export function Advertisement() {
       </Sc.Form>
       <Sc.AdsContainer>
         {isAdsSuccess ? (
-          <Ads data={ads.data} />
+          <Ads data={ads} />
         ) : (
           <Error
             size="lrg"
@@ -130,8 +130,8 @@ export function Advertisement() {
         </Sc.Arrow>
         <Sc.Arrow onClick={fetchNextPage}>
           {isAdsSuccess &&
-            currentPage < ads.data.totalPages &&
-            ads.data.totalPages > 0 && <FaArrowRight />}
+            currentPage < ads.totalPages &&
+            ads.totalPages > 0 && <FaArrowRight />}
         </Sc.Arrow>
       </Sc.ArrowsContainer>
     </Sc.Container>

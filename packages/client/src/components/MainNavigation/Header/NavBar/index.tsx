@@ -29,7 +29,7 @@ export function NavBar() {
                     exit={{ opacity: 0, y: -20 }}
                   >
                     {isSuccess &&
-                      data?.data.map((category) => (
+                      data?.map((category) => (
                         <Sc.Link
                           key={category.id}
                           to={`/noticia/categoria/${category.id}`}

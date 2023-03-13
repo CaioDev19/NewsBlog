@@ -31,7 +31,7 @@ export function MainSection({ primary }: { primary?: boolean }) {
         isLoading ? (
           <CardSkeleton />
         ) : (
-          <New news={news?.data!} primary />
+          <New news={news!} primary />
         )
       ) : (
         <News size="lrg" />
@@ -50,9 +50,9 @@ export function MainSection({ primary }: { primary?: boolean }) {
         {primary && isSuccess ? (
           <Seo
             title={`Portal Mais Bonfim - ${limitMetaTagsLength(
-              news.data.title
+              news.title
             )}`}
-            description={news.data.summary}
+            description={news.summary}
           />
         ) : (
           <Seo

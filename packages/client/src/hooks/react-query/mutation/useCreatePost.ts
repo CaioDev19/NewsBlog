@@ -1,20 +1,18 @@
 import { useMutation } from "@tanstack/react-query"
 import { useNavigate } from "react-router-dom"
 import { createNew } from "../../../services/requests"
-import { useQueryClient } from "@tanstack/react-query"
 import { useSignOutOnError } from "../../useSignOutOnError"
 import { useEffect } from "react"
 import { AxiosError } from "axios"
+import { trpc } from "../../../config/trpc"
 
 export function useCreatePost() {
   const navigate = useNavigate()
   const [setShouldSignOut] = useSignOutOnError()
-  const queryClient = useQueryClient()
+  const utils = trpc.useContext()
   const mutation = useMutation(createNew, {
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["news"],
-      })
+    onSuccess: async () => {
+      await utils.post.invalidate()
       navigate("/")
     },
     onError: (_error: AxiosError) => {},

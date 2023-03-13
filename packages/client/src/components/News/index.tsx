@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from "react"
 import { NewsSkeleton } from "../Skeletons/NewsSkeleton"
 import { Error } from "../Error"
 import { Size } from "../../interfaces/component"
-import { Article } from "../../interfaces/api"
 import { randomize as randomizeFunc } from "../../utils/array"
 import { useParams } from "react-router-dom"
+import { RouterOutput } from "server"
 
 interface Props {
   size?: Size
@@ -20,9 +20,9 @@ export function News({ size, categoryId, randomize }: Props) {
   const newsRef = useRef<HTMLDivElement>(null)
   const { id: idUrl } = useParams()
   const limit = size === "lrg" ? 10 : 3
-  const [shuffledNews, setShuffledNews] = useState<Article[] | null>(
-    null
-  )
+  const [shuffledNews, setShuffledNews] = useState<
+    RouterOutput["post"]["list"]["posts"] | null
+  >(null)
   const {
     data: news,
     isLoading,
@@ -44,7 +44,7 @@ export function News({ size, categoryId, randomize }: Props) {
 
   useEffect(() => {
     if (!isSuccess || isLoading || !randomize) return
-    setShuffledNews(randomizeFunc(news?.data.posts))
+    setShuffledNews(randomizeFunc(news?.posts))
   }, [isSuccess, isLoading, news, randomize, idUrl])
 
   if (isError) {
@@ -56,7 +56,7 @@ export function News({ size, categoryId, randomize }: Props) {
     )
   }
 
-  if (news?.data.posts.length === 0) {
+  if (news?.posts.length === 0) {
     return (
       <Error
         theme={size === "sml" ? "light" : "dark"}
@@ -82,7 +82,7 @@ export function News({ size, categoryId, randomize }: Props) {
           )
         })
       ) : (
-        news?.data.posts.map((newI) => {
+        news?.posts.map((newI) => {
           return (
             <New
               news={newI}
@@ -100,8 +100,8 @@ export function News({ size, categoryId, randomize }: Props) {
           </Sc.Arrow>
           <Sc.Arrow onClick={fetchNextPage}>
             {isSuccess &&
-              currentPage < news.data.totalPages &&
-              news.data.totalPages > 0 && <FaArrowRight />}
+              currentPage < news.totalPages &&
+              news.totalPages > 0 && <FaArrowRight />}
           </Sc.Arrow>
         </Sc.ArrowsContainer>
       )}

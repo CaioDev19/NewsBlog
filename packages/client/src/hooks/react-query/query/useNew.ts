@@ -1,13 +1,15 @@
-import { useQuery } from "@tanstack/react-query"
-import { getNew } from "../../../services/requests"
+import { trpc } from "../../../config/trpc"
 
 interface Props {
   id: string | number
   enabled?: boolean
 }
 export function useNew({ id, enabled = true }: Props) {
-  return useQuery(["new", id], getNew, {
-    enabled,
-    cacheTime: 0,
-  })
+  return trpc.post.listById.useQuery(
+    { id },
+    {
+      enabled,
+      cacheTime: 0,
+    }
+  )
 }

@@ -1,10 +1,10 @@
 import * as Sc from "./style"
 import { Controller } from "react-hook-form"
 import { Control } from "react-hook-form/dist/types"
-import { Category } from "../../../interfaces/api"
+import { RouterOutput } from "server"
 
 interface Props extends React.InputHTMLAttributes<HTMLSelectElement> {
-  options: Category[] | []
+  options: RouterOutput["category"]["list"] | []
   name: string
   control: Control<any, any>
   customPlaceholder?: string

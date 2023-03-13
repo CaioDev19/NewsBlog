@@ -1,6 +1,5 @@
 import * as Sc from "./style"
 import { Text } from "../../../global/styles/Typography"
-import { Article } from "../../../interfaces/api"
 import { ShareButton } from "../../ShareButton"
 import { useWindow } from "../../../hooks/useWindow"
 import { Editor } from "../../Editor"
@@ -15,9 +14,10 @@ import { useToggle } from "../../../hooks/useToggle"
 import { ModalDelete } from "../../../pages/Admin/components/ModalDelete"
 import { useTheme } from "styled-components"
 import { formatDateBrazil } from "../../../utils/date"
+import { RouterOutput } from "server"
 
 interface Props {
-  news: Article
+  news: RouterOutput["post"]["listById"]
   size?: Size
   primary?: boolean
   variant?: "light" | "dark"
@@ -62,7 +62,7 @@ export function New({ news, size, primary, variant }: Props) {
               position="left"
               color="gray_200"
             >
-              Postado em {formatDateBrazil(news.date)}
+              Postado em {formatDateBrazil(news.date as string)}
             </Text>
           </Sc.InfoWrapper>
           <Text
@@ -163,7 +163,7 @@ export function New({ news, size, primary, variant }: Props) {
           }
           position="left"
         >
-          Postado em {formatDateBrazil(news.date)}
+          Postado em {formatDateBrazil(news.date as string)}
         </Text>
         {token && (
           <>

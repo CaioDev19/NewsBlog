@@ -53,39 +53,41 @@ export const advertisingRouter = createRouter({
 
           return {
             advertisings: adsFormated,
+            totalPages: 1,
+            currentPage: 1,
           }
-        } else {
-          const { totalPages, isValid } = checkPagination({
-            totalPosts: await prisma.advertising.count({
-              where: condition,
-            }),
-            limit,
-            page,
-          })
+        }
 
-          if (!isValid) {
-            throw new TRPCError({
-              code: "NOT_FOUND",
-              message: "Page not found.",
-            })
-          }
-
-          const advertisings = await prisma.advertising.findMany({
+        const { totalPages, isValid } = checkPagination({
+          totalPosts: await prisma.advertising.count({
             where: condition,
-            orderBy: {
-              id: condition ? "asc" : "desc",
-            },
-            take: limit,
-            skip: (page - 1) * limit,
+          }),
+          limit,
+          page,
+        })
+
+        if (!isValid) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Page not found.",
           })
+        }
 
-          const adsFormated = formatReturnAds(advertisings)
+        const advertisings = await prisma.advertising.findMany({
+          where: condition,
+          orderBy: {
+            id: condition ? "asc" : "desc",
+          },
+          take: limit,
+          skip: (page - 1) * limit,
+        })
 
-          return {
-            totalPages,
-            currentPage: totalPages === 0 ? 0 : page,
-            advertisings: adsFormated,
-          }
+        const adsFormated = formatReturnAds(advertisings)
+
+        return {
+          totalPages,
+          currentPage: totalPages === 0 ? 0 : page,
+          advertisings: adsFormated,
         }
       } catch {
         throw new TRPCError({

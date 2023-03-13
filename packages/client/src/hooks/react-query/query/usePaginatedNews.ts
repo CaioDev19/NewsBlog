@@ -1,7 +1,6 @@
 import { scrollToRef } from "../../../utils/window"
-import { useQuery } from "@tanstack/react-query"
 import { RefObject, useCallback, useEffect, useState } from "react"
-import { getNews, getNewByCategory } from "../../../services/requests"
+import { trpc } from "../../../config/trpc"
 
 interface Props {
   initialPage?: number
@@ -21,17 +20,10 @@ export function usePaginatedNews({
 }: Props) {
   const [page, setPage] = useState(() => initialPage)
 
-  const queryKey =
-    typeof categoryId !== "undefined"
-      ? ["news", page, limit, categoryId]
-      : ["news", page, limit]
-
-  const queryFn = categoryId ? getNewByCategory : getNews
-
-  const query = useQuery(queryKey, queryFn, {
-    enabled,
-    keepPreviousData,
-  })
+  const query = trpc.post.list.useQuery(
+    { page, limit, categoryId },
+    { enabled, keepPreviousData }
+  )
 
   const fetchNextPage = useCallback(() => {
     scrollToRef(ref)

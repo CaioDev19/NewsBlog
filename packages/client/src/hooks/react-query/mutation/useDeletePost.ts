@@ -1,18 +1,16 @@
 import { useMutation } from "@tanstack/react-query"
 import { deleteNew } from "../../../services/requests"
-import { useQueryClient } from "@tanstack/react-query"
 import { AxiosError } from "axios"
 import { useSignOutOnError } from "../../useSignOutOnError"
 import { useEffect } from "react"
+import { trpc } from "../../../config/trpc"
 
 export function useDeletePost() {
-  const queryClient = useQueryClient()
+  const utils = trpc.useContext()
   const [setShouldSignOut] = useSignOutOnError()
   const mutation = useMutation(deleteNew, {
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["news"],
-      })
+    onSuccess: async () => {
+      await utils.post.invalidate()
     },
     onError: (_error: AxiosError) => {},
   })

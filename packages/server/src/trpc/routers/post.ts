@@ -18,7 +18,7 @@ export const postRouter = createRouter({
     .query(async ({ input, ctx: { prisma } }) => {
       const condition =
         typeof input.categoryId !== "undefined"
-          ? { category_id: input.categoryId as number }
+          ? { category_id: Number(input.categoryId) }
           : undefined
       const limit = input.limit || 10
       const page = input.page || 1

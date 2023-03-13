@@ -11,7 +11,6 @@ import { Editor } from "../../../components/Editor"
 import { useEffect, useState } from "react"
 import { useCreatePost } from "../../../hooks/react-query/mutation/useCreatePost"
 import { useCategories } from "../../../hooks/react-query/query/useCategories"
-import { Category } from "../../../interfaces/api"
 import { useParams } from "react-router-dom"
 import { useNew } from "../../../hooks/react-query/query/useNew"
 import { useUpdatePost } from "../../../hooks/react-query/mutation/useUpdatePost"
@@ -70,16 +69,16 @@ export function CreatePost({ type }: Props) {
       return
     }
 
-    const { id: categoryId } = categories?.data.find((category) => {
-      return category.name === data.category
-    }) as Category
+    const category = categories?.find((category) => {
+      return category.name === (data.category as string)
+    })
 
     const formData = new FormData()
 
     formData.append("image", data.image[0])
     formData.append("title", data.title)
     formData.append("summary", data.summary)
-    formData.append("category_id", String(categoryId))
+    formData.append("category_id", String(category?.id))
     formData.append("content", body)
 
     if (type === "create") {
@@ -125,12 +124,12 @@ export function CreatePost({ type }: Props) {
 
   useEffect(() => {
     if (type === "edit" && isSuccess) {
-      setValue("title", data?.data.title)
-      setValue("summary", data?.data.summary)
-      setValue("category", data?.data.category.name)
-      setBody(data?.data.content)
+      setValue("title", data?.title)
+      setValue("summary", data?.summary)
+      setValue("category", data?.category.name)
+      setBody(data?.content)
     }
-  }, [isSuccess, data?.data, type, setValue])
+  }, [isSuccess, data, type, setValue])
 
   return (
     <Sc.MainContainer>
@@ -167,7 +166,7 @@ export function CreatePost({ type }: Props) {
             <Select
               name="category"
               control={control}
-              options={!isCategoriesLoading ? categories?.data! : []}
+              options={!isCategoriesLoading ? categories! : []}
               customPlaceholder="Selecione uma categoria"
             />
             <Sc.WrapperErrorButton>

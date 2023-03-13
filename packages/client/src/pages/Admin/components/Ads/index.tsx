@@ -1,10 +1,10 @@
 import * as Sc from "./style"
-import { Advertisings } from "../../../../interfaces/api"
 import { Error } from "../../../../components/Error"
 import { Ad } from "./Ad"
+import { RouterOutput } from "server"
 
 interface Props {
-  data: Advertisings
+  data: RouterOutput["advertising"]["list"]
 }
 export function Ads({ data }: Props) {
   if (data.advertisings.length === 0) {
