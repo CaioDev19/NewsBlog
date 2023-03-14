@@ -8,7 +8,6 @@ export const Container = styled.section<{ image: string }>`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: ${({ theme }) => theme.COLORS.gray_100};
   padding: 1.75rem 0;
 
   position: relative;
@@ -34,12 +33,10 @@ export const ContentWrapper = styled(ContentContainer)`
 export const Banner = styled.img`
   width: 100%;
   object-fit: cover;
-  height: 200px;
+  height: auto;
+  max-height: 200px;
+  min-height: 120px;
   border-radius: 25px;
-
-  @media (max-width: ${({ theme }) => theme.BREAKPOINTS.mobile}px) {
-    object-fit: fill;
-  }
 `
 
 export const LeftContent = styled.img`

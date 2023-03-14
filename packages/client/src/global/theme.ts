@@ -21,6 +21,7 @@ export const theme = {
 
     blue: "#3399FF",
     blue_100: "#0038D6",
+    blue_200: "#000036",
     light_blue: "#8FD5F4",
   },
   FONT_SIZE: {
